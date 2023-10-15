@@ -1,4 +1,4 @@
-import {displayUserInfo} from './domUpdates'
+import { displayUserInfo } from './domUpdates.js';
 import   sampleData   from './data/sampleData';
 import './styles.css';
 
@@ -57,18 +57,15 @@ window.addEventListener('load', function() {
     console.log('page loaded')
     console.log(currentUser);
     console.log(getRandomUser(userData))
-    console.log(displayUserInfo(currentUser));
     displayUserInfo(currentUser);
+
+    // console.log(displayUserInfo(currentUser));
+    
     //As a user, I should be able to view an info card with all of my info on the page
     //As a user, I should be able to see my first name somewhere prominently on the page to welcome me
     //As a user, I should be able to see how my step goal compares to the average step goal amongst all users (this display should not be hard-coded)
   });
 // console.log(getAverageStepGoal(userSample))
-
-
-
-
-
 
   console.log(getRandomUser(userData));
   //returns one object from sample data

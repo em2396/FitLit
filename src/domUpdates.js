@@ -5,15 +5,13 @@ const { getRandomUser } = require('./scripts');
 
 const userName = document.querySelector('#username');
 const location = document.querySelector('#location');
+const hello = document.querySelector('#progressRightSide')
 
 
 
-
-
-function displayUserInfo(currentUser) {
+export function displayUserInfo(currentUser) {
   userName.innerText = `${currentUser.name}`
-  location.innerText = `${currentUser.location}`
+  location.innerText = `${currentUser.address}`
 }
 
 
-export default {displayUserInfo}
