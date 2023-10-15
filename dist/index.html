@@ -3,10 +3,68 @@
   <head>
     <meta charset="UTF-8">
     <title>Fitlit</title>
+    <link rel="styles" href="src/css/styles.css">
+    <!-- pick a font style here -->
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    <aside class="main-row" id="leftMainRow">
+      <header>Good Morning ${name}</header>
+        <h1>Welcome Back *insert emoji*</h1>
+      <section class="left-section">
+        <section class="first-row-left">
+          <h1>Steps</h1>
+        </section>
+        <section class="first-row-left">
+          <h2>Water</h2>
+        </section>
+        <section class="first-row-left">
+          <h3>Calories</h3>
+        </section>
+        <section class="first-row-left">
+          <h4>Heart Rate</h4>
+        </section>
+      </section>
+      <section class="left-section">
+        <section class="second-row-left" id="activity">
+          <h1>Activity</h1>
+        <!-- Tabls vs label on figme -->
+        </section>
+        <section class="second-row-left">
+          <h1>Progress</h1>
+          <aside class="progress-aside">
+            <table>
+              <!-- Progress circle chart -->
+            </table>
+          </aside>
+          <aside class="progress-aside" id="progressRightSide">
+            <h1>Cardio</h1>
+            <h2>Stretching</h2>
+            <h3>Treadmill</h3>
+            <h4>Strength</h4>
+          </aside>
+        </section>
+      </section>
+      <section class="left-section">
+        <section class="third-row-left">
+          <h1>Recommended Trainer for you</h1>
+          <aside class="trainer-aside">
+            <!-- Trainer one here -->
+          </aside>
+          <aside class="trainer-aside">
+            <!-- Trainer two here -->
+          </aside>
+        </section>
+        <section class="third-row-left">
+          <h1>Featured Diet Menu</h1>
+          <!-- Food logging data here -->
+        </section>
+      </section>
+    </aside>
+    <aside class="main-row" id="right-main-row">
+      <section class=""></section>
+    </aside>
+
+    <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
 
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
