@@ -1,45 +1,57 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
+import { displayUserInfo } from './domUpdates.js';
+import   sampleData   from './data/sampleData';
+import './styles.css';
 
-// An example of how you tell webpack to use a CSS file
-// const styles = require('./css/styles.css')
-// import './css/styles.css';
+//QuerySelectors Here:
+const userName = document.querySelector('#username');
+const location = document.querySelector('#location');
+const hello = document.querySelector('#progressRightSide');
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import './images/turing-logo.png';
+//Variables Here:
+let userData = sampleData.sampleUsers;
+let welcome;
 
-// An example of how you tell webpack to use a JS file
-// import userData from './data/users';
-const { userSample } = require('./data/sampleData')
+//Event Listeners Here: 
+window.addEventListener('load', function() {
+  let randomIndex = getRandomUser(userData);
+  let currentUser = getUserData(userData, randomIndex);
+  getAverageStepGoal(userData);
+  displayUserInfo(currentUser);
+  //As a user, I should be able to view an info card with all of my info on the page 
+  //As a user, I should be able to see my first name somewhere prominently on the page to welcome me X
+  //As a user, I should be able to see how my step goal compares to the average step goal amongst all users (this display should not be hard-coded)
+});
+// console.log(getAverageStepGoal(userSample))
+// window.addEventListener('click', function(){
+//   console.log("hello hello helloooooooo")})
+  
+//Functions Here:
+function getRandomUser(userData) {
+  const currentUserIndex = Math.floor(Math.random() * userData.length);
+    return currentUserIndex;
+  };
 
-// import sampleData from './data/sampleData';
-// console.log("User Data:", userData);
-
-// Example of one way to import functions from the domUpdates file.  You will delete these examples.
-// import { exampleFunction1, exampleFunction2 } from './domUpdates';
-
-// exampleFunction1('Travis');
-// exampleFunction2('Travis')
-
-function getUserData(userSample, userID) {
-    return userSample.find((user) => { 
-        return user.id === userID
-    })
-}
-
-// console.log(getUserData(userSample,1))
+function getUserData(userObj, indexPosition) {
+   let currentUser = userObj.find((user) => {
+        return user.id === (indexPosition + 1);
+    });
+    const first = currentUser.name.split(' ');
+    currentUser.firstName = first[0];
+    return currentUser;
+  };
 
 function getAverageStepGoal(userSample) {
     const total = userSample.reduce((accum,user) => {
-        return accum += user.dailyStepGoal
-    },0)
-    return (total / userSample.length).toFixed(0)
-}
+        return accum += user.dailyStepGoal;
+    }, 0)
+    let average = (total / userSample.length).toFixed(0);
+    console.log(average)
+    return average; 
+};
 
-// console.log(getAverageStepGoal(userSample))
-
-function getRandomUser(userSample) {
-    const currentUserIndex = Math.floor(Math.random() * userSample.length)
-    const currentUser = userSample[currentUserIndex]
-    return currentUser
-  };
+  module.exports = {
+      getRandomUser,
+      getUserData,
+      getAverageStepGoal, 
+      average
+    };
