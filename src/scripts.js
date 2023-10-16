@@ -1,7 +1,10 @@
 import { displayUserInfo } from './domUpdates.js';
+import getAvgDailyOunces  from './hydrationFunctions.js'
 import   sampleData   from './data/sampleData';
+import hydrationData from './data/hydration.js';
 import './styles.css';
-
+console.log(hydrationData.hydrationData);
+console.log(getAvgDailyOunces(1, hydrationData.hydrationData))
 //QuerySelectors Here:
 const userName = document.querySelector('#username');
 const location = document.querySelector('#location');

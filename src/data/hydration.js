@@ -25000,5 +25000,3 @@ export default { hydrationData: [
     "numOunces": 83
   }
 ]};
-
-console.log(hydration);
