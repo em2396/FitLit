@@ -1,6 +1,6 @@
 // //NOTE: Your DOM manipulation will occur in this file
 const { userSample } = require('./data/sampleData');
-const { getRandomUser, getUserData, average} = require('./scripts');
+const { getRandomUser, getUserData, getAverageStepGoal} = require('./scripts');
 
 
 const userName = document.querySelector('#username');
@@ -10,12 +10,12 @@ const welcomeBack = document.querySelector('#welcomeBack');
 const steps = document.querySelector('#totalSteps');
 const usersAvgSteps = document.querySelector('#averageUsersSteps')
 
-export function displayUserInfo(currentUser) {
+export function displayUserInfo(currentUser, averageSteps) {
   userName.innerText = `${currentUser.name}`;
   location.innerText = `${currentUser.address}`;
   welcomeBack.innerText = `Welcome Back, ${currentUser.firstName}!`
   steps.innerText = `Step Goal: ${currentUser.dailyStepGoal}`;
-  usersAvgSteps = `The average users step goal: ${average}`
+  usersAvgSteps.innerText = `The average users step goal: ${averageSteps}`;
 }
 
 
