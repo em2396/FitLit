@@ -8,7 +8,7 @@ const location = document.querySelector('#location');
 const hello = document.querySelector('#progressRightSide');
 const welcomeBack = document.querySelector('#welcomeBack');
 const steps = document.querySelector('#totalSteps');
-const usersAvgSteps = document.querySelector('#averageUsersSteps');
+let usersAvgSteps = document.querySelector('#averageUsersSteps');
 
 export function displayUserInfo(currentUser) {
   userName.innerText = `${currentUser.name}`;
