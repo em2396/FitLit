@@ -1,10 +1,20 @@
 import { displayUserInfo } from './domUpdates.js';
-import getAvgDailyOunces  from './hydrationFunctions.js'
+import { getAvgDailyOunces, getOuncesPerDay, getOuncesPerDayPerWeek } from './hydrationFunctions.js'
+import getUserData from './data-model';
 import   sampleData   from './data/sampleData';
 import hydrationData from './data/hydration.js';
 import './styles.css';
-console.log(hydrationData.hydrationData);
-console.log(getAvgDailyOunces(1, hydrationData.hydrationData))
+//THESE WORK!!!
+// console.log(hydrationData.hydrationData);
+// console.log(getAvgDailyOunces(1, hydrationData.hydrationData,"hydrationData"))
+// console.log(getOuncesPerDay(hydrationData.hydrationData,'2023/03/24', "hydration on specific day"))
+// let currentUser = getUserData(userObj, indexPosition);
+
+//THIS STILL DOESN'T WORK, doesn't display, 
+//TESTING FOR LAST RETURN: GET OUNCES EACH DAY: 
+// console.log(currentUser,"currentUser")
+// console.log(getOuncesPerDayPerWeek(currentUser, '2023/03/24', hydrationData.hydrationData))
+
 //QuerySelectors Here:
 const userName = document.querySelector('#username');
 const location = document.querySelector('#location');
