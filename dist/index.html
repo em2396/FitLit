@@ -7,111 +7,113 @@
     <!-- pick a font style here -->
   </head>
   <body>
-    <aside class="main-row" id="leftMainRow">
-      <header>
-        <h1>Good Morning</h1>
-        <h2 id="welcomeBack">Welcome Back</h2>
-      </header>
-      <section class="left-section">
-        <section class="first-row-left">
-          <h1>Steps</h1>
-          <p id="totalSteps"></p>
-          <p id="averageUsersSteps"></p>
+    <!-- <container class="data-container"> -->
+      <aside class="main-row" id="leftMainRow">
+        <header>
+          <h1>Good Morning</h1>
+          <h2 id="welcomeBack">Welcome Back</h2>
+        </header>
+        <section class="left-section">
+          <section class="first-row-left" id="stepsBox">
+            <h1>Steps</h1>
+            <p id="totalSteps"></p>
+            <p id="averageUsersSteps"></p>
+          </section>
+          <section class="first-row-left" id="waterBox">
+            <h2>Water</h2>
+          </section>
+          <section class="first-row-left" id="caloriesBox">
+            <h3>Calories</h3>
+          </section>
+          <section class="first-row-left" id="heartRateBox">
+            <h4>Heart Rate</h4>
+          </section>
         </section>
-        <section class="first-row-left">
-          <h2>Water</h2>
+        <section class="left-section">
+          <section class="second-row-left" id="activityBox">
+            <h1>Activity</h1>
+          <!-- Table vs label on figme -->
+          </section>
+          <section class="second-row-left" id="progressBox">
+            <h1 class="progress">Progress</h1>
+            <aside class="progress-aside">
+              <table>
+                <!-- Progress circle chart -->
+              </table>
+            </aside>
+            <aside class="progress-aside" id="progressRightSide">
+              <h1 class="prog-left">Cardio</h1>
+              <h2 class="prog-left">Stretching</h2>
+              <h3 class="prog-left">Treadmill</h3>
+              <h4 class="prog-left">Strength</h4>
+            </aside>
+          </section>
         </section>
-        <section class="first-row-left">
-          <h3>Calories</h3>
+        <section class="left-section">
+          <section class="third-row-left" id="recTrainer">
+            <h1>Recommended Trainer for you</h1>
+            <aside class="trainer-aside">
+              <!-- Trainer one here -->
+            </aside>
+            <aside class="trainer-aside">
+              <!-- Trainer two here -->
+            </aside>
+          </section>
+          <section class="third-row-left" id="featuredDiet">
+            <h1>Featured Diet Menu</h1>
+            <!-- Food logging data here -->
+          </section>
         </section>
-        <section class="first-row-left">
-          <h4>Heart Rate</h4>
+      </aside>
+      <aside class="main-row" id="rightMainRow">
+        <h1 id="username"> Username </h1>
+        <h2 id = "location"> Location </h2>
+        <section class="right-section">
+          <section class="first-row-right">
+            <h1>Weight Number</h1>
+              <p>Weight</p>
+            <h2>Height Number</h2>
+              <p>Height</p>
+            <h3>Age Number</h3>
+              <p>Age</p>
+          </section>
         </section>
-      </section>
-      <section class="left-section">
-        <section class="second-row-left" id="activity">
-          <h1>Activity</h1>
-        <!-- Table vs label on figme -->
+        <section class="right-section">
+          <section class="second-row-right">
+            <h1>Running</h1>
+            <h2>Distance ran</h2>
+            <!-- insert percentage chart t-->
+          </section>
         </section>
-        <section class="second-row-left">
-          <h1 class="progress">Progress</h1>
-          <aside class="progress-aside">
-            <table>
-              <!-- Progress circle chart -->
-            </table>
-          </aside>
-          <aside class="progress-aside" id="progressRightSide">
-            <h1 class="prog-left">Cardio</h1>
-            <h2 class="prog-left">Stretching</h2>
-            <h3 class="prog-left">Treadmill</h3>
-            <h4 class="prog-left">Strength</h4>
-          </aside>
+        <section class="right-section">
+          <section class="third-row-right">
+            <h1>Sleeping</h1>
+            <h2>Hours Slept</h2>
+            <!-- insert percentage chart -->
+          </section>
         </section>
-      </section>
-      <section class="left-section">
-        <section class="third-row-left">
-          <h1>Recommended Trainer for you</h1>
-          <aside class="trainer-aside">
-            <!-- Trainer one here -->
-          </aside>
-          <aside class="trainer-aside">
-            <!-- Trainer two here -->
-          </aside>
+        <section class="right-section">
+          <section class="fourth-row-right">
+            <h1>Weight Loss</h1>
+            <h2>Total weight lost</h2>
+            <!-- insert percentage chart here -->
+          </section>
         </section>
-        <section class="third-row-left">
-          <h1>Featured Diet Menu</h1>
-          <!-- Food logging data here -->
+        <h3 class="prog-right">Monthly Progress</h3>
+        <section class="right-section">
+          <section class="fifth-row-right">
+            <!-- inset percentage chart here -->
+            <h1>You have achieved % of your goal this month</h1>
+          </section>
         </section>
-      </section>
-    </aside>
-    <aside class="main-row" id="right-main-row">
-      <h1 id="username"> Username </h1>
-      <h2 id = "location"> Location </h2>
-      <section class="right-section">
-        <section class="first-row-right">
-          <h1>Weight Number</h1>
-            <p>Weight</p>
-          <h2>Height Number</h2>
-            <p>Height</p>
-          <h3>Age Number</h3>
-            <p>Age</p>
+        <h4 class="prog-right"> Scheduled</h4>
+        <section class="right-section">
+          <section class="sixth-row-right">
+            <!-- If there is a training scheduled... -->
+          </section>
         </section>
-      </section>
-      <section class="right-section">
-        <section class="second-row-right">
-          <h1>Running</h1>
-          <h2>Distance ran</h2>
-          <!-- insert percentage chart t-->
-        </section>
-      </section>
-      <section class="right-section">
-        <section class="third-row-right">
-          <h1>Sleeping</h1>
-          <h2>Hours Slept</h2>
-          <!-- insert percentage chart -->
-        </section>
-      </section>
-      <section class="right-section">
-        <section class="fourth-row-right">
-          <h1>Weight Loss</h1>
-          <h2>Total weight lost</h2>
-          <!-- insert percentage chart here -->
-        </section>
-      </section>
-      <h3 class="prog-right">Monthly Progress</h3>
-      <section class="right-section">
-        <section class="fifth-row-right">
-          <!-- inset percentage chart here -->
-          <h1>You have achieved % of your goal this month</h1>
-        </section>
-      </section>
-      <h4 class="prog-right"> Scheduled</h4>
-      <section class="right-section">
-        <section class="sixth-row-right">
-          <!-- If there is a training scheduled... -->
-        </section>
-      </section>
-    </aside>
+      </aside>
+    </container>
     <script src="bundle.js"></script>
   </body>
 </html>
