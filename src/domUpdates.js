@@ -1,7 +1,5 @@
-// //NOTE: Your DOM manipulation will occur in this file
-const { userSample } = require('./data/sampleData');
-const { getRandomUser, getUserData, average} = require('./scripts');
-
+const { userSample } = require("./data/sampleData");
+const { getRandomUser, getUserData, getAverageStepGoal } = require("./data-model.js");
 
 const userName = document.querySelector('#username');
 const location = document.querySelector('#location');
@@ -15,7 +13,5 @@ export function displayUserInfo(currentUser) {
   location.innerText = `${currentUser.address}`;
   welcomeBack.innerText = `Welcome Back, ${currentUser.firstName}!`;
   steps.innerText = `Step Goal: ${currentUser.dailyStepGoal}`;
-  usersAvgSteps = `The average users step goal: ${average}`;
+  usersAvgSteps.innerText = `The average users step goal: ${averageSteps}`;
 }
-
-
