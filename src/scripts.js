@@ -45,7 +45,7 @@ function getAverageStepGoal(userSample) {
         return accum += user.dailyStepGoal;
     }, 0)
     let average = (total / userSample.length).toFixed(0);
-    console.log(average)
+    console.log(average);
     return average; 
 };
 
