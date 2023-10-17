@@ -23,6 +23,9 @@ export function getOuncesPerDay(userObj, dataList, date) {
 // Return how many fluid ounces of water a user consumed each day over the course of a week (7 days)
 //return total for the week
 
+
+
+
 export function getOuncesPerDayPerWeek(filterUser,currentUser, startDate, dataList) {
     let startDateObj = new Date(startDate); //creates a new date object by passing startDate string to Data()
     console.log("startDateObj",startDateObj)

@@ -3,9 +3,8 @@
 
 export function getRandomUser(userData) {
     const currentUserIndex = Math.floor(Math.random() * userData.length);
-    console.log("currentUserIndex:", currentUserIndex)
-    return currentUserIndex;
-  };
+      return currentUserIndex;
+    };
   
   export function getUserData(userObj, indexPosition) {
       let currentUser = userObj.find((user) => {
@@ -45,12 +44,10 @@ export function getRandomUser(userData) {
 
 
 
-  export function getOuncesPerWeek(filteredData) {
-    const total = filteredData.reduce((acc, user) => {
-      return acc += user.numOunces
-    }, 0)
-    return total;
-  }
+export function getOuncesPerWeek(filteredData) {
+  const total = filteredData.sort((a, b) => new Date(a.date) - new Date(b.date)).splice(0, 7)
+  return total;
+}
 
   export function averageSleepDay(filterUser) {
     const total = filterUser.reduce((acc, user) => {
