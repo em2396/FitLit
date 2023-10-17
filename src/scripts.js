@@ -1,13 +1,18 @@
+import { getRandomUser, getUserData } from './data-model';
+//idk why getAverageStep is already declared if I add this onto this area.
+
 import { displayUserInfo } from './domUpdates.js';
 import { getAvgDailyOunces, getOuncesPerDay, getOuncesPerDayPerWeek } from './hydrationFunctions.js'
-import getUserData from './data-model';
+
 import   sampleData   from './data/sampleData';
-import hydrationData from './data/hydration.js';
+import hydration from './data/hydration.js';
+
 import './styles.css';
+
 //THESE WORK!!!
 // console.log(hydrationData.hydrationData);
 // console.log(getAvgDailyOunces(1, hydrationData.hydrationData,"hydrationData"))
-// console.log(getOuncesPerDay(hydrationData.hydrationData,'2023/03/24', "hydration on specific day"))
+// console.log(getOuncesPerDay(userID,hydration.hydrationData,'2023/03/24', "hydration on specific day"))
 // let currentUser = getUserData(userObj, indexPosition);
 
 //THIS STILL DOESN'T WORK, doesn't display, 
@@ -21,6 +26,7 @@ const location = document.querySelector('#location');
 const hello = document.querySelector('#progressRightSide');
 
 //Variables Here:
+let allHydrationData = hydration.hydrationData
 let userData = sampleData.sampleUsers;
 let welcome;
 
@@ -28,10 +34,13 @@ let welcome;
 window.addEventListener("load", function () {
   let randomIndex = getRandomUser(userData);
   let currentUser = getUserData(userData, randomIndex);
+  console.log("currentUser:",currentUser);
   const averageSteps = getAverageStepGoal(userData);
-  displayUserInfo(currentUser, averageSteps);
-  displayUserInfo(currentUser, averageSteps);
+  // displayUserInfo(currentUser, averageSteps);
   getAverageStepGoal(userData);
+  let waterPerSpecificDay = getOuncesPerDay(currentUser,allHydrationData,'2023/03/24')
+  // getOuncesPerDayPerWeek(currentUser, '2023/03/24',allHydrationData)
+  displayUserInfo(currentUser, averageSteps,waterPerSpecificDay);
 });
 
 
@@ -44,8 +53,8 @@ function getAverageStepGoal(userSample) {
     return average; 
 };
 
-  export default {
-      getRandomUser,
-      getUserData,
-      getAverageStepGoal, 
-    };
+  // export default {
+  //     getRandomUser,
+  //     getUserData,
+  //     getAverageStepGoal, 
+  //   };
