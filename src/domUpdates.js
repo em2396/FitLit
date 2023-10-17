@@ -12,9 +12,9 @@ const welcomeBack = document.querySelector('#welcomeBack');
 const steps = document.querySelector('#totalSteps');
 let usersAvgSteps = document.querySelector('#averageUsersSteps');
 let waterConsumedToday = document.querySelector('#waterConsumedToday');
+let waterConsumedPerWeek = document.querySelector('#waterEachDayOfWeek');
 
-
-export function displayUserInfo(currentUser,averageSteps,waterPerSpecificDay) {
+export function displayUserInfo(currentUser,averageSteps,waterPerSpecificDay, waterPerDayPerWeek) {
   console.log("currentUser:",currentUser)
   userName.innerText = `${currentUser.name}`;
   location.innerText = `${currentUser.address}`;
@@ -24,5 +24,8 @@ export function displayUserInfo(currentUser,averageSteps,waterPerSpecificDay) {
 
   //hydration:
   waterConsumedToday.innerText = `Water Consumed Today: ${waterPerSpecificDay}oz`
-
+  waterPerDayPerWeek.forEach((data) => {
+    waterConsumedPerWeek.innerHTML += `<p> Water Consumed on first day ${data.numOunces}oz`
+  })
+  // waterConsumedPerWeek.innerHTML += `<p> Water Consumed on first day ${waterPerDayPerWeek.forEach((element) => element.numOunces)}oz </p>`
 }

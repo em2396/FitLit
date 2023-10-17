@@ -44,10 +44,13 @@ export function getRandomUser(userData) {
 
 
 
-export function getOuncesPerWeek(filteredData) {
-  const total = filteredData.sort((a, b) => new Date(a.date) - new Date(b.date)).splice(0, 7)
-  return total;
-}
+// export function getOuncesPerWeek(filteredData, startDate) {
+//   const total = filteredData.sort((a, b) => new Date(a.date) - new Date(b.date))
+//   let findStartDateIndex = total.findIndex((data) => data.date === startDate)
+//   // console.log(findStartDateIndex,"startDate")
+//   let totalWeek = total.splice((findStartDateIndex),7)
+//   return totalWeek;
+// }
 
   export function averageSleepDay(filterUser) {
     const total = filterUser.reduce((acc, user) => {

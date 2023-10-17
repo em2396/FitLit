@@ -23,34 +23,9 @@ export function getOuncesPerDay(userObj, dataList, date) {
 // Return how many fluid ounces of water a user consumed each day over the course of a week (7 days)
 //return total for the week
 
-
-
-
-export function getOuncesPerDayPerWeek(filterUser,currentUser, startDate, dataList) {
-    let startDateObj = new Date(startDate); //creates a new date object by passing startDate string to Data()
-    console.log("startDateObj",startDateObj)
-    console.log("startDateObject with local DAte String:",startDateObj.toLocaleDateString('ar-EG')) 
-
-    //.split
-    //reverse()
-    //.join
-    //startDateObject: Fri Mar 24 2023 00:00:00 GMT-0400 (Eastern Daylight Time)
-
-    //do the same for the seventhDateObj
-    // let stopDateObj = new Date(startDateObj);
-
-
-    //JS reads dates as numbers 2023/03/24 -> 24, 25, 26, 27
-    //return enteredDate >= startDate && enteredDate <= stopDate; it'll give us the 7 days (returns everything b/t them)
-    //
-
-    // seventhDateObj.setDate(seventhDate.getDate() + 6);
-
-    // const elementWithSevendays = currentUser.dataList.filter((user) => {
-    //     let enteredDate = new Date(user.date);
-    //return enteredDate >= startDate && enteredDate <= stopDate;
-    // });
-
-    
-    // elementWithSevendays.map( only give fluid ounces)?
-}
+export function getOuncesPerWeek(filteredData, startDate) {
+    const total = filteredData.sort((a, b) => new Date(a.date) - new Date(b.date))
+    let findStartDateIndex = total.findIndex((data) => data.date === startDate)
+    let totalWeek = total.splice((findStartDateIndex),7)
+    return totalWeek;
+  }
