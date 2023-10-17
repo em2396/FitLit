@@ -25,3 +25,68 @@ export function getRandomUser(userData) {
       return average; 
   };
   
+
+  
+
+
+
+
+
+  
+  
+
+  export function filterUserData(data, currentUserObject) {
+    let filterUser = data.filter((element => {
+     return (element.userID === currentUserObject.id)
+    }))
+    return filterUser
+}
+
+
+
+
+  export function getOuncesPerWeek(filteredData) {
+    const total = filteredData.reduce((acc, user) => {
+      return acc += user.numOunces
+    }, 0)
+    return total;
+  }
+
+  export function averageSleepDay(filterUser) {
+    const total = filterUser.reduce((acc, user) => {
+      return acc += user.hoursSlept;
+    }, 0)
+    return total;
+  }
+
+  /*[
+  {
+    "userID": [number],
+    "date": [string YYYY/MM/DD],
+    "hoursSlept": [number - hours],
+    "sleepQuality": [number - unitless]
+  },
+
+  ...more sleep data
+] */
+
+const sampleSleep = [
+{
+  userID: 1,
+  date: "2023/01/12",
+  hoursSlept: 10,
+  sleepQuality: 2
+}, 
+{
+  userID: 2,
+  date: "2023/01/13",
+  hoursSlept: 8,
+  sleepQuality: 3
+},
+{
+  userID: 1,
+  date: "2023/01/14",
+  hoursSlept: 10,
+  sleepQuality: 2
+}
+]
