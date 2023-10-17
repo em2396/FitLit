@@ -4,43 +4,61 @@
   height: 100%;
 } */
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   display: flex;
   flex-direction: row;
   width: 100vw;
   height: 100vh;
-  background-color: #050E2B;
   color: #2A2B2C;
+  
 }
 
 header {
   /* display: flex; 
   flex-direction: column; */
-  height: 200px;
-  width: 800px;
   color: white;
+  margin: none;
+  padding: none;
 }
 
+/* .data-container {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  margin: 5%;
+
+} */
+
+/* parent container for left and right main */
 .main-row {
   width: 600px;
   height: 800px;
-  margin: 30px;
+  margin: none;
 }
 
 #leftMainRow {
-  width: 75vw;
+  width: 70%;
+  height: 100vh;
+  background-color: #050E2B;
+  white-space: nowrap;
 }
 
-#right-main-row {
-  width: 25vw;
+#rightMainRow {
+  width: 30%;
   height: 100vh;
   background-color: #555d76;
-  
+  margin: none;
 }
 
 .left-section {
   display: flex;
-  background-color: #DCF3E7;
+  background-color: #050E2B;
   align-items: center;
   justify-content: center;
   height: 30vh;
@@ -49,40 +67,111 @@ header {
 
 .first-row-left {
   flex-direction: row;
-  background-color: #F3FDF6;
   width: 25vw;
   height: 25vh;
   margin: 20px;
   text-align: center;
+  border-radius: 10px;
+}
+
+#stepsBox {
+  background-color: #032412;
+  color: white;
+  padding: 40px;
+  box-shadow: 0px 0px 1.5px 2px white
+}
+
+#waterBox {
+  background-color: #098893;
+  color: white;
+  padding: 40px;
+  box-shadow: 0px 0px 1.5px 2px white
+}
+
+#caloriesBox {
+  background-color: #7f0ae4;
+  color: white;
+  padding: 40px;
+  box-shadow: 0px 0px 1.5px 2px white
+}
+
+#heartRateBox {
+  background-color: #970606;
+  color: white;
+  padding: 40px;
+  box-shadow: 0px 0px 1.5px 2px white
 }
 
 .second-row-left {
+  display: flex;
   flex-direction: row;
-  background-color: #F3FDF6;
   width: 50vw;
   height: 25vh;
   margin: 20px;
+  border-radius: 10px;
 }
 
-.third-row-left {
-  background-color: #9747FF;
-  width: 300px;
-  height: 200px;
-  margin: 55px;
+#activityBox {
+  background-color: #098893;
+  color: white;
+  padding: 40px;
+  box-shadow: 0px 0px 1.5px 2px white
+}
+
+#progressBox {
+  background-color: #032412;
+  color: white;
+  padding: 10px;
+  box-shadow: 0px 0px 1.5px 2px white
+}
+
+.progress-aside {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 table {
-  display: flex;
-  flex-direction: column;
-  background-color: #0E6537;
-  width: 200px;
+  background-color: white;
+  width: 100px;
   height: 100px;
+  margin-top: 30px;
+  margin-right: 50px;
 }
 
 #progressRightSide {
-  background-color: #0E6537;
+  display: flex;
+  flex-direction: column;
+  background-color: #032412;
+  justify-content: space-between;
+  margin: 10px;
 }
 
-#progressRightSide > * {
-  background-color: #F3FDF6;
+.third-row-left {
+  display: flex;
+  flex-direction: row;
+  width: 50vw;
+  height: 25vh;
+  margin: 20px;
+  border-radius: 10px;
 }
+
+#recTrainer {
+  background-color: #970606;
+  color: white;
+  padding: 40px;
+  box-shadow: 0px 0px 1.5px 2px white;
+  border-radius: 10px;
+}
+
+#featuredDiet {
+  background-color: #7f0ae4;
+  color: white;
+  padding: 40px;
+  box-shadow: 0px 0px 1.5px 2px white
+}
+
+
+/* .prog-left {
+
+} */
