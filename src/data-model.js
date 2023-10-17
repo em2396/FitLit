@@ -3,8 +3,9 @@
 
 export function getRandomUser(userData) {
     const currentUserIndex = Math.floor(Math.random() * userData.length);
-      return currentUserIndex;
-    };
+    console.log("currentUserIndex:", currentUserIndex)
+    return currentUserIndex;
+  };
   
   export function getUserData(userObj, indexPosition) {
       let currentUser = userObj.find((user) => {
