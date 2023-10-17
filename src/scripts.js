@@ -32,7 +32,7 @@ let welcome;
 window.addEventListener("load", function () {
   let randomIndex = getRandomUser(userData);
   let currentUser = getUserData(userData, randomIndex);
-  console.log(filterUserData(hydrationData, currentUser))
+  console.log(filterUserData(allHydrationData, currentUser))
   const averageSteps = getAverageStepGoal(userData);
   // displayUserInfo(currentUser, averageSteps);
   // getAverageStepGoal(userData);
