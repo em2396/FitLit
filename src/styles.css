@@ -10,7 +10,7 @@ body {
   width: 100vw;
   height: 100vh;
   color: #2A2B2C;
-  
+  font-family: "Gill Sans", sans-serif;
 }
 
 header {
@@ -51,7 +51,7 @@ header {
 .first-row-left {
   flex-direction: row;
   width: 25vw;
-  height: 25vh;
+  height: 30vh;
   margin: 20px;
   text-align: center;
   border-radius: 10px;
@@ -60,28 +60,28 @@ header {
 #stepsBox {
   background-color: #032412;
   color: white;
-  padding: 40px;
+  padding: 30px;
   box-shadow: 0px 0px 1.5px 2px white
 }
 
 #waterBox {
   background-color: #098893;
   color: white;
-  padding: 40px;
+  padding: 30px;
   box-shadow: 0px 0px 1.5px 2px white
 }
 
 #caloriesBox {
   background-color: #7f0ae4;
   color: white;
-  padding: 40px;
+  padding: 30px;
   box-shadow: 0px 0px 1.5px 2px white
 }
 
 #heartRateBox {
   background-color: #970606;
   color: white;
-  padding: 40px;
+  padding: 30px;
   box-shadow: 0px 0px 1.5px 2px white
 }
 
@@ -97,7 +97,7 @@ header {
 #activityBox {
   background-color: #098893;
   color: white;
-  padding: 40px;
+  padding: 10px;
   box-shadow: 0px 0px 1.5px 2px white
 }
 
@@ -152,4 +152,13 @@ table {
   color: white;
   padding: 40px;
   box-shadow: 0px 0px 1.5px 2px white
+}
+
+.right-section, #rightMainRow {
+    background-color: #2A2B2C;
+    color: #FFFFFF;
+    padding: 20px;
+    box-shadow: 0px 0px 1.5px 2px white;
+    max-height: 100vh;
+    max-width: 35vw;
 }
