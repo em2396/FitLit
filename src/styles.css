@@ -18,6 +18,7 @@ header {
   margin: none;
   padding: none;
 }
+
 /* parent container for left and right main */
 .main-row {
   width: 600px;
@@ -154,11 +155,12 @@ table {
   box-shadow: 0px 0px 1.5px 2px white
 }
 
-.right-section, #rightMainRow {
-    background-color: #2A2B2C;
-    color: #FFFFFF;
-    padding: 20px;
-    box-shadow: 0px 0px 1.5px 2px white;
-    max-height: 100vh;
-    max-width: 35vw;
+.right-section,
+#rightMainRow {
+  background-color: #2A2B2C;
+  color: #FFFFFF;
+  padding: 20px;
+  box-shadow: 0px 0px 1.5px 2px white;
+  max-height: 100vh;
+  max-width: 35vw;
 }
