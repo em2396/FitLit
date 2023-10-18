@@ -1,5 +1,4 @@
 import { getRandomUser, getUserData, filterUserData, averageSleepDay, specificSleepDay, getUserSleepQuality, averageSleepQuality } from './data-model';
-//idk why getAverageStep is already declared if I add this onto this area.
 
 import { displayUserInfo } from './domUpdates.js';
 import { getOuncesPerDay, getDataPerWeek } from './hydrationFunctions.js'

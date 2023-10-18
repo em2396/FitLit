@@ -3,9 +3,9 @@ export function getRandomUser(userData) {
   const currentUserIndex = Math.floor(Math.random() * userData.length);
   return currentUserIndex;
 };
-
-//❗👇 changed this function so when testing if the indexPosition is out of range it will return null 
-//-> preventing errors caused by trying to access undefined with the current user ❗👇
+//❗👇 ===============================================================>>>>>>>>
+  //changed this function so when testing if the indexPosition is out of range it will return null 
+//-> preventing errors caused by trying to access undefined with the current user ❗
 // export function getUserData(userObj, indexPosition) {
 //   let currentUser = userObj.find((user) => {
 //     return user.id === (indexPosition + 1);
@@ -29,6 +29,9 @@ export function getUserData(userObj, indexPosition) {
   currentUser.firstName = first[0];
   return currentUser;
 }
+// ❗ ===============================================================>>>>>>>>
+
+
 
 
 export function filterUserData(data, currentUserObject) {
@@ -37,6 +40,7 @@ export function filterUserData(data, currentUserObject) {
   }))
   return filterUser
 };
+
 
 //Return the user’s average number of hours slept per day
 export function averageSleepDay(filterUser) {
@@ -57,21 +61,56 @@ export function averageSleepQuality(filterUser) {
 };
 
 //Return how many hours a user slept for a specific day
+// export function specificSleepDay(filterUser, dateOfSleep) {
+//   const findDaySlept = filterUser.find(user => {
+//     return user.date === dateOfSleep
+//   });
+//   console.log(findDaySlept, 'find days slept')
+//   const hoursOnDay = findDaySlept.hoursSlept;
+//   const string = `Slept for ${hoursOnDay} hours on ${dateOfSleep}`;
+//   return string;
+  
+// }
+
+
+
 export function specificSleepDay(filterUser, dateOfSleep) {
   const findDaySlept = filterUser.find(user => {
-    return user.date === dateOfSleep
+    return user.date === dateOfSleep;
   });
-  console.log(findDaySlept, 'find days slept')
-  const hoursOnDay = findDaySlept.hoursSlept;
-  const string = `Slept for ${hoursOnDay} hours on ${dateOfSleep}`;
-  return string;
+
+  if (findDaySlept) {
+    const hoursOnDay = findDaySlept.hoursSlept;
+    const string = `Slept for ${hoursOnDay} hours on ${dateOfSleep}`;
+    return string;
+  } else {
+    // Handle the case where the dateOfSleep was not found in the data.
+    return "Sleep data not found for the specified date";
+  }
 }
 
-//Return a user’s sleep quality for a specific day
+
+
 export function getUserSleepQuality(filterSleepData, dateOfSleep) {
-  const elementDate = filterSleepData.find((element) => element.date === dateOfSleep)
-  return elementDate.sleepQuality
+  const elementDate = filterSleepData.find((element) => element.date === dateOfSleep);
+
+  if (elementDate) {
+    return elementDate.sleepQuality;
+  } else {
+    // Handle the case where the dateOfSleep was not found in the data.
+    return "Sleep quality data not found for the specified date";
+  }
 }
+
+
+
+
+
+// //Return a user’s sleep quality for a specific day
+// export function getUserSleepQuality(filterSleepData, dateOfSleep) {
+//   const elementDate = filterSleepData.find((element) => element.date === dateOfSleep)
+//   return elementDate.sleepQuality
+// }
 
 // Return a user’s sleep quality for each day over the course of a given week (7 days) 
 //Return how many hours a user slept each day over the course of a given week (7 days) - getDataPerWeek(filteredData, startDate) 

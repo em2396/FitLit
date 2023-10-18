@@ -4,6 +4,8 @@ import { getRandomUser, getUserData } from "../src/data-model.js";
 
 import userSample from "../src/data/sampleData";
 
+
+
 describe("getRandomUser", () => {
   let users = userSample.sampleUsers;
 
@@ -24,6 +26,7 @@ describe("getRandomUser", () => {
     expect(users).to.deep.include(randomUser);
   });
 });
+
 // === happy path === //
 describe('getUserData', () => {
   it('should return user data based on index position', () => {
