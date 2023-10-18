@@ -27,7 +27,7 @@ window.addEventListener("load", function () {
   let averageSleep = averageSleepDay(sleepUser);
   let hoursSlept = specificSleepDay(sleepUser, '2023/01/14');
   let aveSleepQuality = averageSleepQuality(sleepUser);
-  let sleepPerDay = getUserSleepQuality(sleepUser, '2023/01/14');
+  getUserSleepQuality(sleepUser, '2023/01/14');
   let sleepPerDayPerWeek = getDataPerWeek(sleepUser, '2023/01/14');
   console.log(sleepPerDayPerWeek, "Sleep Quality Per Week");
   displayUserInfo(currentUser, averageSteps, waterPerSpecificDay, waterPerDayPerWeek, averageSleep, hoursSlept, aveSleepQuality, sleepPerDayPerWeek);
