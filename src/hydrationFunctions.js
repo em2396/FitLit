@@ -1,5 +1,3 @@
-import hydrationData from './data/hydration';
-import { getRandomUser, getUserData } from './data-model';
 import './styles.css';
 
 //return user's average fluid ounces consumed per day for all time:
