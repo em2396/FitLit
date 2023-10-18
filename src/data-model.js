@@ -14,6 +14,7 @@ export function getRandomUser(userData) {
 //   currentUser.firstName = first[0];
 //   return currentUser;
 // };
+
 // NEW FUNCTION to handle sad paths ❗👇
 export function getUserData(userObj, indexPosition) {
   if (indexPosition < 0 || indexPosition >= userObj.length) {
