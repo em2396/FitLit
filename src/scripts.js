@@ -30,7 +30,7 @@ window.addEventListener("load", function () {
   let sleepPerDay = getUserSleepQuality(sleepUser, '2023/01/14');
   let sleepPerDayPerWeek = getDataPerWeek(sleepUser, '2023/01/14');
   console.log(sleepPerDayPerWeek, "Sleep Quality Per Week");
-  displayUserInfo(currentUser, averageSteps, waterPerSpecificDay, waterPerDayPerWeek, averageSleep, hoursSlept, aveSleepQuality, sleepPerDay, sleepPerDayPerWeek);
+  displayUserInfo(currentUser, averageSteps, waterPerSpecificDay, waterPerDayPerWeek, averageSleep, hoursSlept, aveSleepQuality, sleepPerDayPerWeek);
 });
 
 
