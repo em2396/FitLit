@@ -19,6 +19,7 @@ describe("getRandomUser", () => {
   });
 });
 
+// === happy path === //
 describe('getUserData', () => {
   it('should return user data based on index position', () => {
     const indexPosition = 1; 
@@ -35,6 +36,12 @@ describe('getUserData', () => {
     };
     expect(userData).to.deep.equal(expectedUserData);
   });
+
+    
+
+
+
+
 });
 
 describe('getAverageStepGoal', () => {
