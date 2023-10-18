@@ -1,4 +1,4 @@
-import { getRandomUser, getUserData, filterUserData, averageSleepDay } from './data-model';
+import { getRandomUser, getUserData, filterUserData, averageSleepDay, specificSleepDay } from './data-model';
 //idk why getAverageStep is already declared if I add this onto this area.
 
 import { displayUserInfo } from './domUpdates.js';
@@ -31,11 +31,13 @@ window.addEventListener("load", function () {
   let hydrationFilteredData = filterUserData(allHydrationData, currentUser)
   let waterPerDayPerWeek = getOuncesPerWeek(hydrationFilteredData,'2023/03/24');
   console.log(waterPerDayPerWeek,"waterPerDayPerWeek")
+  console.log(allSleepData, 'all sleep data')
   let sleepUser = filterUserData(allSleepData, currentUser);
   console.log(sleepUser, 'sleep user object')
   let averageSleep = averageSleepDay(sleepUser);
+  let hoursSlept = specificSleepDay(sleepUser, '2023/01/14');
   console.log(averageSleep, 'averageSleep')
-  displayUserInfo(currentUser,averageSteps,waterPerSpecificDay,waterPerDayPerWeek, averageSleep);
+  displayUserInfo(currentUser,averageSteps,waterPerSpecificDay,waterPerDayPerWeek, averageSleep, hoursSlept);
 });
 
 

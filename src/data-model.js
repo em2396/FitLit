@@ -39,6 +39,16 @@ export function getRandomUser(userData) {
     return averageSleep;
   };
 
+  export function specificSleepDay(filterUser, dateOfSleep) {
+    const findDaySlept = filterUser.find(user => {
+      return user.date === dateOfSleep
+    });
+    console.log(findDaySlept, 'find days slept')
+    const hoursOnDay = findDaySlept.hoursSlept;
+    const string = `Slept for ${hoursOnDay} hours on ${dateOfSleep}`; 
+    return string;
+  }
+
   /*[
   {
     "userID": [number],

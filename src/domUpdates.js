@@ -14,8 +14,9 @@ let usersAvgSteps = document.querySelector('#averageUsersSteps');
 let waterConsumedToday = document.querySelector('#waterConsumedToday');
 let waterConsumedPerWeek = document.querySelector('#waterEachDayOfWeek');
 const averageSleepOverall = document.querySelector('#averageSleepOverall');
+const sleepSpecificDay = document.querySelector('#sleepSpecificDay');
 
-export function displayUserInfo(currentUser,averageSteps,waterPerSpecificDay, waterPerDayPerWeek, averageSleep) {
+export function displayUserInfo(currentUser,averageSteps,waterPerSpecificDay, waterPerDayPerWeek, averageSleep, hoursSlept) {
   userName.innerText = `${currentUser.name}`;
   location.innerText = `${currentUser.address}`;
   welcomeBack.innerText = `Welcome Back, ${currentUser.firstName}!`;
@@ -26,4 +27,5 @@ export function displayUserInfo(currentUser,averageSteps,waterPerSpecificDay, wa
     waterConsumedPerWeek.innerHTML += `<p> Water Consumed on first day ${data.numOunces}oz`
   });
   averageSleepOverall.innerText = `Average Overall Sleep: ${averageSleep}`;
+  sleepSpecificDay.innerText = hoursSlept;
 };
