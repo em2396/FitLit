@@ -15,14 +15,14 @@ export function getRandomUser(userData) {
       return currentUser;
     };
   
-  export function getAverageStepGoal(userSample) {
-      const total = userSample.reduce((acc,user) => {
-          return acc += user.dailyStepGoal;
-      }, 0)
-      let average = (total / userSample.length).toFixed(0);
-      console.log(average)
-      return average; 
-  };
+  // export function getAverageStepGoal(userSample) {
+  //     const total = userSample.reduce((acc,user) => {
+  //         return acc += user.dailyStepGoal;
+  //     }, 0)
+  //     let average = (total / userSample.length).toFixed(0);
+  //     console.log(average)
+  //     return average; 
+  // };
 
   export function filterUserData(data, currentUserObject) {
     let filterUser = data.filter((element => {
@@ -31,6 +31,7 @@ export function getRandomUser(userData) {
     return filterUser
 };
 
+//Return the user’s average number of hours slept per day
   export function averageSleepDay(filterUser) {
     const total = filterUser.reduce((acc, user) => {
       return acc += user.hoursSlept;
@@ -39,6 +40,16 @@ export function getRandomUser(userData) {
     return averageSleep;
   };
 
+//Return the user’s average sleep quality per day over all - Ben started
+export function averageSleepQuality(filterUser) {
+  const total = filterUser.reduce((acc, user) => {
+    return acc += user.sleepQuality;
+  }, 0)
+  const averageSleepQuality = (total / filterUser.length).toFixed(0);
+  return averageSleepQuality;
+};
+
+//Return how many hours a user slept for a specific day
   export function specificSleepDay(filterUser, dateOfSleep) {
     const findDaySlept = filterUser.find(user => {
       return user.date === dateOfSleep
@@ -48,6 +59,28 @@ export function getRandomUser(userData) {
     const string = `Slept for ${hoursOnDay} hours on ${dateOfSleep}`; 
     return string;
   }
+
+//Return a user’s sleep quality for a specific day
+export function getUserSleepQuality(filterSleepData,dateOfSleep) {
+    const elementDate = filterSleepData.find((element) => element.date === dateOfSleep)
+    return elementDate.sleepQuality
+  }
+
+// Return a user’s sleep quality for each day over the course of a given week (7 days) 
+//Return how many hours a user slept each day over the course of a given week (7 days) - getDataPerWeek(filteredData, startDate) 
+// FOR THESE WE USED fuction getDataPerWeek(filteredData, startDate) in hydrationFunction.js. Works, gets object of 7 days.. may need to use to manipulate object to display on dom. Access sleepQuality and hoursSlept of that startDate & 7 days
+
+
+
+
+// export function getAverageSleepQuality(filteredSleepData) {
+//   const total = userSample.reduce((accum,user) => {
+//       return accum += user.dailyStepGoal;
+//   }, 0)
+//   let average = (total / userSample.length).toFixed(0);
+//   console.log(average)
+//   return average; 
+// };
 
   /*[
   {
