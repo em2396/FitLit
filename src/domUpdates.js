@@ -9,15 +9,15 @@ const averageSleepOverall = document.querySelector('#averageSleepOverall');
 const sleepSpecificDay = document.querySelector('#sleepSpecificDay');
 const sleepPerWeek = document.querySelector('#sleepPerDayPerWeek')
 
-export function displayUserInfo(currentUser, averageSteps, waterPerSpecificDay, waterPerDayPerWeek, averageSleep, hoursSlept, aveSleepQuality, sleepPerDayPerWeek) {
+export function displayUserInfo(currentUser, averageSteps, waterPerSpecificDay, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate) {
   userName.innerText = `${currentUser.name}`;
   location.innerText = `${currentUser.address}`;
   welcomeBack.innerText = `Welcome Back, ${currentUser.firstName}!`;
   steps.innerText = `Step Goal: ${currentUser.dailyStepGoal}`;
   usersAvgSteps.innerText = `The average users step goal: ${averageSteps}`;
-  waterConsumedToday.innerText = `Water Consumed Today: ${waterPerSpecificDay}oz`
+  waterConsumedToday.innerText = `Water Consumed Today (${todaysHydrationDate.date}): ${todaysHydrationDate.numOunces}oz`
   waterPerDayPerWeek.forEach((data) => {
-    waterConsumedPerWeek.innerHTML += `<p> Water Consumed on first day ${data.numOunces}oz`
+    waterConsumedPerWeek.innerHTML += `<p> Water Consumed on ${data.date} : ${data.numOunces}oz`
   });
   //should be able to see my all-time average sleep quality and all-time average number of hours slept:
   averageSleepOverall.innerText = `Average Overall Sleep: ${averageSleep} and Average Sleep Quality: ${aveSleepQuality}`;
