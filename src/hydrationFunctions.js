@@ -23,9 +23,15 @@ export function getOuncesPerDay(userObj, dataList, date) {
 // Return how many fluid ounces of water a user consumed each day over the course of a week (7 days)
 //return total for the week
 
-export function getOuncesPerWeek(filteredData, startDate) {
+export function getDataPerWeek(filteredData, startDate) {
     const total = filteredData.sort((a, b) => new Date(a.date) - new Date(b.date))
     let findStartDateIndex = total.findIndex((data) => data.date === startDate)
     let totalWeek = total.splice((findStartDateIndex),7)
     return totalWeek;
   }
+
+//NEXT STEPS: add to script.js and domUpdates with innerHTML
+// export function getLatestData(filteredData) {
+//     const total = filteredData.sort((a, b) => new Date(b.date) - new Date(a.date));
+//     return total[0]
+// }

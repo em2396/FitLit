@@ -1,8 +1,8 @@
-import { getRandomUser, getUserData, filterUserData, averageSleepDay, specificSleepDay } from './data-model';
+import { getRandomUser, getUserData, filterUserData, averageSleepDay, specificSleepDay, getUserSleepQuality, averageSleepQuality } from './data-model';
 //idk why getAverageStep is already declared if I add this onto this area.
 
 import { displayUserInfo } from './domUpdates.js';
-import { getAvgDailyOunces, getOuncesPerDay, getOuncesPerWeek } from './hydrationFunctions.js'
+import { getAvgDailyOunces, getOuncesPerDay, getDataPerWeek } from './hydrationFunctions.js'
 import   sampleData   from './data/sampleData';
 import hydration from './data/hydration.js';
 import sleep from './sampleSleep.js';
@@ -29,15 +29,22 @@ window.addEventListener("load", function () {
   // getAverageStepGoal(userData);
   let waterPerSpecificDay = getOuncesPerDay(currentUser,allHydrationData,'2023/03/24')
   let hydrationFilteredData = filterUserData(allHydrationData, currentUser)
-  let waterPerDayPerWeek = getOuncesPerWeek(hydrationFilteredData,'2023/03/24');
+  let waterPerDayPerWeek = getDataPerWeek(hydrationFilteredData,'2023/03/24');
   console.log(waterPerDayPerWeek,"waterPerDayPerWeek")
-  console.log(allSleepData, 'all sleep data')
+
+  // console.log(allSleepData, 'all sleep data')
   let sleepUser = filterUserData(allSleepData, currentUser);
-  console.log(sleepUser, 'sleep user object')
+  // console.log(sleepUser, 'sleep user object')
   let averageSleep = averageSleepDay(sleepUser);
   let hoursSlept = specificSleepDay(sleepUser, '2023/01/14');
-  console.log(averageSleep, 'averageSleep')
-  displayUserInfo(currentUser,averageSteps,waterPerSpecificDay,waterPerDayPerWeek, averageSleep, hoursSlept);
+  // console.log(averageSleep, 'averageSleep')
+  let aveSleepQuality = averageSleepQuality(sleepUser);
+  let sleepPerDay = getUserSleepQuality(sleepUser,'2023/01/14');
+  // console.log(sleepPerDay,"sleepPerDay");
+  let sleepPerDayPerWeek = getDataPerWeek(sleepUser,'2023/01/14');
+  console.log(sleepPerDayPerWeek,"Sleep Quality Per Week");
+  //CAN access sleep quality and hrs slep each day over course of 7 days with sleepPerDayPerWeek. 
+  displayUserInfo(currentUser,averageSteps,waterPerSpecificDay,waterPerDayPerWeek, averageSleep, hoursSlept, aveSleepQuality, sleepPerDay, sleepPerDayPerWeek );
 });
 
 
