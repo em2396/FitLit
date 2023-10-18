@@ -1,11 +1,11 @@
-import { getRandomUser, getUserData, filterUserData } from './data-model';
+import { getRandomUser, getUserData, filterUserData, averageSleepDay } from './data-model';
 //idk why getAverageStep is already declared if I add this onto this area.
 
 import { displayUserInfo } from './domUpdates.js';
 import { getAvgDailyOunces, getOuncesPerDay, getOuncesPerWeek } from './hydrationFunctions.js'
 import   sampleData   from './data/sampleData';
 import hydration from './data/hydration.js';
-
+import sleep from './sampleSleep.js';
 import './styles.css';
 
 //QuerySelectors Here:
@@ -16,6 +16,7 @@ const hello = document.querySelector('#progressRightSide');
 //Variables Here:
 let allHydrationData = hydration.hydrationData
 let userData = sampleData.sampleUsers;
+let allSleepData = sleep.sampleSleep;
 let welcome;
 
 //Event Listeners Here:
@@ -30,7 +31,11 @@ window.addEventListener("load", function () {
   let hydrationFilteredData = filterUserData(allHydrationData, currentUser)
   let waterPerDayPerWeek = getOuncesPerWeek(hydrationFilteredData,'2023/03/24');
   console.log(waterPerDayPerWeek,"waterPerDayPerWeek")
-  displayUserInfo(currentUser,averageSteps,waterPerSpecificDay,waterPerDayPerWeek);
+  let sleepUser = filterUserData(allSleepData, currentUser);
+  console.log(sleepUser, 'sleep user object')
+  let averageSleep = averageSleepDay(sleepUser);
+  console.log(averageSleep, 'averageSleep')
+  displayUserInfo(currentUser,averageSteps,waterPerSpecificDay,waterPerDayPerWeek, averageSleep);
 });
 
 

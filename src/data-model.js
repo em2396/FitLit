@@ -23,41 +23,21 @@ export function getRandomUser(userData) {
       console.log(average)
       return average; 
   };
-  
-
-  
-
-
-
-
-
-  
-  
 
   export function filterUserData(data, currentUserObject) {
     let filterUser = data.filter((element => {
      return (element.userID === currentUserObject.id)
     }))
     return filterUser
-}
-
-
-
-
-// export function getOuncesPerWeek(filteredData, startDate) {
-//   const total = filteredData.sort((a, b) => new Date(a.date) - new Date(b.date))
-//   let findStartDateIndex = total.findIndex((data) => data.date === startDate)
-//   // console.log(findStartDateIndex,"startDate")
-//   let totalWeek = total.splice((findStartDateIndex),7)
-//   return totalWeek;
-// }
+};
 
   export function averageSleepDay(filterUser) {
     const total = filterUser.reduce((acc, user) => {
       return acc += user.hoursSlept;
     }, 0)
-    return total;
-  }
+    const averageSleep = (total / filterUser.length).toFixed(0);
+    return averageSleep;
+  };
 
   /*[
   {
@@ -69,24 +49,3 @@ export function getRandomUser(userData) {
 
   ...more sleep data
 ] */
-
-const sampleSleep = [
-{
-  userID: 1,
-  date: "2023/01/12",
-  hoursSlept: 10,
-  sleepQuality: 2
-}, 
-{
-  userID: 2,
-  date: "2023/01/13",
-  hoursSlept: 8,
-  sleepQuality: 3
-},
-{
-  userID: 1,
-  date: "2023/01/14",
-  hoursSlept: 10,
-  sleepQuality: 2
-}
-]
