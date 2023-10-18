@@ -1,6 +1,8 @@
+
+
 //Functions Here:
-export function getRandomUser(userData) {
-  const currentUserIndex = Math.floor(Math.random() * userData.length);
+export function getRandomUser(userDataObj) {
+  const currentUserIndex = Math.floor(Math.random() * userDataObj.length);
   return currentUserIndex;
 };
 //❗👇 ===============================================================>>>>>>>>
