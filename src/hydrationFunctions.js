@@ -29,7 +29,7 @@ export function getDataPerWeek(filteredData, startDate) {
   }
 
 //NEXT STEPS: add to script.js and domUpdates with innerHTML
-// export function getLatestData(filteredData) {
-//     const total = filteredData.sort((a, b) => new Date(b.date) - new Date(a.date));
-//     return total[0]
-// }
+export function getLatestData(filteredData) {
+    const total = filteredData.sort((a, b) => new Date(b.date) - new Date(a.date));
+    return total[0];
+};
