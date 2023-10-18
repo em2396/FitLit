@@ -4,14 +4,32 @@ export function getRandomUser(userData) {
   return currentUserIndex;
 };
 
+//❗👇 changed this function so when testing if the indexPosition is out of range it will return null 
+//-> preventing errors caused by trying to access undefined with the current user ❗👇
+// export function getUserData(userObj, indexPosition) {
+//   let currentUser = userObj.find((user) => {
+//     return user.id === (indexPosition + 1);
+//   });
+//   const first = currentUser.name.split(' ');
+//   currentUser.firstName = first[0];
+//   return currentUser;
+// };
+// NEW FUNCTION to handle sad paths ❗👇
 export function getUserData(userObj, indexPosition) {
+  if (indexPosition < 0 || indexPosition >= userObj.length) {
+    return null; 
+  }
+
   let currentUser = userObj.find((user) => {
     return user.id === (indexPosition + 1);
   });
+
   const first = currentUser.name.split(' ');
   currentUser.firstName = first[0];
   return currentUser;
-};
+}
+
+
 export function filterUserData(data, currentUserObject) {
   let filterUser = data.filter((element => {
     return (element.userID === currentUserObject.id)
