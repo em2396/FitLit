@@ -22,32 +22,34 @@ window.addEventListener('load', function () {
   Promise.all(fetchPromises).then((values) => {
     userDataAll = values[0].users;
     sleepDataAll = values[1].sleepData;
+    console.log(sleepDataAll);
     hydrationDataAll = values[2].hydrationData;
-    // console.log(userDataAll, 'user data all')
     console.log(hydrationDataAll, 'All hydration data');
-    // console.log(sleepDataAll, 'sleepdataall')
     let randomIndex = getRandomUser(userDataAll);
     let currentUser = getUserData(userDataAll, randomIndex);
     let averageSteps = getAverageStepGoal(userDataAll);
-    let randomHydration = filterUserData(allHydrationData, currentUser);  
+    let randomHydration = filterUserData(hydrationDataAll, currentUser);  
     let todaysHydrationDate = getLatestData(randomHydration);
     console.log(todaysHydrationDate, 'todays hydration date');
     console.log(randomHydration, 'all hyd data from current user');
-    // let hydrationFilteredData = filterUserData(allHydrationData, currentUser)
     let randomHydrationIndex = getRandomUser(randomHydration);
     let randomHydObjDate = randomHydration[randomHydrationIndex].date
     console.log(randomHydObjDate, 'this is a random date');
     let waterPerSpecificDay = getOuncesPerDay(currentUser, hydrationDataAll, randomHydObjDate)
     let waterPerDayPerWeek = getDataPerWeek(randomHydration, randomHydObjDate);
-    // console.log(waterPerDayPerWeek, "waterPerDayPerWeek")
-    let sleepUser = filterUserData(allSleepData, currentUser);
+    let sleepUser = filterUserData(sleepDataAll, currentUser);
+    console.log(sleepUser);
+    let randomSleepIndex = getRandomUser(sleepUser);
+    console.log(sleepUser);
+    let randomSleepObjDate = sleepUser[randomSleepIndex].date;
+    console.log(randomSleepObjDate);
     let averageSleep = averageSleepDay(sleepUser);
-    // let hoursSlept = specificSleepDay(sleepUser, '2023/01/14');
     let aveSleepQuality = averageSleepQuality(sleepUser);
-    // getUserSleepQuality(sleepUser, '2023/01/14');
-    let sleepPerDayPerWeek = getDataPerWeek(sleepUser, '2023/01/14');
-    console.log(sleepPerDayPerWeek, "Sleep Quality Per Week");
-    displayUserInfo(currentUser, averageSteps, waterPerSpecificDay, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate);
+    let sleepPerDayPerWeek = getDataPerWeek(sleepUser, randomSleepObjDate);
+    let sleepToday = getLatestData(sleepUser);
+
+    console.log(sleepPerDayPerWeek, "Sleep Per Day Per Week");
+    displayUserInfo(currentUser, averageSteps, waterPerSpecificDay, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday);
     }); //removed hoursSlept from this function
 });
 

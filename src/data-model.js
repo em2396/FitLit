@@ -50,11 +50,11 @@ export function specificSleepDay(filterUser, dateOfSleep) {
   return string;
 }
 
-//Return a user’s sleep quality for a specific day
-// export function getUserSleepQuality(filterSleepData, dateOfSleep) {
-//   const elementDate = filterSleepData.find((element) => element.date === dateOfSleep)
-//   return elementDate.sleepQuality
-// }
+// Return a user’s sleep quality for a specific day
+export function getUserSleepQuality(filterSleepData, dateOfSleep) {
+  const elementDate = filterSleepData.find((element) => element.date === dateOfSleep)
+  return elementDate.sleepQuality
+}
 
 // Return a user’s sleep quality for each day over the course of a given week (7 days) 
 //Return how many hours a user slept each day over the course of a given week (7 days) - getDataPerWeek(filteredData, startDate) 
