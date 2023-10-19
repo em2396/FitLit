@@ -56,6 +56,31 @@ export function getUserSleepQuality(filterSleepData, dateOfSleep) {
   return elementDate.sleepQuality
 }
 
-// Return a user’s sleep quality for each day over the course of a given week (7 days) 
-//Return how many hours a user slept each day over the course of a given week (7 days) - getDataPerWeek(filteredData, startDate) 
-// FOR THESE WE USED fuction getDataPerWeek(filteredData, startDate) in hydrationFunction.js. Works, gets object of 7 days.. may need to use to manipulate object to display on dom. Access sleepQuality and hoursSlept of that startDate & 7 days
+// Calculate the miles a user has walked based on their number of steps (use their strideLength to help calculate this), based on a specific day
+export function getMilesPerDay(userObj, activityData, date) {
+  const activityUserID = activityData.find((user) => user.userID === userObj.id && user.date === date)
+  const milesPerDay = ((userObj.strideLength * activityUserID.numSteps)/ 5280).toFixed(0)
+  return milesPerDay
+}
+
+// Return how many minutes a user was active for a given day
+export function getMinutesPerDay(userObj,activityData,date) {
+  const activityUserID = activityData.find((user) => user.userID === userObj.id && user.date === date)
+  const minutesPerDay = activityUserID.minutesActive
+  return minutesPerDay
+}
+
+// Return if a user reached their step goal for a given day
+export function getStepGoal(userObj, activityData, date) {
+  const activityUserID = activityData.find((user) => user.userID === userObj.id && user.date === date);
+  if (activityUserID) {
+    if (userObj.dailyStepGoal <= activityUserID.numSteps) {
+      return `User has reached or surpassed their step goal of ${userObj.dailyStepGoal} steps, reaching ${activityUserID.numSteps}`;
+    } else {
+      const stepsLeft = userObj.dailyStepGoal - activityUserID.numSteps;
+      return `User did not reach their goal of ${userObj.dailyStepGoal} steps. They reached only ${activityUserID.numSteps} with ${stepsLeft} left.`;
+    }
+  } else {
+    return `No activity data found for the given date.`;
+  }
+}
