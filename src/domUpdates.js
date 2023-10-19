@@ -44,29 +44,33 @@ export function displayUserInfo(currentUser, averageSteps, waterPerSpecificDay, 
   //ARE WE STILL MISSING THIS? Ask Ben?
 
   //activity info:
-  //THIS needs to be checked: not sure if latest data, we have to use the getLatest day or when user chooses the random day.
 
   //As a user, I should be able to see my number of steps I’ve made for the latest day:
+  stepsMadePerDay.innerText = `On ${activityToday.date}, total user's steps is: ${activityToday.numSteps}`
 
-  stepsMadePerDay.innerText = `${stepGoal}`
-  //Or is it supposed to be this?
-  // stepsMadePerDay.innerText = `On ${activityToday.date}, total user's steps is: ${activityToday.numSteps}`
-
-//As a user, I should be able to view the number minutes I’ve been active for the latest day
-  minutesActivePerDay.innerText = `User has walked ${minutesPerDay} minutes.`
-  //OR is it supposed to be this?
-  // minutesActivePerDay.innerText = `On ${activityToday.date}, total active minutes: ${activityToday.minutesActive}`
+  //As a user, I should be able to view the number minutes I’ve been active for the latest day
+  minutesActivePerDay.innerText = `On ${activityToday.date}, total active minutes: ${activityToday.minutesActive}`
 
 // As a user, I should also see the distance I have walked (in miles) for the latest day based on my step count
-  milesWalkedPerDay.innerText = `User has walked ${milesPerDay} miles.`
-  //Or is it supposed to be this
-  // milesWalkedPerDay.innerText = `On ${activityToday.date}, user has walked ${((activityToday.numSteps)/2000).toFixed(1)}`
+  milesWalkedPerDay.innerText = `On ${activityToday.date}, user has walked ${((activityToday.numSteps)/2000).toFixed(1)}`
 
-  
+
 // As a user, I should be able to view a weekly view of my step count and if I have reached my step count goal for each day
-//Have not completed... need to use function in with 7 days splice.
+//THIS NEEDS TO BE CHECKED:
   activityPerDayPerWeek.forEach((data) => {
     // console.log("Activity Data", data)
     weekStepCount.innerHTML += `<p> On ${data.date}, user's step count is ${data.numSteps}`;
 });
+
+
+//Possibly for PART 2:
+  //show step goal for specific date:
+  // stepsMadePerDay.innerText = `${stepGoal}`
+
+  //show minutesActivePerDay for specific date:
+  // minutesActivePerDay.innerText = `User has walked ${minutesPerDay} minutes.`
+
+  //show miles walked per specific day:
+  // milesWalkedPerDay.innerText = `User has walked ${milesPerDay} miles.`
+
 };
