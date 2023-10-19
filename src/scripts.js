@@ -1,4 +1,5 @@
-import { getRandomUser, getUserData, filterUserData, averageSleepDay, specificSleepDay, getUserSleepQuality, averageSleepQuality } from './data-model';
+import { getRandomUser, getUserData, filterUserData, averageSleepDay, specificSleepDay, getUserSleepQuality, averageSleepQuality, getMilesPerDay, getMinutesPerDay, getStepGoal } from './data-model';
+//idk why getAverageStep is already declared if I add this onto this area.
 
 import { displayUserInfo } from './domUpdates.js';
 import { getOuncesPerDay, getDataPerWeek, getLatestData } from './hydrationFunctions.js'
@@ -15,39 +16,60 @@ let allSleepData = sleep.sampleSleep;
 let userDataAll;
 let sleepDataAll;
 let hydrationDataAll;
+let activityDataAll;
 
 //Event Listeners Here:
 window.addEventListener('load', function () {
   Promise.all(fetchPromises).then((values) => {
+    //data from Web APIs:
     userDataAll = values[0].users;
     sleepDataAll = values[1].sleepData;
     hydrationDataAll = values[2].hydrationData;
-    // console.log(userDataAll, 'user data all')
-    console.log(hydrationDataAll, 'All hydration data');
-    // console.log(sleepDataAll, 'sleepdataall')
+    activityDataAll = values[3].activityData;
+
+    //random currentUser functions:
     let randomIndex = getRandomUser(userDataAll);
     let currentUser = getUserData(userDataAll, randomIndex);
+
+    //steps function:
     let averageSteps = getAverageStepGoal(userDataAll);
-    let randomHydration = filterUserData(allHydrationData, currentUser);  
+
+    //hydration functions:
+    let randomHydration = filterUserData(hydrationDataAll, currentUser);  
     let todaysHydrationDate = getLatestData(randomHydration);
-    console.log(todaysHydrationDate, 'todays hydration date');
-    console.log(randomHydration, 'all hyd data from current user');
-    // let hydrationFilteredData = filterUserData(allHydrationData, currentUser)
     let randomHydrationIndex = getRandomUser(randomHydration);
     let randomHydObjDate = randomHydration[randomHydrationIndex].date
-    console.log(randomHydObjDate, 'this is a random date');
     let waterPerSpecificDay = getOuncesPerDay(currentUser, hydrationDataAll, randomHydObjDate)
     let waterPerDayPerWeek = getDataPerWeek(randomHydration, randomHydObjDate);
-    // console.log(waterPerDayPerWeek, "waterPerDayPerWeek")
-    let sleepUser = filterUserData(allSleepData, currentUser);
+
+    //sleep functions:
+    let sleepUser = filterUserData(sleepDataAll, currentUser);
+    let randomSleepIndex = getRandomUser(sleepUser);
+    let randomSleepObjDate = sleepUser[randomSleepIndex].date;
     let averageSleep = averageSleepDay(sleepUser);
-    // let hoursSlept = specificSleepDay(sleepUser, '2023/01/14');
     let aveSleepQuality = averageSleepQuality(sleepUser);
-    // getUserSleepQuality(sleepUser, '2023/01/14');
-    let sleepPerDayPerWeek = getDataPerWeek(sleepUser, '2023/01/14');
-    console.log(sleepPerDayPerWeek, "Sleep Quality Per Week");
-    displayUserInfo(currentUser, averageSteps, waterPerSpecificDay, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate);
-    }); //removed hoursSlept from this function
+    let sleepPerDayPerWeek = getDataPerWeek(sleepUser, randomSleepObjDate);
+    let sleepToday = getLatestData(sleepUser);
+
+    //activity functions:
+    let activityUser = filterUserData(activityDataAll, currentUser);
+    let randomActivityIndex = getRandomUser(activityUser);
+    let randomActivityObjDate = activityUser[randomActivityIndex].date;
+    let milesPerDay = getMilesPerDay(currentUser, activityDataAll,randomActivityObjDate);
+    // console.log("milesPerDay",milesPerDay)
+    let minutesPerDay = getMinutesPerDay(currentUser,activityDataAll,randomActivityObjDate); 
+    // console.log("minutesPerDay",minutesPerDay)
+    let stepGoal = getStepGoal(currentUser,activityDataAll,randomActivityObjDate);
+    // console.log("stepGoal",stepGoal)
+    let activityPerDayPerWeek = getDataPerWeek(activityUser,randomActivityObjDate)
+    let activityToday = getLatestData(activityUser)
+    console.log("latest day",activityToday)
+//First console.log(things)
+//NOW UPDATE DOM with variables
+
+    //display on DOM function:
+    displayUserInfo(currentUser, averageSteps, waterPerSpecificDay, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal,activityPerDayPerWeek, activityToday);
+    }); 
 });
 
 
