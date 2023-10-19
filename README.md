@@ -1,78 +1,65 @@
-# FitLit Starter Kit
+<div align="center">
+  
+# 💪 FitLit 
+![Tests](https://badgen.net/badge/tests/passing/green?icon=github)
+![Commits](https://badgen.net/github/last-commit/amysiu1028/FitLit?icon=github)
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+## 💾 Technologies Used
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Chart.js](https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white)
+![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
+![Mocha](https://img.shields.io/badge/-mocha-%238D6748?style=for-the-badge&logo=mocha&logoColor=white)
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
 
-## Setup
+## 👩‍💻 👩‍💻 👨‍💻 👩‍💻 Collaborators
+[Emalee Poellot](https://github.com/em2396)  | 
+[Amy Siu](https://github.com/amysiu1028) | 
+[Ben Rosner](https://github.com/ben-rosner-williamsburg) | 
+[Mary Bruff](https://github.com/MaryBruff)  |  
 
-1. Within your group, decide on **one** person to have the project repository (repo) on their GitHub account. Then, that person should *fork* this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `npm start` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page).  `Control + C` is the command to stop running the local server.  Closing the terminal without stopping the server first could allow the server to continue to run in the background and cause problems. This command is not specific to Webpack; make note of it for future use.   
-1. Make sure both members of your team are collaborators on the forked repo.  
-1. Do not run `npm audit fix --force`.  This will update to the latest version of packages.  We need to be using `webpack-dev-server@3.11.2` which is not the latest version.  If you start to run into Webpack errors, first check that all group members are using the correct version.  
+</div>
 
-## Testing
+## 💭 Abstract
 
-Mocha and chai are already set up, with a boilerplate test for you..
+FitLit is a wellness companion that transforms the way you track your health journey, merging style and data tracking seamlessly. Its captivating interface and user-friendly design empower you to attain unmatched health and vitality. This innovative app provides a motivating overview of your activities, hydration, and sleep data, igniting your desire for a healthier, happier life.
+
+## 📝  Context
+We are a 4 group of front-end developers who worked together remotely via Zoom and asynchronously through the GitHub project board to complete this application. This project was completed from week 2 to week 4 in Mod 2 of the Front End development program at Turing School of Software & Design. 
+
+## 🎥 Preview 
 
 
-## Data Model
 
-**Users**
+## 🔌 Server Setup
+- Fork [this](https://github.com/turingschool-examples/fitlit-starter-kit.git) repository. 
+- Clone it to your local machine using the command: `git clone git@github.com:turingschool-examples/fitlit-starter-kit.git`.
+- Run the command: `cd fitlit-api`
+- Run the command: `npm install`
+- Run the command: `npm start`
 
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
+## Client App Setup
+- Clone it to your local machine using the command: `git@github.com:amysiu1028/FitLit.git`
+- Run the command: `cd fitlit`
+- Run the command: `npm install`
+- Run the command: `npm start`
 
-**Activity**
+## 📚 Learning Goals
+- Use object and array prototype methods to perform data manipulation
+- Understand the use of Webpack
+- Implement fetch API
+- Use Mocha framework with Chai library for TDD
+- Create a project that is easily readable with separate files that store functions for DOM manipulation, data model, helper, api calls and scripts
+- Collaborate productively and professionaly as a team
+- Utlizie localStorage to save user data outside of page refresh
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
 
-**Hydration**
+## 🥇 Wins
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
 
-**Sleep**
+## 🚧 Challenges
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
