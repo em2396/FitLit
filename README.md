@@ -36,7 +36,7 @@ We are a 4 group of front-end developers who worked together remotely via Zoom a
 
 
 ## 🔌 Server Setup
-- Fork [this](https://github.com/turingschool-examples/fitlit-starter-kit.git) repository. 
+- Fork [this](https://frontend.turing.edu/projects/module-2/fitlit-part-one-agile.html) repository. 
 - Clone it to your local machine using the command: `git clone git@github.com:turingschool-examples/fitlit-starter-kit.git`.
 - Run the command: `cd fitlit-api`
 - Run the command: `npm install`
