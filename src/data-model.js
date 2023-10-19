@@ -104,3 +104,11 @@ export function getStepGoal(userObj, activityData, date) {
     return `No activity data found for the given date.`;
   }
 }
+
+export function getAverageStepGoal(userSample) {
+  const total = userSample.reduce((accum, user) => {
+    return accum += user.dailyStepGoal;
+  }, 0)
+  let average = (total / userSample.length).toFixed(0);
+  return average;
+};
