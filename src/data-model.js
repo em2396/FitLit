@@ -112,3 +112,26 @@ export function getAverageStepGoal(userSample) {
   let average = (total / userSample.length).toFixed(0);
   return average;
 };
+
+import Chart from 'chart.js/auto'
+// import {waterPerDayPerWeek} from './scripts.js'
+
+export function theWaterFunction(waterPerDayPerWeek) {
+  const data = waterPerDayPerWeek;
+  console.log(waterPerDayPerWeek, 'this is in water fun')
+  new Chart(
+      document.getElementById('waterChart'),
+      {
+          type: 'bar',
+          data: {
+              labels: data.map(row => row.date),
+              datasets: [
+                  {
+                      label: 'Num Of Ounces',
+                      data: data.map(row => row.numOunces)
+                  }
+              ]
+          }
+      }
+      )
+  };
