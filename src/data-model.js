@@ -112,7 +112,7 @@ export const theWaterFunction = waterPerDayPerWeek => {
               labels: data.map(row => row.date),
               datasets: [
                   {
-                      label: 'Num Of Ounces',
+                      label: 'Recent Week of Water',
                       data: data.map(row => row.numOunces)
                   }
               ]
