@@ -26,9 +26,6 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
   
   //water info:
   waterConsumedToday.innerText = `Water Consumed Today (${todaysHydrationDate.date}): ${todaysHydrationDate.numOunces}oz`
-  // waterPerDayPerWeek.forEach((data) => {
-  //   waterConsumedPerWeek.innerHTML += `<p> Water Consumed on ${data.date} : ${data.numOunces}oz`
-  // });
   waterChart.innerHTML = waterChartToDom;
   
   //sleep info:
@@ -42,20 +39,18 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
   });
   sleepSpecificDay.innerHTML += `<p> Today (${sleepToday.date}), user slept for ${sleepToday.hoursSlept} hours with sleep quality of ${sleepToday.sleepQuality}`;
 
-
   //activity info:
-
   //As a user, I should be able to see my number of steps I’ve made for the latest day:
   stepsMadePerDay.innerText = `On ${activityToday.date}, total user's steps is: ${activityToday.numSteps}`;
 
   //As a user, I should be able to view the number minutes I’ve been active for the latest day
   minutesActivePerDay.innerText = `On ${activityToday.date}, total active minutes: ${minutesPerDay}`;
 
-// As a user, I should also see the distance I have walked (in miles) for the latest day based on my step count
+  // As a user, I should also see the distance I have walked (in miles) for the latest day based on my step count
   milesWalkedPerDay.innerText = `On ${activityToday.date}, user has walked ${milesPerDay}`
 
 
-// As a user, I should be able to view a weekly view of my step count and if I have reached my step count goal for each day
+  // As a user, I should be able to view a weekly view of my step count and if I have reached my step count goal for each day
   activityPerDayPerWeek.forEach((data) => {
     weekStepCount.innerHTML += `<p> On ${data.date}, user's step count is ${data.numSteps}`;
 });

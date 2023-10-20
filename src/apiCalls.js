@@ -5,7 +5,7 @@ export const urls = [
   "https://fitlit-api.herokuapp.com/api/v1/activity",
 ];
 
-export const fetchPromises = urls.map((url) =>
+export const fetchPromises = urls.map(url =>
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
