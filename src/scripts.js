@@ -11,6 +11,8 @@ let userDataAll;
 let sleepDataAll;
 let hydrationDataAll;
 let activityDataAll;
+const locationToggleButton = document.querySelector('.toggleButton');
+const addressInfo = document.querySelector('.location');
 
 //Event Listeners Here:
 window.addEventListener('load', function () {
@@ -60,4 +62,7 @@ window.addEventListener('load', function () {
     }); 
 });
 
+locationToggleButton.addEventListener('click',function() {
+  addressInfo.classList.toggle('hidden')
+});
 
