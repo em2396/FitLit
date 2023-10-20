@@ -1,5 +1,5 @@
 const userName = document.querySelector('#username');
-const location = document.querySelector('#location');
+const location = document.querySelector('.location');
 const welcomeBack = document.querySelector('#welcomeBack');
 const steps = document.querySelector('#totalSteps');
 let usersAvgSteps = document.querySelector('#averageUsersSteps');
@@ -58,3 +58,4 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
     weekStepCount.innerHTML += `<p> On ${data.date}, user's step count is ${data.numSteps}`;
 });
 };
+

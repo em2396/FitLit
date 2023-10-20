@@ -34,6 +34,9 @@ header {
 }
 
 #rightMainRow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   width: 30%;
   height: 100vh;
   background-color: #555d76;
@@ -49,8 +52,13 @@ header {
   margin-top: 30px;
 }
 
+#totalSteps {
+  white-space: normal;
+}
+
 .first-row-left {
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
   width: 25vw;
   height: 30vh;
   margin: 20px;
@@ -88,7 +96,8 @@ header {
 
 .second-row-left {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  text-align: center;
   width: 50vw;
   height: 25vh;
   margin: 20px;
@@ -159,8 +168,31 @@ table {
 #rightMainRow {
   background-color: #2A2B2C;
   color: #FFFFFF;
-  padding: 20px;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   box-shadow: 0px 0px 1.5px 2px white;
   max-height: 100vh;
   max-width: 35vw;
+  border-radius: 10px;
+}
+
+.toggleButton {
+  background-color: #157887;
+  color: white;
+  font-family: "Gill Sans", sans-serif;
+  border: none;
+  padding: 1vh 2vh;
+  cursor: pointer;
+  outline: none;
+  border-radius: 10px;
+}
+
+.arrow {
+  text-align: start;
+}
+
+.hidden {
+  display: none;
 }
