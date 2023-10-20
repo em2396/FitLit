@@ -2,9 +2,9 @@ const userName = document.querySelector('#username');
 const location = document.querySelector('.location');
 const welcomeBack = document.querySelector('#welcomeBack');
 const steps = document.querySelector('#totalSteps');
-let usersAvgSteps = document.querySelector('#averageUsersSteps');
-let waterConsumedToday = document.querySelector('#waterConsumedToday');
-let waterConsumedPerWeek = document.querySelector('#waterEachDayOfWeek');
+const usersAvgSteps = document.querySelector('#averageUsersSteps');
+const waterConsumedToday = document.querySelector('#waterConsumedToday');
+const waterConsumedPerWeek = document.querySelector('#waterEachDayOfWeek');
 const averageSleepOverall = document.querySelector('#averageSleepOverall');
 const sleepSpecificDay = document.querySelector('#sleepSpecificDay');
 const sleepPerWeek = document.querySelector('#sleepPerDayPerWeek');
@@ -12,22 +12,24 @@ const stepsMadePerDay = document.querySelector('#stepsMadePerDay');
 const minutesActivePerDay = document.querySelector('#minutesActivePerDay');
 const milesWalkedPerDay = document.querySelector('#milesWalkedPerDay');
 const weekStepCount = document.querySelector('#weekStepCount');
+const waterChart = document.querySelector('#waterChart');
 
-export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday) {
+export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom) {
   //random current User info:
   userName.innerText = `${currentUser.name}`;
   location.innerText = `${currentUser.address}`;
   welcomeBack.innerText = `Welcome Back, ${currentUser.firstName}!`;
-
+  
   //steps info:
   steps.innerText = `Step Goal: ${stepGoal}`;
   usersAvgSteps.innerText = `The average users step goal: ${averageSteps}`;
-
+  
   //water info:
   waterConsumedToday.innerText = `Water Consumed Today (${todaysHydrationDate.date}): ${todaysHydrationDate.numOunces}oz`
-  waterPerDayPerWeek.forEach((data) => {
-    waterConsumedPerWeek.innerHTML += `<p> Water Consumed on ${data.date} : ${data.numOunces}oz`
-  });
+  // waterPerDayPerWeek.forEach((data) => {
+  //   waterConsumedPerWeek.innerHTML += `<p> Water Consumed on ${data.date} : ${data.numOunces}oz`
+  // });
+  waterChart.innerHTML = waterChartToDom;
   
   //sleep info:
   //should be able to see my all-time average sleep quality and all-time average number of hours slept:

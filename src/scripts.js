@@ -1,9 +1,9 @@
 import { getRandomUser, getUserData, filterUserData, averageSleepDay,averageSleepQuality, getMilesPerDay, getMinutesPerDay, getStepGoal, getAverageStepGoal } from './data-model';
-
 import { displayUserInfo } from './domUpdates.js';
 import { getOuncesPerDay, getDataPerWeek, getLatestData } from './hydrationFunctions.js';
 import { fetchPromises } from './apiCalls.js';
 import './styles.css';
+import { theWaterFunction } from './data-model.js';
 
 
 //Variables Here:
@@ -37,6 +37,7 @@ window.addEventListener('load', function () {
     let randomHydrationDate = randomHydrationData[randomHydrationIndex].date;
     let waterPerSpecificDay = getOuncesPerDay(currentUser, hydrationDataAll, randomHydrationDate);
     let waterPerDayPerWeek = getDataPerWeek(randomHydrationData, randomHydrationDate);
+    let waterChartToDom = theWaterFunction(waterPerDayPerWeek);
 
     //sleep functions:
     let randomSleepData = filterUserData(sleepDataAll, currentUser);
@@ -58,7 +59,7 @@ window.addEventListener('load', function () {
     let activityToday = getLatestData(randomActivityData);
 
     //display on DOM function:
-    displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday);
+    displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom);
     }); 
 });
 
