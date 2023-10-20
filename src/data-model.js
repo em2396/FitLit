@@ -118,5 +118,26 @@ export const theWaterFunction = waterPerDayPerWeek => {
               ]
           }
       }
-    )
-};
+      )
+  };
+
+export const stepChart = activityData => {
+  const data = activityData;
+  console.log(data)
+    new Chart(
+    document.getElementById('stepChart'),
+    {
+      type: 'doughnut',
+      data: {
+        labels: data.map(row => row.date),
+        datasets: [
+          {
+            label: 'Num of Steps',
+            data: data.map(row => row.numSteps)
+          }
+        ]
+      }
+    }
+  )
+}
+
