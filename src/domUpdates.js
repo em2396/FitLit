@@ -13,8 +13,9 @@ const minutesActivePerDay = document.querySelector('#minutesActivePerDay');
 const milesWalkedPerDay = document.querySelector('#milesWalkedPerDay');
 const weekStepCount = document.querySelector('#weekStepCount');
 const waterChart = document.querySelector('#waterChart');
+const stepChart = document.querySelector("#stepChart");
 
-export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom) {
+export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom) {
   //random current User info:
   userName.innerText = `${currentUser.name}`;
   location.innerText = `${currentUser.address}`;
@@ -27,6 +28,7 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
   //water info:
   waterConsumedToday.innerText = `Water Consumed Today (${todaysHydrationDate.date}): ${todaysHydrationDate.numOunces}oz`
   waterChart.innerHTML = waterChartToDom;
+  console.log(waterChart)
   
   //sleep info:
   //should be able to see my all-time average sleep quality and all-time average number of hours slept:
@@ -42,6 +44,8 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
   //activity info:
   //As a user, I should be able to see my number of steps I’ve made for the latest day:
   stepsMadePerDay.innerText = `On ${activityToday.date}, total user's steps is: ${activityToday.numSteps}`;
+  stepChart.innerHTML = stepChartToDom;
+  console.log(stepChart)
 
   //As a user, I should be able to view the number minutes I’ve been active for the latest day
   minutesActivePerDay.innerText = `On ${activityToday.date}, total active minutes: ${minutesPerDay}`;
