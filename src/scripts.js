@@ -1,18 +1,18 @@
-import { getRandomUser, getUserData, filterUserData, averageSleepDay,averageSleepQuality, getMilesPerDay, getMinutesPerDay, getStepGoal, getAverageStepGoal } from './data-model';
-import { displayUserInfo } from './domUpdates.js';
+import { getRandomUser, getUserData, filterUserData, averageSleepDay,averageSleepQuality, getMilesPerDay, getMinutesPerDay, getStepGoal, getAverageStepGoal, theWaterFunction } from './data-model';
 import { getOuncesPerDay, getDataPerWeek, getLatestData } from './hydrationFunctions.js';
+import { displayUserInfo } from './domUpdates.js';
 import { fetchPromises } from './apiCalls.js';
 import './styles.css';
-import { theWaterFunction } from './data-model.js';
 
+//QuerySelectors Here:
+const locationToggleButton = document.querySelector('.toggleButton');
+const addressInfo = document.querySelector('.location');
 
 //Variables Here:
 let userDataAll;
 let sleepDataAll;
 let hydrationDataAll;
 let activityDataAll;
-const locationToggleButton = document.querySelector('.toggleButton');
-const addressInfo = document.querySelector('.location');
 
 //Event Listeners Here:
 window.addEventListener('load', function () {

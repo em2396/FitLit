@@ -1,67 +1,62 @@
+import Chart from 'chart.js/auto'
+
 
 /// === HELPER FUNCTIONS === ///
-export function getRandomUser(userDataObj) {
+export const getRandomUser = userDataObj => {
   const currentUserIndex = Math.floor(Math.random() * userDataObj.length);
   return currentUserIndex;
-}
+};
 
-export function getUserData(userObj, indexPosition) {
+export const getUserData = (userObj, indexPosition) => {
   if (indexPosition < 0 || indexPosition >= userObj.length) {
     return null;
-  }
-
-  let currentUser = userObj.find((user) => {
+  };
+  const currentUser = userObj.find(user => {
     return user.id === indexPosition + 1;
   });
-
   const first = currentUser.name.split(" ");
   currentUser.firstName = first[0];
   return currentUser;
-}
+};
 
-export function filterUserData(data, currentUserObject) {
-  let filterUser = data.filter((element) => {
+export const filterUserData = (data, currentUserObject) => {
+  return data.filter((element) => {
     return element.userID === currentUserObject.id;
   });
-  return filterUser;
-}
-
+};
 
 /// === SLEEP === ///
 //Return the user’s average number of hours slept per day
-export function averageSleepDay(filterUser) {
+export const averageSleepDay = filterUser => {
   if (filterUser.length === 0) {
     return "0";
-  }
+  };
   const total = filterUser.reduce((acc, user) => {
     return (acc += user.hoursSlept);
   }, 0);
-  const averageSleep = (total / filterUser.length).toFixed(0);
-  return averageSleep;
-}
+  return (total / filterUser.length).toFixed(0);
+};
 
 //Return the user’s average sleep quality per day over all - Ben started
-export function averageSleepQuality(filterUser) {
+export const averageSleepQuality = filterUser => {
   const total = filterUser.reduce((acc, user) => {
     return (acc += user.sleepQuality);
   }, 0);
-  const averageSleepQuality = (total / filterUser.length).toFixed(0);
-  return averageSleepQuality;
-}
+  return (total / filterUser.length).toFixed(0);
+};
 
 //Return how many hours a user slept for a specific day
-export function specificSleepDay(filterUser, dateOfSleep) {
-  const findDaySlept = filterUser.find((user) => {
+export const specificSleepDay = (filterUser, dateOfSleep) => {
+  const findDaySlept = filterUser.find(user => {
     return user.date === dateOfSleep;
   });
-  console.log(findDaySlept, "find days slept");
   const hoursOnDay = findDaySlept.hoursSlept;
   const string = `Slept for ${hoursOnDay} hours on ${dateOfSleep}`;
   return string;
-}
+};
 
 // Return a user’s sleep quality for a specific day
-export function getUserSleepQuality(filterSleepData, dateOfSleep) {
+export const getUserSleepQuality = (filterSleepData, dateOfSleep) => {
   const elementDate = filterSleepData.find(
     (element) => element.date === dateOfSleep
   );
@@ -70,29 +65,23 @@ export function getUserSleepQuality(filterSleepData, dateOfSleep) {
 
 /// === ACTIVITY === ///
 // Calculate the miles a user has walked based on their number of steps (use their strideLength to help calculate this), based on a specific day
-export function getMilesPerDay(userObj, activityData, date) {
+export const getMilesPerDay = (userObj, activityData, date) => {
   const activityUserID = activityData.find(
-    (user) => user.userID === userObj.id && user.date === date
+    user => user.userID === userObj.id && user.date === date
   );
-  const milesPerDay = (
-    (userObj.strideLength * activityUserID.numSteps) / 5280).toFixed(0);
+  const milesPerDay = ((userObj.strideLength * activityUserID.numSteps) / 5280).toFixed(0);
   return milesPerDay;
-}
+};
 
 // Return how many minutes a user was active for a given day
-export function getMinutesPerDay(userObj, activityData, date) {
-  const activityUserID = activityData.find(
-    (user) => user.userID === userObj.id && user.date === date
-  );
-  const minutesPerDay = activityUserID.minutesActive;
-  return minutesPerDay;
-}
+export const getMinutesPerDay = (userObj, activityData, date) => {
+  const activityUserID = activityData.find(user => user.userID === userObj.id && user.date === date);
+  return activityUserID.minutesActive;
+};
 
 // Return if a user reached their step goal for a given day
-export function getStepGoal(userObj, activityData, date) {
-  const activityUserID = activityData.find(
-    (user) => user.userID === userObj.id && user.date === date
-  );
+export const getStepGoal = (userObj, activityData, date) => {
+  const activityUserID = activityData.find(user => user.userID === userObj.id && user.date === date);
   if (activityUserID) {
     if (userObj.dailyStepGoal <= activityUserID.numSteps) {
       return `User has reached or surpassed their step goal of ${userObj.dailyStepGoal} steps, reaching ${activityUserID.numSteps}`;
@@ -102,21 +91,17 @@ export function getStepGoal(userObj, activityData, date) {
     }
   } else {
     return `No activity data found for the given date.`;
-  }
-}
+  };
+};
 
-export function getAverageStepGoal(userSample) {
+export const getAverageStepGoal = userSample => {
   const total = userSample.reduce((accum, user) => {
     return accum += user.dailyStepGoal;
   }, 0)
-  let average = (total / userSample.length).toFixed(0);
-  return average;
+  return (total / userSample.length).toFixed(0);
 };
 
-import Chart from 'chart.js/auto'
-// import {waterPerDayPerWeek} from './scripts.js'
-
-export function theWaterFunction(waterPerDayPerWeek) {
+export const theWaterFunction = waterPerDayPerWeek => {
   const data = waterPerDayPerWeek;
   console.log(waterPerDayPerWeek, 'this is in water fun')
   new Chart(
@@ -133,9 +118,5 @@ export function theWaterFunction(waterPerDayPerWeek) {
               ]
           }
       }
-      )
-  };
-
-export function stepChart(activityData) {
-  const stepData = activityData.numSteps
-}
+    )
+};
