@@ -122,7 +122,7 @@ body {
   flex-direction: column;
   text-align: center;
   width: 50vw;
-  height: 25vh;
+  height: 35vh;
   margin: 20px;
   border-radius: 10px;
 }
@@ -210,4 +210,9 @@ table {
 
 #waterChart {
   background-color: white;
+  color: #FFFFFF;
+}
+
+#stepChart {
+  color: #FFFFFF;
 }
