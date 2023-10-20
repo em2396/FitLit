@@ -135,3 +135,7 @@ export function theWaterFunction(waterPerDayPerWeek) {
       }
       )
   };
+
+export function stepChart(activityData) {
+  const stepData = activityData.numSteps
+}
