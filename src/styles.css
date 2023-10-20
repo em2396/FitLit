@@ -29,7 +29,7 @@ header {
 #leftMainRow {
   width: 70%;
   height: 100vh;
-  background-color: #050E2B;
+  background-color: #dee4f1;
   white-space: nowrap;
 }
 
@@ -39,13 +39,13 @@ header {
   justify-content: space-evenly;
   width: 30%;
   height: 100vh;
-  background-color: #555d76;
+  background-color: #0461CF;
   margin: none;
 }
 
 .left-section {
   display: flex;
-  background-color: #050E2B;
+  background-color: #dee4f1;
   align-items: center;
   justify-content: center;
   height: 30vh;
@@ -67,28 +67,28 @@ header {
 }
 
 #stepsBox {
-  background-color: #032412;
+  background-color: #8babf1;
   color: white;
   padding: 30px;
   box-shadow: 0px 0px 1.5px 2px white
 }
 
 #waterBox {
-  background-color: #098893;
+  background-color: #054FB9;
   color: white;
   padding: 30px;
   box-shadow: 0px 0px 1.5px 2px white
 }
 
 #caloriesBox {
-  background-color: #7f0ae4;
+  background-color: #0073E6;
   color: white;
   padding: 30px;
   box-shadow: 0px 0px 1.5px 2px white
 }
 
 #heartRateBox {
-  background-color: #970606;
+  background-color: #8BABF1;
   color: white;
   padding: 30px;
   box-shadow: 0px 0px 1.5px 2px white
@@ -105,14 +105,14 @@ header {
 }
 
 #activityBox {
-  background-color: #098893;
+  background-color: #0461CF;
   color: white;
   padding: 10px;
   box-shadow: 0px 0px 1.5px 2px white
 }
 
 #progressBox {
-  background-color: #032412;
+  background-color: #8BABF1;
   color: white;
   padding: 10px;
   box-shadow: 0px 0px 1.5px 2px white
@@ -132,13 +132,13 @@ table {
   margin-right: 50px;
 }
 
-#progressRightSide {
+/* #progressRightSide {
   display: flex;
   flex-direction: column;
-  background-color: #032412;
+  background-color: #0461CF;
   justify-content: space-between;
   margin: 10px;
-}
+} */
 
 .third-row-left {
   display: flex;
@@ -150,7 +150,7 @@ table {
 }
 
 #recTrainer {
-  background-color: #970606;
+  background-color: #8BABF1;
   color: white;
   padding: 40px;
   box-shadow: 0px 0px 1.5px 2px white;
@@ -158,7 +158,7 @@ table {
 }
 
 #featuredDiet {
-  background-color: #7f0ae4;
+  background-color: #0073E6;
   color: white;
   padding: 40px;
   box-shadow: 0px 0px 1.5px 2px white
@@ -166,7 +166,7 @@ table {
 
 .right-section,
 #rightMainRow {
-  background-color: #2A2B2C;
+  background-color: #404348;
   color: #FFFFFF;
   padding-left: 70px;
   padding-right: 70px;
@@ -179,7 +179,7 @@ table {
 }
 
 .toggleButton {
-  background-color: #157887;
+  background-color: #B3C7F7;
   color: white;
   font-family: "Gill Sans", sans-serif;
   border: none;
