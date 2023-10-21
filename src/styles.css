@@ -10,14 +10,15 @@ body {
   /* width: 100vw;
   height: 100vh; */
   color: #2A2B2C;
-  font-family: "Gill Sans", sans-serif;
+  font-family: "Gill Sans", sansx-serif;
 }
 
-/* header {
+header {
   color: black;
+  text-align: center;
   margin: none;
   padding: none;
-} */
+}
 
 /* parent container for left and right main */
 /* .main-row {
@@ -82,18 +83,19 @@ body {
 .first-row-left {
   display: flex;
   flex-direction: column;
-  width: 25vw;
-  height: 30vh;
   margin: 20px;
-  text-align: center;
   border-radius: 10px;
+  align-items: center;
+  height: 50%;
+  width: 50%;
 }
 
 #stepsBox {
   background-color: #8babf1;
   color: white;
   padding: 30px;
-  box-shadow: 0px 0px 1.5px 2px white
+  box-shadow: 0px 0px 1.5px 2px white;
+
 }
 
 #waterBox {
@@ -103,7 +105,7 @@ body {
   box-shadow: 0px 0px 1.5px 2px white
 }
 
-#caloriesBox {
+/* #caloriesBox {
   background-color: #0073E6;
   color: white;
   padding: 30px;
@@ -115,7 +117,7 @@ body {
   color: white;
   padding: 30px;
   box-shadow: 0px 0px 1.5px 2px white
-}
+} */
 
 .second-row-left {
   display: flex;
@@ -134,12 +136,12 @@ body {
   box-shadow: 0px 0px 1.5px 2px white
 }
 
-#progressBox {
+/* #progressBox {
   background-color: #8BABF1;
   color: white;
   padding: 10px;
   box-shadow: 0px 0px 1.5px 2px white
-}
+} */
 
 .progress-aside {
   display: flex;
@@ -155,13 +157,13 @@ body {
   margin: 10px;
 }
 
-table {
+/* table {
   background-color: white;
   width: 100px;
   height: 100px;
   margin-top: 30px;
   margin-right: 50px;
-}
+} */
 
 
 .third-row-left {
@@ -189,7 +191,7 @@ table {
 } */
 
 .toggleButton {
-  margin: 100px;
+  margin: 10px;
   background-color: #B3C7F7;
   color: white;
   font-family: "Gill Sans", sans-serif;
