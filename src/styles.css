@@ -20,19 +20,17 @@ header {
   padding: none;
 }
 
-/* parent container for left and right main */
-/* .main-row {
-  width: 600px;
-  height: 800px;
-  margin: none;
-} */
-
 #leftMainRow {
-  width: 70%;
+  width: 80%;
   height: 100vh;
   background-color: #dee4f1;
   white-space: nowrap;
   overflow: auto;
+}
+
+.titles {
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .left-section {
@@ -45,44 +43,24 @@ header {
 }
 
 #rightMainRow {
-  width: 30%;
+  width: 20%;
   height: 100vh;
   background-color: #404348;
   margin: none;
 }
 
 #username,
-.prog-right,
 .right-section {
   display: flex;
   justify-content: center;
   color: white;
 }
 
-/* .right-section,
-#rightMainRow {
-  display: flex;
-  flex-direction: column;
-  /* justify-content: space-evenly; */
-  /* height: 100vh;
-  width: 30%;
-  background-color: #404348;
-  color: #FFFFFF;
-  padding-left: 70px;
-  padding-right: 70px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  box-shadow: 0px 0px 1.5px 2px white;
-  border-radius: 10px;
-} */ 
-
-#totalSteps {
-  white-space: normal;
-}
 
 .first-row-left {
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin: 20px;
   border-radius: 10px;
   align-items: center;
@@ -91,33 +69,43 @@ header {
 }
 
 #stepsBox {
+  display: flex;
+  flex-direction: row;
   background-color: #8babf1;
   color: white;
-  padding: 30px;
+  padding: 20px;
+  height: 40vh;
+  width: 40vw;
   box-shadow: 0px 0px 1.5px 2px white;
+}
 
+#totalSteps {
+  white-space: normal;
+}
+
+#stepChart {
+  display: flex;
+  flex-direction: row;
+}
+
+#stepsContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  
 }
 
 #waterBox {
   background-color: #054FB9;
   color: white;
-  padding: 30px;
+  height: 40vh;
+  width: 40vw;
   box-shadow: 0px 0px 1.5px 2px white
 }
 
-/* #caloriesBox {
-  background-color: #0073E6;
-  color: white;
-  padding: 30px;
-  box-shadow: 0px 0px 1.5px 2px white
+#waterChart {
+  margin: 30px;
 }
-
-#heartRateBox {
-  background-color: #8BABF1;
-  color: white;
-  padding: 30px;
-  box-shadow: 0px 0px 1.5px 2px white
-} */
 
 .second-row-left {
   display: flex;
@@ -136,65 +124,12 @@ header {
   box-shadow: 0px 0px 1.5px 2px white
 }
 
-/* #progressBox {
-  background-color: #8BABF1;
+#sleepBox {
+  background-color: #0461CF;
   color: white;
   padding: 10px;
   box-shadow: 0px 0px 1.5px 2px white
-} */
-
-.progress-aside {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 }
-
-#progressRightSide {
-  display: flex;
-  flex-direction: column;
-  background-color: 8BABF1;
-  justify-content: space-between;
-  margin: 10px;
-}
-
-/* table {
-  background-color: white;
-  width: 100px;
-  height: 100px;
-  margin-top: 30px;
-  margin-right: 50px;
-} */
-
-
-.third-row-left {
-  display: flex;
-  flex-direction: row;
-  width: 50vw;
-  height: 100vh;
-  margin: 20px;
-  border-radius: 10px;
-}
-
-.third-row-right {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* #recTrainer {
-  background-color: #8BABF1;
-  color: white;
-  padding: 40px;
-  box-shadow: 0px 0px 1.5px 2px white;
-  border-radius: 10px;
-}
-
-#featuredDiet {
-  background-color: #0073E6;
-  color: white;
-  padding: 40px;
-  box-shadow: 0px 0px 1.5px 2px white
-} */
 
 .toggleButton {
   margin: 10px;
@@ -224,3 +159,101 @@ header {
 #stepChart {
   color: #FFFFFF;
 }
+
+/* parent container for left and right main */
+/* .main-row {
+  width: 600px;
+  height: 800px;
+  margin: none;
+} */
+
+/* .right-section,
+#rightMainRow {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  /* height: 100vh;
+  width: 30%;
+  background-color: #404348;
+  color: #FFFFFF;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  box-shadow: 0px 0px 1.5px 2px white;
+  border-radius: 10px;
+} */ 
+
+/* #caloriesBox {
+  background-color: #0073E6;
+  color: white;
+  padding: 30px;
+  box-shadow: 0px 0px 1.5px 2px white
+}
+
+#heartRateBox {
+  background-color: #8BABF1;
+  color: white;
+  padding: 30px;
+  box-shadow: 0px 0px 1.5px 2px white
+} */
+
+/* #progressBox {
+  background-color: #8BABF1;
+  color: white;
+  padding: 10px;
+  box-shadow: 0px 0px 1.5px 2px white
+} */
+/* 
+.sleep-aside {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+} */
+
+/* #progressRightSide {
+  display: flex;
+  flex-direction: column;
+  background-color: 8BABF1;
+  justify-content: space-between;
+  margin: 10px;
+} */
+
+/* table {
+  background-color: white;
+  width: 100px;
+  height: 100px;
+  margin-top: 30px;
+  margin-right: 50px;
+} */
+
+
+/* .third-row-left {
+  display: flex;
+  flex-direction: row;
+  width: 50vw;
+  height: 100vh;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.third-row-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+/* #recTrainer {
+  background-color: #8BABF1;
+  color: white;
+  padding: 40px;
+  box-shadow: 0px 0px 1.5px 2px white;
+  border-radius: 10px;
+}
+
+#featuredDiet {
+  background-color: #0073E6;
+  color: white;
+  padding: 40px;
+  box-shadow: 0px 0px 1.5px 2px white
+} */
