@@ -84,7 +84,7 @@ export const getStepGoal = (userObj, activityData, date) => {
   const activityUserID = activityData.find(user => user.userID === userObj.id && user.date === date);
   if (activityUserID) {
     if (userObj.dailyStepGoal <= activityUserID.numSteps) {
-      return `User has reached or surpassed their step goal of ${userObj.dailyStepGoal} steps, reaching ${activityUserID.numSteps}`;
+      return `User has reached or surpassed their step goal of ${userObj.dailyStepGoal} steps, reaching ${activityUserID.numSteps} steps.`;
     } else {
       const stepsLeft = userObj.dailyStepGoal - activityUserID.numSteps;
       return `User did not reach their goal of ${userObj.dailyStepGoal} steps. They reached only ${activityUserID.numSteps} with ${stepsLeft} left.`;
