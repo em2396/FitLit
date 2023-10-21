@@ -22,8 +22,8 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
   welcomeBack.innerText = `Welcome Back, ${currentUser.firstName}!`;
   
   //steps info:
-  steps.innerText = `Step Goal: ${stepGoal}`;
-  usersAvgSteps.innerText = `The average users step goal: ${averageSteps}`;
+  steps.innerText = `Step Goal: ${stepGoal} steps.`;
+  usersAvgSteps.innerText = `The average users step goal is ${averageSteps} steps.`;
   
   //water info:
   waterConsumedToday.innerText = `Water Consumed Today (${todaysHydrationDate.date}): ${todaysHydrationDate.numOunces}oz`
@@ -43,20 +43,20 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
 
   //activity info:
   //As a user, I should be able to see my number of steps I’ve made for the latest day:
-  stepsMadePerDay.innerText = `On ${activityToday.date}, total user's steps is: ${activityToday.numSteps}`;
+  stepsMadePerDay.innerText = `On ${activityToday.date}, total user's steps is ${activityToday.numSteps} steps.`;
   stepChart.innerHTML = stepChartToDom;
   console.log(stepChart)
 
   //As a user, I should be able to view the number minutes I’ve been active for the latest day
-  minutesActivePerDay.innerText = `On ${activityToday.date}, total active minutes: ${minutesPerDay}`;
+  minutesActivePerDay.innerText = `On ${activityToday.date}, total active minutes is ${minutesPerDay} minutes.`;
 
   // As a user, I should also see the distance I have walked (in miles) for the latest day based on my step count
-  milesWalkedPerDay.innerText = `On ${activityToday.date}, user has walked ${milesPerDay}`
+  milesWalkedPerDay.innerText = `On ${activityToday.date}, user has walked ${milesPerDay} miles.`
 
 
   // As a user, I should be able to view a weekly view of my step count and if I have reached my step count goal for each day
   activityPerDayPerWeek.forEach((data) => {
-    weekStepCount.innerHTML += `<p> On ${data.date}, user's step count is ${data.numSteps}`;
+    weekStepCount.innerHTML += `<p> On ${data.date}, user's step count is ${data.numSteps} steps.`;
 });
 };
 
