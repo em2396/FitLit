@@ -22,7 +22,7 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
   welcomeBack.innerText = `Welcome Back, ${currentUser.firstName}!`;
   
   //steps info:
-  steps.innerText = `Step Goal: ${stepGoal} steps.`;
+  steps.innerText = `Total Steps for Today: ${stepGoal[1]}, Step Goal: ${stepGoal[0]} steps`;
   usersAvgSteps.innerText = `The average users step goal is ${averageSteps} steps.`;
   
   //water info:
