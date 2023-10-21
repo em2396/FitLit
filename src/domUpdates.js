@@ -32,7 +32,7 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
   
   //sleep info:
   //should be able to see my all-time average sleep quality and all-time average number of hours slept:
-  averageSleepOverall.innerText = `Average Overall Sleep: ${averageSleep} and Average Sleep Quality: ${aveSleepQuality}`;
+  averageSleepOverall.innerText = `Average Overall Sleep: ${averageSleep} hours per day and Average Sleep Quality: ${aveSleepQuality}`;
 
   // As a user, I should be able to see my sleep data over the course of the latest week (hours slept and quality of sleep)
   sleepPerDayPerWeek.forEach((data) => {
