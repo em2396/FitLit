@@ -77,6 +77,7 @@ header {
   height: 40vh;
   width: 40vw;
   box-shadow: 0px 0px 1.5px 2px white;
+  align-items: center;
 }
 
 #totalSteps {
@@ -92,19 +93,18 @@ header {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  
 }
 
 #waterBox {
   background-color: #054FB9;
   color: white;
-  height: 40vh;
-  width: 40vw;
+  height: 300px;
+  width: 300px;
   box-shadow: 0px 0px 1.5px 2px white
 }
 
 #waterChart {
-  margin: 30px;
+  margin: 20px;
 }
 
 .second-row-left {
