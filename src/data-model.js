@@ -104,7 +104,6 @@ export const getAverageStepGoal = userSample => {
 
 export const theWaterFunction = waterPerDayPerWeek => {
   const data = waterPerDayPerWeek;
-  console.log(waterPerDayPerWeek, 'this is in water fun')
   new Chart(
       document.getElementById('waterChart'),
       {
@@ -121,13 +120,12 @@ export const theWaterFunction = waterPerDayPerWeek => {
           options: {
             responsive: true
           }
-      }
+        }
       )
   };
 
 export const stepChart = activityData => {
   const data = activityData;
-  console.log(data)
     new Chart(
     document.getElementById('stepChart'),
     {
@@ -138,6 +136,34 @@ export const stepChart = activityData => {
           {
             label: 'Num of Steps',
             data: data.map(row => row.numSteps)
+          }
+        ]
+      },
+      options: {
+         responsive: true
+      }
+    }
+  )
+}
+
+export const theSleepingFunction = sleepInfo => {
+  const data = sleepInfo;
+    new Chart(
+    document.getElementById('sleepChart'),
+    {
+      type: 'bar',
+      data: {
+        labels: data.map(row => row.date),
+        datasets: [
+          {
+            label: 'Hours Slept',
+            data: data.map(row => row.hoursSlept),
+            backgroundColor: '#0461cf'
+          },
+          {
+            label: 'Sleep Quality',
+            data: data.map(row => row.sleepQuality),
+            backgroundColor: '#404348'
           }
         ]
       },
