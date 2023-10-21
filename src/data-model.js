@@ -117,6 +117,9 @@ export const theWaterFunction = waterPerDayPerWeek => {
                       data: data.map(row => row.numOunces)
                   }
               ]
+          },
+          options: {
+            responsive: true
           }
       }
       )
@@ -138,6 +141,9 @@ export const stepChart = activityData => {
           }
         ]
       },
+      options: {
+         responsive: true
+      }
     }
   )
 }
