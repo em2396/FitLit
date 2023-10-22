@@ -123,7 +123,7 @@ export const theWaterFunction = waterPerDayPerWeek => {
           y: {
             title: {
               display: true,
-              text: "in fluid Oz."
+              text: 'in fluid Oz.'
             }
           }
         }
@@ -154,9 +154,31 @@ export const stepChart = activityData => {
   )
 }
 
+export const activityChart = activityData => {
+  const data = activityData;
+  new Chart(
+    document.getElementById('activityChart'),
+    {
+      type: 'line',
+      data: {
+        labels: data.map(row => row.date),
+        datasets: [
+          {
+            label: 'Minutes Active',
+            data: data.map(row => row.minutesActive)
+          }
+        ]
+      },
+      options: {
+        responsive: true
+      }
+    })
+}
+console.log(activityChart);
+
 export const theSleepingFunction = sleepInfo => {
   const data = sleepInfo;
-    new Chart(
+  new Chart(
     document.getElementById('sleepChart'),
     {
       type: 'bar',
@@ -176,9 +198,8 @@ export const theSleepingFunction = sleepInfo => {
         ]
       },
       options: {
-         responsive: true
+        responsive: true
       }
-    }
-  )
+    })
 }
 
