@@ -26,8 +26,6 @@ window.addEventListener('load', function () {
     //random currentUser functions:
     let randomUserIndex = getRandomUser(userDataAll);
     let currentUser = getUserData(userDataAll, randomUserIndex);
-    // console.log(currentUser, 'currentuserobj')
-
 
     //steps function:
     let averageSteps = getAverageStepGoal(userDataAll);
@@ -41,7 +39,6 @@ window.addEventListener('load', function () {
     // let randomHydrationDate = hydrationData[randomHydrationIndex].date;
     // let waterPerSpecificDay = getOuncesPerDay(currentUser, hydrationDataAll, randomHydrationDate);
     //waterPerDayPerWeek = getDataPerWeek()
-    // console.log(waterPerDayPerWeek, 'water data')
 
     //sleep functions:
     let sleepData = filterUserData(sleepDataAll, currentUser);
