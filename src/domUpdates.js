@@ -18,7 +18,7 @@ const sleepChart = document.querySelector('#sleepChart');
 const activityChart = document.querySelector('#activityChart')
 const stepComparison = document.querySelector('#stepComparison')
 
-export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom, sleepChartToDom) {
+export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom, sleepChartToDom, compareSteps) {
   //random current User info:
   userName.innerText = currentUser.name;
   location.innerText += `Address: ${currentUser.address} `;
@@ -67,6 +67,6 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
 
 
 // As a user, I should be able to see how my step goal compares to the average step goal amongst all users (this display should not be hard-coded)
-  
+  stepComparison.innerHTML = compareSteps;
 };
 
