@@ -118,16 +118,17 @@ header {
 }
 
 #activityBox {
-  background-color: #0461CF;
+  background-color: #0461cf;
   color: white;
   padding: 10px;
   box-shadow: 0px 0px 1.5px 2px white
 }
 
 #sleepBox {
-  background-color: #0461CF;
+  background-color: #B3C7F7;;
   color: white;
   padding: 10px;
+  height: 50%;
   box-shadow: 0px 0px 1.5px 2px white
 }
 
