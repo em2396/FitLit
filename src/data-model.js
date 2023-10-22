@@ -94,11 +94,28 @@ export const getStepGoal = (currentUser, currentActivityData, today) => {
   }
 };
 
+//average stepGoal
 export const getAverageStepGoal = userSample => {
   const total = userSample.reduce((accum, user) => {
     return accum += user.dailyStepGoal;
   }, 0)
   return (total / userSample.length).toFixed(0);
+};
+
+//compare averageStep goal
+//   As a user, I should be able to see how my step goal compares to the average step goal amongst all users (this display should not be hard-coded)
+
+export const compareStepGoal = (currentUser, allUsers) => {
+  const averageStepGoal = getAverageStepGoal(allUsers); 
+  const userStepGoal = currentUser.dailyStepGoal;
+
+  if (userStepGoal > averageStepGoal) {
+    return `Your step goal (${userStepGoal} steps) is higher than the average step goal (${averageStepGoal} steps) among all users.`;
+  } else if (userStepGoal < averageStepGoal) {
+    return `Your step goal (${userStepGoal} steps) is lower than the average step goal (${averageStepGoal} steps) among all users.`;
+  } else {
+    return `Your step goal (${userStepGoal} steps) is equal to the average step goal (${averageStepGoal} steps) among all users.`;
+  }
 };
 
 export const theWaterFunction = waterPerDayPerWeek => {
