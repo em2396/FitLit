@@ -14,8 +14,9 @@ const milesWalkedPerDay = document.querySelector('#milesWalkedPerDay');
 const weekStepCount = document.querySelector('#weekStepCount');
 const waterChart = document.querySelector('#waterChart');
 const stepChart = document.querySelector("#stepChart");
+const activityChart = document.querySelector("#activityChart")
 
-export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom) {
+export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom) {
   //random current User info:
   userName.innerText = `${currentUser.name}`;
   location.innerText = `${currentUser.address}`;
@@ -58,5 +59,6 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
   activityPerDayPerWeek.forEach((data) => {
     weekStepCount.innerHTML += `<p> On ${data.date}, user's step count is ${data.numSteps} steps.`;
 });
+  activityChart.innerHTML = activityChartToDom;
 };
 

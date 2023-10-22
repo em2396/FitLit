@@ -124,7 +124,7 @@ export const theWaterFunction = waterPerDayPerWeek => {
           y: {
             title: {
               display: true,
-              text: "in fluid Oz."
+              text: 'in fluid Oz.'
             }
           }
         }
@@ -153,5 +153,26 @@ export const stepChart = activityData => {
       }
     }
   )
+}
+
+export const activityChart = activityData => {
+  const data = activityData;
+  new Chart (
+    document.getElementById('activityChart'),
+    {
+      type: 'line',
+      data: {
+        labels: data.map(row => row.date),
+        datasets: [
+          {
+            label: 'Minutes Active',
+            data: data.map(row => row.minutesActive)
+          }
+        ]
+      },
+      options: {
+        responsive: true
+      }
+    })
 }
 
