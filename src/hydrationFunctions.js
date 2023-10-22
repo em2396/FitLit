@@ -1,14 +1,13 @@
 //Return user's average fluid ounces consumed per day for all time:
 ///add 0 return to pass sad path test
-export const getAvgDailyOunces = (id, dataList) => {
-  const userHydrationData = dataList.filter((userObj) => userObj.userID === id);
-  if (userHydrationData.length === 0) {
+export const getAvgDailyOunces = (hydrationData) => {
+  if (hydrationData.length === 0) {
     return 0;
   }
-  const totalOunces = userHydrationData.reduce((accum, userObj) => {
+  const totalOunces = hydrationData.reduce((accum, userObj) => {
     return accum + userObj.numOunces;
   }, 0);
-  return Math.round(totalOunces / userHydrationData.length);
+  return Math.round(totalOunces / hydrationData.length);
 };
 
 // Return the user’s fluid ounces they consumed for a specific day:
@@ -31,8 +30,14 @@ export const getDataPerWeek = (filteredData, startDate) => {
 };
 
 //NEXT STEPS: add to script.js and domUpdates with innerHTML
-export const getLatestData = filteredData => {
-  const total = filteredData.sort((a, b) => new Date(b.date) - new Date(a.date)
-  );
+export const getLatestData = (filteredData, wholeWeek) => {
+  let total;
+  if (wholeWeek === 'week') {
+    total = filteredData.sort((a, b) => new Date(b.date) - new Date(a.date));
+    return total.slice(0, 7);
+  } else {
+  total = filteredData.sort((a, b) => new Date(b.date) - new Date(a.date));
+  console.log(total, 'total objects')
   return total[0];
+  }
 };
