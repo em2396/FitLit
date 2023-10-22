@@ -41,7 +41,6 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
 
   // As a user, I should be able to see my sleep data over the course of the latest week (hours slept and quality of sleep)
   // sleepPerDayPerWeek.forEach((data) => {
-  //   console.log("Data", data)
   //   sleepPerWeek.innerHTML += `<p> On ${data.date}, user slept for ${data.hoursSlept} hours with sleep quality of ${data.sleepQuality}`;
   // });
   sleepSpecificDay.innerHTML += `<p> Today, ${sleepToday.date}, user slept for ${sleepToday.hoursSlept} hours with sleep quality of ${sleepToday.sleepQuality}`;
@@ -68,6 +67,6 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
 
 // As a user, I should be able to see how my step goal compares to the average step goal amongst all users (this display should not be hard-coded)
   stepComparison.innerHTML = compareSteps;
-  console.log("stepComparison", stepComparison)
+  // console.log("stepComparison", stepComparison)
 };
 
