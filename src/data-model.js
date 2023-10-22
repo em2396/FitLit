@@ -84,7 +84,7 @@ export const getStepGoal = (userObj, activityData, date) => {
   const activityUserID = activityData.find(user => user.userID === userObj.id && user.date === date);
   if (activityUserID) {
     if (userObj.dailyStepGoal <= activityUserID.numSteps) {
-      let goalVsTotal =  [userObj.dailyStepGoal, activityUserID.numSteps];
+      let goalVsTotal = [userObj.dailyStepGoal, activityUserID.numSteps];
       return goalVsTotal;
     } else {
       const stepsLeft = userObj.dailyStepGoal - activityUserID.numSteps;
@@ -106,29 +106,36 @@ export const theWaterFunction = waterPerDayPerWeek => {
   const data = waterPerDayPerWeek;
   console.log(waterPerDayPerWeek, 'this is in water fun')
   new Chart(
-      document.getElementById('waterChart'),
-      {
-          type: 'bar',
-          data: {
-              labels: data.map(row => row.date),
-              datasets: [
-                  {
-                      label: 'Recent Week of Water',
-                      data: data.map(row => row.numOunces)
-                  }
-              ]
-          },
-          options: {
-            responsive: true
+    document.getElementById('waterChart'),
+    {
+      type: 'bar',
+      data: {
+        labels: data.map(row => row.date),
+        datasets: [
+          {
+            label: 'Recent Week of Water',
+            data: data.map(row => row.numOunces)
           }
+        ]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            title: {
+              display: true,
+              text: "in fluid Oz."
+            }
+          }
+        }
       }
-      )
-  };
+    })
+};
 
 export const stepChart = activityData => {
   const data = activityData;
   console.log(data)
-    new Chart(
+  new Chart(
     document.getElementById('stepChart'),
     {
       type: 'doughnut',
@@ -142,7 +149,7 @@ export const stepChart = activityData => {
         ]
       },
       options: {
-         responsive: true
+        responsive: true
       }
     }
   )
