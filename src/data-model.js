@@ -65,34 +65,33 @@ export const getUserSleepQuality = (filterSleepData, dateOfSleep) => {
 
 /// === ACTIVITY === ///
 // Calculate the miles a user has walked based on their number of steps (use their strideLength to help calculate this), based on a specific day
-export const getMilesPerDay = (userObj, activityData, date) => {
-  const activityUserID = activityData.find(
-    user => user.userID === userObj.id && user.date === date
-  );
-  const milesPerDay = ((userObj.strideLength * activityUserID.numSteps) / 5280).toFixed(0);
+export const getMilesPerDay = (currentUser, currentActivityData, today) => {
+  const activityUserID = currentActivityData.find(
+    user => user.date === today.date
+    );
+    // console.log(activityUserID, 'an object of today')
+  const milesPerDay = ((currentUser.strideLength * activityUserID.numSteps) / 5280).toFixed(0);
   return milesPerDay;
 };
 
 // Return how many minutes a user was active for a given day
-export const getMinutesPerDay = (userObj, activityData, date) => {
-  const activityUserID = activityData.find(user => user.userID === userObj.id && user.date === date);
+export const getMinutesPerDay = (currentActivityData, today) => {
+  const activityUserID = currentActivityData.find(user => user.date === today.date);
   return activityUserID.minutesActive;
 };
 
 // Return if a user reached their step goal for a given day
-export const getStepGoal = (userObj, activityData, date) => {
-  const activityUserID = activityData.find(user => user.userID === userObj.id && user.date === date);
-  if (activityUserID) {
-    if (userObj.dailyStepGoal <= activityUserID.numSteps) {
-      let goalVsTotal = [userObj.dailyStepGoal, activityUserID.numSteps];
-      return goalVsTotal;
-    } else {
-      const stepsLeft = userObj.dailyStepGoal - activityUserID.numSteps;
-      return `User did not reach their goal of ${userObj.dailyStepGoal} steps. They reached only ${activityUserID.numSteps} with ${stepsLeft} left.`;
-    }
+export const getStepGoal = (currentUser, currentActivityData, today) => {
+  const activityUserID = currentActivityData.find(user => user.date === today.date);
+  if (currentUser.dailyStepGoal >= activityUserID.numSteps) {
+    const stepsLeft = currentUser.dailyStepGoal - activityUserID.numSteps;
+    activityUserID.stepsLeft = stepsLeft;
+    return activityUserID;
   } else {
-    return `No activity data found for the given date.`;
-  };
+    const stepsLeft = 0;
+    activityUserID.stepsLeft = stepsLeft;
+    return activityUserID
+  }
 };
 
 export const getAverageStepGoal = userSample => {
@@ -174,7 +173,6 @@ export const activityChart = activityData => {
       }
     })
 }
-console.log(activityChart);
 
 export const theSleepingFunction = sleepInfo => {
   const data = sleepInfo;
