@@ -1,4 +1,4 @@
-import { getRandomUser, getUserData, filterUserData, averageSleepDay, averageSleepQuality, getMilesPerDay, getMinutesPerDay, getStepGoal, getAverageStepGoal, theWaterFunction, stepChart, activityChart } from './data-model.js';
+import { getRandomUser, getUserData, filterUserData, averageSleepDay, averageSleepQuality, getMilesPerDay, getMinutesPerDay, getStepGoal, getAverageStepGoal, theWaterFunction, stepChart, activityChart, theSleepingFunction } from './data-model.js';
 import { getOuncesPerDay, getDataPerWeek, getLatestData } from './hydrationFunctions.js';
 import { displayUserInfo } from './domUpdates.js';
 import { fetchPromises } from './apiCalls.js';
@@ -47,6 +47,7 @@ window.addEventListener('load', function () {
     let aveSleepQuality = averageSleepQuality(randomSleepData);
     let sleepPerDayPerWeek = getDataPerWeek(randomSleepData, randomSleepDate);
     let sleepToday = getLatestData(randomSleepData);
+    let sleepChartToDom = theSleepingFunction(sleepPerDayPerWeek);
 
     //activity functions:
     let randomActivityData = filterUserData(activityDataAll, currentUser);
@@ -61,7 +62,7 @@ window.addEventListener('load', function () {
     let activityChartToDom = activityChart(activityPerDayPerWeek);
 
     //display on DOM function:
-    displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom);
+    displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom, sleepChartToDom);
     }); 
 });
 

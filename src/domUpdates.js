@@ -14,12 +14,16 @@ const milesWalkedPerDay = document.querySelector('#milesWalkedPerDay');
 const weekStepCount = document.querySelector('#weekStepCount');
 const waterChart = document.querySelector('#waterChart');
 const stepChart = document.querySelector("#stepChart");
-const activityChart = document.querySelector("#activityChart")
+const sleepChart = document.querySelector('#sleepChart');
+const activityChart = document.querySelector('#activityChart')
 
-export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom) {
+export function displayUserInfo(currentUser, averageSteps, averageSleep, aveSleepQuality, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom, sleepChartToDom) {
   //random current User info:
-  userName.innerText = `${currentUser.name}`;
-  location.innerText = `${currentUser.address}`;
+  userName.innerText = currentUser.name;
+  location.innerText += `${currentUser.address} `;
+  location.innerText += `email: ${currentUser.email} `;
+  location.innerText += `FitLit User ID: ${currentUser.id} `;
+  location.innerText += `Number of FitLit friends: ${currentUser.friends.length}`
   welcomeBack.innerText = `Welcome Back, ${currentUser.firstName}!`;
   
   //steps info:
@@ -29,24 +33,23 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
   //water info:
   waterConsumedToday.innerText = `Water Consumed Today (${todaysHydrationDate.date}): ${todaysHydrationDate.numOunces}oz`
   waterChart.innerHTML = waterChartToDom;
-  console.log(waterChart)
   
   //sleep info:
   //should be able to see my all-time average sleep quality and all-time average number of hours slept:
   averageSleepOverall.innerText = `Average Overall Sleep: ${averageSleep} hours per day and Average Sleep Quality: ${aveSleepQuality}`;
 
   // As a user, I should be able to see my sleep data over the course of the latest week (hours slept and quality of sleep)
-  sleepPerDayPerWeek.forEach((data) => {
-    console.log("Data", data)
-    sleepPerWeek.innerHTML += `<p> On ${data.date}, user slept for ${data.hoursSlept} hours with sleep quality of ${data.sleepQuality}`;
-  });
-  sleepSpecificDay.innerHTML += `<p> Today (${sleepToday.date}), user slept for ${sleepToday.hoursSlept} hours with sleep quality of ${sleepToday.sleepQuality}`;
+  // sleepPerDayPerWeek.forEach((data) => {
+  //   console.log("Data", data)
+  //   sleepPerWeek.innerHTML += `<p> On ${data.date}, user slept for ${data.hoursSlept} hours with sleep quality of ${data.sleepQuality}`;
+  // });
+  sleepSpecificDay.innerHTML += `<p> Today, ${sleepToday.date}, user slept for ${sleepToday.hoursSlept} hours with sleep quality of ${sleepToday.sleepQuality}`;
+  sleepChart.innerHTML = sleepChartToDom;
 
   //activity info:
   //As a user, I should be able to see my number of steps I’ve made for the latest day:
   stepsMadePerDay.innerText = `On ${activityToday.date}, total user's steps is ${activityToday.numSteps} steps.`;
   stepChart.innerHTML = stepChartToDom;
-  console.log(stepChart)
 
   //As a user, I should be able to view the number minutes I’ve been active for the latest day
   minutesActivePerDay.innerText = `On ${activityToday.date}, total active minutes is ${minutesPerDay} minutes.`;
