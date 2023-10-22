@@ -17,7 +17,7 @@ const stepChart = document.querySelector("#stepChart");
 const sleepChart = document.querySelector('#sleepChart');
 const activityChart = document.querySelector('#activityChart')
 
-export function displayUserInfo(currentUser, averageSteps, averageSleep, aveSleepQuality, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom, sleepChartToDom) {
+export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom, sleepChartToDom) {
   //random current User info:
   userName.innerText = currentUser.name;
   location.innerText += `${currentUser.address} `;
