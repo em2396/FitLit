@@ -26,40 +26,45 @@ window.addEventListener('load', function () {
     //random currentUser functions:
     let randomUserIndex = getRandomUser(userDataAll);
     let currentUser = getUserData(userDataAll, randomUserIndex);
+    // console.log(currentUser, 'currentuserobj')
+
 
     //steps function:
     let averageSteps = getAverageStepGoal(userDataAll);
 
     //hydration functions:
-    let randomHydrationData = filterUserData(hydrationDataAll, currentUser);  
-    let todaysHydrationDate = getLatestData(randomHydrationData);
-    let randomHydrationIndex = getRandomUser(randomHydrationData);
-    let randomHydrationDate = randomHydrationData[randomHydrationIndex].date;
-    let waterPerSpecificDay = getOuncesPerDay(currentUser, hydrationDataAll, randomHydrationDate);
-    let waterPerDayPerWeek = getDataPerWeek(randomHydrationData, randomHydrationDate);
+    let hydrationData = filterUserData(hydrationDataAll, currentUser);  
+    let todaysHydrationDate = getLatestData(hydrationData);
+    let waterPerDayPerWeek = getLatestData(hydrationData, 'week');
     let waterChartToDom = theWaterFunction(waterPerDayPerWeek);
+    // let randomHydrationIndex = getRandomUser(hydrationData);
+    // let randomHydrationDate = hydrationData[randomHydrationIndex].date;
+    // let waterPerSpecificDay = getOuncesPerDay(currentUser, hydrationDataAll, randomHydrationDate);
+    //waterPerDayPerWeek = getDataPerWeek()
+    // console.log(waterPerDayPerWeek, 'water data')
 
     //sleep functions:
-    let randomSleepData = filterUserData(sleepDataAll, currentUser);
-    let randomSleepIndex = getRandomUser(randomSleepData);
-    let randomSleepDate = randomSleepData[randomSleepIndex].date;
-    let averageSleep = averageSleepDay(randomSleepData);
-    let aveSleepQuality = averageSleepQuality(randomSleepData);
-    let sleepPerDayPerWeek = getDataPerWeek(randomSleepData, randomSleepDate);
-    let sleepToday = getLatestData(randomSleepData);
+    let sleepData = filterUserData(sleepDataAll, currentUser);
+    let averageSleep = averageSleepDay(sleepData);
+    let aveSleepQuality = averageSleepQuality(sleepData);
+    let sleepPerDayPerWeek = getLatestData(sleepData, 'week');
+    let sleepToday = getLatestData(sleepData);
     let sleepChartToDom = theSleepingFunction(sleepPerDayPerWeek);
+    // let randomSleepIndex = getRandomUser(sleepData);
+    // let randomSleepDate = sleepData[randomSleepIndex].date;
 
     //activity functions:
-    let randomActivityData = filterUserData(activityDataAll, currentUser);
-    let randomActivityIndex = getRandomUser(randomActivityData);
-    let randomActivityDate = randomActivityData[randomActivityIndex].date;
-    let milesPerDay = getMilesPerDay(currentUser, activityDataAll,randomActivityDate);
-    let minutesPerDay = getMinutesPerDay(currentUser, activityDataAll,randomActivityDate); 
-    let stepGoal = getStepGoal(currentUser, activityDataAll, randomActivityDate);
-    let activityPerDayPerWeek = getDataPerWeek(randomActivityData,randomActivityDate);
-    let activityToday = getLatestData(randomActivityData);
+    let activityData = filterUserData(activityDataAll, currentUser);
+    let activityPerDayPerWeek = getLatestData(activityData,'week');
+    let activityToday = getLatestData(activityData);
+    // console.log(activityToday, 'act today')
+    let milesPerDay = getMilesPerDay(currentUser, activityData, activityToday);
+    let stepGoal = getStepGoal(currentUser, activityData, activityToday);
+    let minutesPerDay = getMinutesPerDay(activityData, activityToday); 
     let stepChartToDom = stepChart(activityPerDayPerWeek);
     let activityChartToDom = activityChart(activityPerDayPerWeek);
+    // let randomActivityIndex = getRandomUser(activityData);
+    // let randomActivityDate = activityData[randomActivityIndex].date;
 
     //display on DOM function:
     displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom, sleepChartToDom);
