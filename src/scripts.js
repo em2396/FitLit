@@ -57,7 +57,6 @@ window.addEventListener('load', function () {
     let activityData = filterUserData(activityDataAll, currentUser);
     let activityPerDayPerWeek = getLatestData(activityData,'week');
     let activityToday = getLatestData(activityData);
-    // console.log(activityToday, 'act today')
     let milesPerDay = getMilesPerDay(currentUser, activityData, activityToday);
     let stepGoal = getStepGoal(currentUser, activityData, activityToday);
     let minutesPerDay = getMinutesPerDay(activityData, activityToday); 
