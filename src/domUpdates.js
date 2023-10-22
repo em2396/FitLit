@@ -16,6 +16,7 @@ const waterChart = document.querySelector('#waterChart');
 const stepChart = document.querySelector("#stepChart");
 const sleepChart = document.querySelector('#sleepChart');
 const activityChart = document.querySelector('#activityChart')
+const stepComparison = document.querySelector('#stepComparison')
 
 export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom, sleepChartToDom) {
   //random current User info:
@@ -58,10 +59,14 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
   milesWalkedPerDay.innerText = `On ${activityToday.date}, user has walked ${milesPerDay} miles.`
 
 
-  // As a user, I should be able to view a weekly view of my step count and if I have reached my step count goal for each day
+// As a user, I should be able to view a weekly view of my step count and if I have reached my step count goal for each day
 //   activityPerDayPerWeek.forEach((data) => {
 //     weekStepCount.innerHTML += `<p> On ${data.date}, user's step count is ${data.numSteps} steps.`;
 // });
   activityChart.innerHTML = activityChartToDom;
+
+
+// As a user, I should be able to see how my step goal compares to the average step goal amongst all users (this display should not be hard-coded)
+  
 };
 
