@@ -20,14 +20,14 @@ const activityChart = document.querySelector('#activityChart')
 export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom, sleepChartToDom) {
   //random current User info:
   userName.innerText = currentUser.name;
-  location.innerText += `${currentUser.address} `;
-  location.innerText += `email: ${currentUser.email} `;
+  location.innerText += `Address: ${currentUser.address} `;
+  location.innerText += `Email: ${currentUser.email} `;
   location.innerText += `FitLit User ID: ${currentUser.id} `;
   location.innerText += `Number of FitLit friends: ${currentUser.friends.length}`
   welcomeBack.innerText = `Welcome Back, ${currentUser.firstName}!`;
   
   //steps info:
-  steps.innerText = `Total Steps for Today: ${stepGoal[1]}, Step Goal: ${stepGoal[0]} steps`;
+  steps.innerText = `Total Steps for Today: ${stepGoal.numSteps}, Step Goal: ${currentUser.dailyStepGoal} steps, Steps Left: ${stepGoal.stepsLeft}`;
   usersAvgSteps.innerText = `The average users step goal is ${averageSteps} steps.`;
   
   //water info:
@@ -59,9 +59,9 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
 
 
   // As a user, I should be able to view a weekly view of my step count and if I have reached my step count goal for each day
-  activityPerDayPerWeek.forEach((data) => {
-    weekStepCount.innerHTML += `<p> On ${data.date}, user's step count is ${data.numSteps} steps.`;
-});
+//   activityPerDayPerWeek.forEach((data) => {
+//     weekStepCount.innerHTML += `<p> On ${data.date}, user's step count is ${data.numSteps} steps.`;
+// });
   activityChart.innerHTML = activityChartToDom;
 };
 
