@@ -68,5 +68,6 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
 
 // As a user, I should be able to see how my step goal compares to the average step goal amongst all users (this display should not be hard-coded)
   stepComparison.innerHTML = compareSteps;
+  console.log("stepComparison", stepComparison)
 };
 
