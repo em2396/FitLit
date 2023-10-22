@@ -102,9 +102,9 @@ export const getAverageStepGoal = userSample => {
   return (total / userSample.length).toFixed(0);
 };
 
-//compare averageStep goal
-//   As a user, I should be able to see how my step goal compares to the average step goal amongst all users (this display should not be hard-coded)
-
+//compare averageStep goal:
+//   As a user, I should be able to see how my step goal compares to the average step goal amongst all users (this display should not be hard-coded) 
+//NEXT STEPS: THIS HAS TO BE CHECKED...
 export const compareStepGoal = (currentUser, allUsers) => {
   const averageStepGoal = getAverageStepGoal(allUsers); 
   const userStepGoal = currentUser.dailyStepGoal;
