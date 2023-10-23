@@ -34,7 +34,6 @@ export const getLatestData = (filteredData, wholeWeek) => {
     return total.slice(0, 7);
   } else {
   total = filteredData.sort((a, b) => new Date(b.date) - new Date(a.date));
-  console.log(total, 'total objects')
   return total[0];
   }
 };
