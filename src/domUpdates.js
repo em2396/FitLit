@@ -16,8 +16,9 @@ const waterChart = document.querySelector('#waterChart');
 const stepChart = document.querySelector("#stepChart");
 const sleepChart = document.querySelector('#sleepChart');
 const activityChart = document.querySelector('#activityChart')
+const stepComparison = document.querySelector('#stepComparison')
 
-export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom, sleepChartToDom) {
+export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom, sleepChartToDom, compareSteps) {
   //random current User info:
   userName.innerText = currentUser.name;
   location.innerText += `Address: ${currentUser.address} `;
@@ -40,7 +41,6 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
 
   // As a user, I should be able to see my sleep data over the course of the latest week (hours slept and quality of sleep)
   // sleepPerDayPerWeek.forEach((data) => {
-  //   console.log("Data", data)
   //   sleepPerWeek.innerHTML += `<p> On ${data.date}, user slept for ${data.hoursSlept} hours with sleep quality of ${data.sleepQuality}`;
   // });
   sleepSpecificDay.innerHTML += `<p> Today, ${sleepToday.date}, user slept for ${sleepToday.hoursSlept} hours with sleep quality of ${sleepToday.sleepQuality}`;
@@ -58,10 +58,15 @@ export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, a
   milesWalkedPerDay.innerText = `On ${activityToday.date}, user has walked ${milesPerDay} miles.`
 
 
-  // As a user, I should be able to view a weekly view of my step count and if I have reached my step count goal for each day
+// As a user, I should be able to view a weekly view of my step count and if I have reached my step count goal for each day
 //   activityPerDayPerWeek.forEach((data) => {
 //     weekStepCount.innerHTML += `<p> On ${data.date}, user's step count is ${data.numSteps} steps.`;
 // });
   activityChart.innerHTML = activityChartToDom;
+
+
+// As a user, I should be able to see how my step goal compares to the average step goal amongst all users (this display should not be hard-coded)
+  stepComparison.innerHTML = compareSteps;
+  // console.log("stepComparison", stepComparison)
 };
 

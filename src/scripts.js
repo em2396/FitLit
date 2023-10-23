@@ -1,4 +1,4 @@
-import { getRandomUser, getUserData, filterUserData, averageSleepDay, averageSleepQuality, getMilesPerDay, getMinutesPerDay, getStepGoal, getAverageStepGoal, theWaterFunction, stepChart, activityChart, theSleepingFunction } from './data-model.js';
+import { getRandomUser, getUserData, filterUserData, averageSleepDay, averageSleepQuality, getMilesPerDay, getMinutesPerDay, getStepGoal, getAverageStepGoal, theWaterFunction, stepChart, activityChart, theSleepingFunction, compareStepGoal } from './data-model.js';
 import { getOuncesPerDay, getDataPerWeek, getLatestData } from './hydrationFunctions.js';
 import { displayUserInfo } from './domUpdates.js';
 import { fetchPromises } from './apiCalls.js';
@@ -26,8 +26,6 @@ window.addEventListener('load', function () {
     //random currentUser functions:
     let randomUserIndex = getRandomUser(userDataAll);
     let currentUser = getUserData(userDataAll, randomUserIndex);
-    // console.log(currentUser, 'currentuserobj')
-
 
     //steps function:
     let averageSteps = getAverageStepGoal(userDataAll);
@@ -41,7 +39,6 @@ window.addEventListener('load', function () {
     // let randomHydrationDate = hydrationData[randomHydrationIndex].date;
     // let waterPerSpecificDay = getOuncesPerDay(currentUser, hydrationDataAll, randomHydrationDate);
     //waterPerDayPerWeek = getDataPerWeek()
-    // console.log(waterPerDayPerWeek, 'water data')
 
     //sleep functions:
     let sleepData = filterUserData(sleepDataAll, currentUser);
@@ -57,7 +54,6 @@ window.addEventListener('load', function () {
     let activityData = filterUserData(activityDataAll, currentUser);
     let activityPerDayPerWeek = getLatestData(activityData,'week');
     let activityToday = getLatestData(activityData);
-    // console.log(activityToday, 'act today')
     let milesPerDay = getMilesPerDay(currentUser, activityData, activityToday);
     let stepGoal = getStepGoal(currentUser, activityData, activityToday);
     let minutesPerDay = getMinutesPerDay(activityData, activityToday); 
@@ -65,9 +61,10 @@ window.addEventListener('load', function () {
     let activityChartToDom = activityChart(activityPerDayPerWeek);
     // let randomActivityIndex = getRandomUser(activityData);
     // let randomActivityDate = activityData[randomActivityIndex].date;
+    let compareSteps = compareStepGoal(currentUser, allUsers);
 
     //display on DOM function:
-    displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom, sleepChartToDom);
+    displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom, sleepChartToDom, compareSteps);
     }); 
 });
 

@@ -20,7 +20,6 @@ export const getOuncesPerDay = (userObj, dataList, date) => {
   };
 };
 
-//get ounces each day for all the week (7 days)
 // Return how many fluid ounces of water a user consumed each day over the course of a week (7 days)
 //return total for the week
 export const getDataPerWeek = (filteredData, startDate) => {
@@ -29,7 +28,6 @@ export const getDataPerWeek = (filteredData, startDate) => {
   return total.splice(findStartDateIndex, 7);
 };
 
-//NEXT STEPS: add to script.js and domUpdates with innerHTML
 export const getLatestData = (filteredData, wholeWeek) => {
   let total;
   if (wholeWeek === 'week') {

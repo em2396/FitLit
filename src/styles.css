@@ -7,8 +7,6 @@
 body {
   display: flex;
   flex-direction: row;
-  /* width: 100vw;
-  height: 100vh; */
   color: #2A2B2C;
   font-family: "Gill Sans", sansx-serif;
 }
@@ -38,7 +36,6 @@ header {
   background-color: #dee4f1;
   align-items: center;
   justify-content: center;
-  /* height: 30vh; */
   margin-top: 30px;
 }
 
@@ -153,11 +150,11 @@ header {
 }
 
 /* parent container for left and right main */
-/* .main-row {
+.main-row {
   width: 600px;
   height: 800px;
   margin: none;
-} */
+}
 
 /* .right-section,
 #rightMainRow {
