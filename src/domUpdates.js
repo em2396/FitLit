@@ -12,19 +12,21 @@ const milesWalkedPerDay = document.querySelector('#milesWalkedPerDay');
 const waterChart = document.querySelector('#waterChart');
 const stepChart = document.querySelector("#stepChart");
 const sleepChart = document.querySelector('#sleepChart');
-const activityChart = document.querySelector('#activityChart')
-const stepComparison = document.querySelector('#stepComparison')
+const activityChart = document.querySelector('#activityChart');
+const stepComparison = document.querySelector('#stepComparison');
+const currentDate = document.querySelector("#current-date");
 
 
 //DOM UPDATE FUNCTIONS: 
 //User Info:
-export const displayUserInfo = currentUser => {
+export const displayUserInfo = (currentUser, activityToday) => {
   userName.innerText = currentUser.name;
   userInfoButton.innerText += `Address: ${currentUser.address} `;
   userInfoButton.innerText += `Email: ${currentUser.email} `;
   userInfoButton.innerText += `FitLit User ID: ${currentUser.id} `;
   userInfoButton.innerText += `Number of FitLit friends: ${currentUser.friends.length}`
   welcomeBack.innerText = `Welcome Back, ${currentUser.firstName}!`;
+  currentDate.innerText = `${activityToday.date}`;
 };
 
 // Water info:
