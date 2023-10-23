@@ -1,63 +1,60 @@
 const userName = document.querySelector('#username');
-const location = document.querySelector('.location');
+const userInfoButton = document.querySelector('.user-info');
 const welcomeBack = document.querySelector('#welcomeBack');
 const steps = document.querySelector('#totalSteps');
 const usersAvgSteps = document.querySelector('#averageUsersSteps');
 const waterConsumedToday = document.querySelector('#waterConsumedToday');
-const waterConsumedPerWeek = document.querySelector('#waterEachDayOfWeek');
 const averageSleepOverall = document.querySelector('#averageSleepOverall');
 const sleepSpecificDay = document.querySelector('#sleepSpecificDay');
-const sleepPerWeek = document.querySelector('#sleepPerDayPerWeek');
 const stepsMadePerDay = document.querySelector('#stepsMadePerDay');
 const minutesActivePerDay = document.querySelector('#minutesActivePerDay');
 const milesWalkedPerDay = document.querySelector('#milesWalkedPerDay');
-const weekStepCount = document.querySelector('#weekStepCount');
 const waterChart = document.querySelector('#waterChart');
 const stepChart = document.querySelector("#stepChart");
 const sleepChart = document.querySelector('#sleepChart');
-const activityChart = document.querySelector('#activityChart')
-const stepComparison = document.querySelector('#stepComparison')
+const activityChart = document.querySelector('#activityChart');
+const stepComparison = document.querySelector('#stepComparison');
+const currentDate = document.querySelector("#current-date");
 
-export function displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom, sleepChartToDom, compareSteps) {
-  //random current User info:
+
+//DOM UPDATE FUNCTIONS: 
+//User Info:
+export const displayUserInfo = (currentUser, activityToday) => {
   userName.innerText = currentUser.name;
-  location.innerText += `Address: ${currentUser.address} `;
-  location.innerText += `Email: ${currentUser.email} `;
-  location.innerText += `FitLit User ID: ${currentUser.id} `;
-  location.innerText += `Number of FitLit friends: ${currentUser.friends.length}`
+  userInfoButton.innerText += `Address: ${currentUser.address} `;
+  userInfoButton.innerText += `Email: ${currentUser.email} `;
+  userInfoButton.innerText += `FitLit User ID: ${currentUser.id} `;
+  userInfoButton.innerText += `Number of FitLit friends: ${currentUser.friends.length}`
   welcomeBack.innerText = `Welcome Back, ${currentUser.firstName}!`;
+  currentDate.innerText = `Today is: ${activityToday.date}`;
+};
+
+// Water info:
+export const displayWaterInfo = (todaysHydrationDate, waterChartToDom) => {
+  waterConsumedToday.innerText = `Water Consumed Today: ${todaysHydrationDate.numOunces}oz`
+  waterChart.innerHTML = waterChartToDom;
+};
+ 
+//Sleep info:
+export const displaySleepInfo = (averageSleep, aveSleepQuality, sleepToday, sleepChartToDom) => {
+  averageSleepOverall.innerText = `Average Overall Sleep: ${averageSleep} hours per day and Average Sleep Quality: ${aveSleepQuality}`;
+  sleepSpecificDay.innerHTML += `<p> Today, user slept for ${sleepToday.hoursSlept} hours with sleep quality of ${sleepToday.sleepQuality}`;
+  sleepChart.innerHTML = sleepChartToDom;
+};
   
-  //steps info:
+//Activity info:
+export const displayActivityInfo = (milesPerDay, minutesPerDay, activityToday, activityChartToDom) => {
+    stepsMadePerDay.innerText = `Total user's steps today: ${activityToday.numSteps} steps.`;
+    minutesActivePerDay.innerText = `Total active minutes today: ${minutesPerDay} minutes today.`;
+    milesWalkedPerDay.innerText = `User has walked ${milesPerDay} miles.`
+    activityChart.innerHTML = activityChartToDom;
+  };
+
+//Step Info:
+export const displayStepInfo = (currentUser, stepGoal, stepChartToDom, compareSteps, averageSteps) => {
+  stepChart.innerHTML = stepChartToDom;
   steps.innerText = `Total Steps for Today: ${stepGoal.numSteps}, Step Goal: ${currentUser.dailyStepGoal} steps, Steps Left: ${stepGoal.stepsLeft}`;
   usersAvgSteps.innerText = `The average users step goal is ${averageSteps} steps.`;
-  
-  //water info:
-  waterConsumedToday.innerText = `Water Consumed Today (${todaysHydrationDate.date}): ${todaysHydrationDate.numOunces}oz`
-  waterChart.innerHTML = waterChartToDom;
-  
-  //sleep info:
-  //should be able to see my all-time average sleep quality and all-time average number of hours slept:
-  averageSleepOverall.innerText = `Average Overall Sleep: ${averageSleep} hours per day and Average Sleep Quality: ${aveSleepQuality}`;
-
-  // As a user, I should be able to see my sleep data over the course of the latest week (hours slept and quality of sleep)
-  sleepSpecificDay.innerHTML += `<p> Today, ${sleepToday.date}, user slept for ${sleepToday.hoursSlept} hours with sleep quality of ${sleepToday.sleepQuality}`;
-  sleepChart.innerHTML = sleepChartToDom;
-
-  //activity info:
-  //As a user, I should be able to see my number of steps I’ve made for the latest day:
-  stepsMadePerDay.innerText = `On ${activityToday.date}, total user's steps is ${activityToday.numSteps} steps.`;
-  stepChart.innerHTML = stepChartToDom;
-
-  //As a user, I should be able to view the number minutes I’ve been active for the latest day
-  minutesActivePerDay.innerText = `On ${activityToday.date}, total active minutes is ${minutesPerDay} minutes.`;
-
-  // As a user, I should also see the distance I have walked (in miles) for the latest day based on my step count
-  milesWalkedPerDay.innerText = `On ${activityToday.date}, user has walked ${milesPerDay} miles.`
-
-  // As a user, I should be able to view a weekly view of my step count and if I have reached my step count goal for each day
-  activityChart.innerHTML = activityChartToDom;
-
-  // As a user, I should be able to see how my step goal compares to the average step goal amongst all users (this display should not be hard-coded)
   stepComparison.innerHTML = compareSteps;
 };
 
