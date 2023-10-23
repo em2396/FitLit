@@ -4,7 +4,6 @@ import {
   getAvgDailyOunces,
   getOuncesPerDay,
   getDataPerWeek,
-  getLatestData,
 } from "../src/hydrationFunctions";
 
 import userSample from "../src/data/sampleData";
@@ -16,21 +15,20 @@ describe("HydrationTest", () => {
     hydrationData = userSample.hydration;
   });
 
-  // === happy path === //
   it("should return a user's average fluid ounces consumed per day for all time", () => {
-    expect(getAvgDailyOunces(1, hydrationData)).to.equal(45);
+    const expectedAverage = 52;
+    const averageOunces = getAvgDailyOunces(hydrationData);
+
+    expect(averageOunces).to.equal(expectedAverage);
   });
 
-  // === happy path === //
   it("should return 0 if no user data is found", () => {
-    const testDataList = [];
-    const userId = 1;
-    const result = getAvgDailyOunces(userId, testDataList);
+    const hydrationData = []; // Simulate an empty array
+    const result = getAvgDailyOunces(hydrationData);
 
     expect(result).to.equal(0);
-  });
+  });  
 
-  // === happy path === //
   it("should return a number for the amount of ounces a user has consumed on a specific day", () => {
     const userObj = userSample.sampleUsers[0];
     const specificDate = "2023/03/24";
@@ -39,7 +37,6 @@ describe("HydrationTest", () => {
     expect(result).to.be.a("number");
   });
 
-  // === sad path === //
   it("should return 0 if no user data is found for that date", () => {
     const userObj = userSample.sampleUsers[0];
     const specificDate = "2023/03/25";
@@ -48,7 +45,6 @@ describe("HydrationTest", () => {
     expect(result).to.equal(0);
   });
 
-  // === happy path === //
   it("should return an array with ounces of water for the last 7 days of data", () => {
     const startDate = "2023/03/25";
     const result = getDataPerWeek(hydrationData, startDate);
