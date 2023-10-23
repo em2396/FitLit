@@ -61,7 +61,7 @@ export const getUserSleepQuality = (filterSleepData, dateOfSleep) => {
     (element) => element.date === dateOfSleep
   );
   return elementDate.sleepQuality;
-}
+};
 
 /// === ACTIVITY === ///
 // Calculate the miles a user has walked based on their number of steps (use their strideLength to help calculate this), based on a specific day
@@ -69,7 +69,6 @@ export const getMilesPerDay = (currentUser, currentActivityData, today) => {
   const activityUserID = currentActivityData.find(
     user => user.date === today.date
     );
-    // console.log(activityUserID, 'an object of today')
   const milesPerDay = ((currentUser.strideLength * activityUserID.numSteps) / 5280).toFixed(0);
   return milesPerDay;
 };
@@ -104,17 +103,16 @@ export const getAverageStepGoal = userSample => {
 
 //compare averageStep goal:
 //   As a user, I should be able to see how my step goal compares to the average step goal amongst all users (this display should not be hard-coded) 
-//NEXT STEPS: THIS HAS TO BE CHECKED...
 export const compareStepGoal = (currentUser, allUsers) => {
   const averageStepGoal = getAverageStepGoal(allUsers); 
   const userStepGoal = currentUser.dailyStepGoal;
 
   if (userStepGoal > averageStepGoal) {
-    return `Your step goal (${userStepGoal} steps) is higher than the average step goal (${averageStepGoal} steps) among all users.`;
+    return `Your step goal, ${userStepGoal} steps, is higher than the average step goal ${averageStepGoal} steps among all users.`;
   } else if (userStepGoal < averageStepGoal) {
-    return `Your step goal (${userStepGoal} steps) is lower than the average step goal (${averageStepGoal} steps) among all users.`;
+    return `Your step goal, ${userStepGoal} steps, is lower than the average step goal ${averageStepGoal} steps among all users.`;
   } else {
-    return `Your step goal (${userStepGoal} steps) is equal to the average step goal (${averageStepGoal} steps) among all users.`;
+    return `Your step goal, ${userStepGoal} steps, is equal to the average step goal among all users.`;
   }
 };
 
@@ -149,7 +147,6 @@ export const theWaterFunction = waterPerDayPerWeek => {
 
 export const stepChart = activityData => {
   const data = activityData;
-  console.log(data)
   new Chart(
     document.getElementById('stepChart'),
     {
@@ -168,7 +165,7 @@ export const stepChart = activityData => {
       }
     }
   )
-}
+};
 
 export const activityChart = activityData => {
   const data = activityData;
@@ -189,7 +186,7 @@ export const activityChart = activityData => {
         responsive: true
       }
     })
-}
+};
 
 export const theSleepingFunction = sleepInfo => {
   const data = sleepInfo;

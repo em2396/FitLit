@@ -1,5 +1,5 @@
 import { getRandomUser, getUserData, filterUserData, averageSleepDay, averageSleepQuality, getMilesPerDay, getMinutesPerDay, getStepGoal, getAverageStepGoal, theWaterFunction, stepChart, activityChart, theSleepingFunction, compareStepGoal } from './data-model.js';
-import { getOuncesPerDay, getDataPerWeek, getLatestData } from './hydrationFunctions.js';
+import { getLatestData } from './hydrationFunctions.js';
 import { displayUserInfo } from './domUpdates.js';
 import { fetchPromises } from './apiCalls.js';
 import './styles.css';
@@ -35,10 +35,6 @@ window.addEventListener('load', function () {
     let todaysHydrationDate = getLatestData(hydrationData);
     let waterPerDayPerWeek = getLatestData(hydrationData, 'week');
     let waterChartToDom = theWaterFunction(waterPerDayPerWeek);
-    // let randomHydrationIndex = getRandomUser(hydrationData);
-    // let randomHydrationDate = hydrationData[randomHydrationIndex].date;
-    // let waterPerSpecificDay = getOuncesPerDay(currentUser, hydrationDataAll, randomHydrationDate);
-    //waterPerDayPerWeek = getDataPerWeek()
 
     //sleep functions:
     let sleepData = filterUserData(sleepDataAll, currentUser);
@@ -47,8 +43,6 @@ window.addEventListener('load', function () {
     let sleepPerDayPerWeek = getLatestData(sleepData, 'week');
     let sleepToday = getLatestData(sleepData);
     let sleepChartToDom = theSleepingFunction(sleepPerDayPerWeek);
-    // let randomSleepIndex = getRandomUser(sleepData);
-    // let randomSleepDate = sleepData[randomSleepIndex].date;
 
     //activity functions:
     let activityData = filterUserData(activityDataAll, currentUser);
@@ -59,9 +53,7 @@ window.addEventListener('load', function () {
     let minutesPerDay = getMinutesPerDay(activityData, activityToday); 
     let stepChartToDom = stepChart(activityPerDayPerWeek);
     let activityChartToDom = activityChart(activityPerDayPerWeek);
-    // let randomActivityIndex = getRandomUser(activityData);
-    // let randomActivityDate = activityData[randomActivityIndex].date;
-    let compareSteps = compareStepGoal(currentUser, allUsers);
+    let compareSteps = compareStepGoal(currentUser, userDataAll);
 
     //display on DOM function:
     displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom, sleepChartToDom, compareSteps);

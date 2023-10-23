@@ -1,5 +1,4 @@
 //Return user's average fluid ounces consumed per day for all time:
-///add 0 return to pass sad path test
 export const getAvgDailyOunces = (hydrationData) => {
   if (hydrationData.length === 0) {
     return 0;
