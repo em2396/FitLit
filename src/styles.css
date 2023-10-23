@@ -58,7 +58,6 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 30px;
   border-radius: 10px;
   height: 100%;
   width: 100%;
@@ -91,7 +90,6 @@ header {
   text-align: center;
   width: 50vw;
   height: 35vh;
-  margin: 20px;
   border-radius: 10px;
 }
 
@@ -143,11 +141,10 @@ header {
   background-color: white;
   color: #FFFFFF;
 }
-/* parent container for left and right main */
+
 .main-row {
   width: 600px;
   height: 800px;
-  margin: none;
 }
 
 #stepsBox,
@@ -161,7 +158,6 @@ header {
 
 #waterBox,
 #activityBox {
-  margin: 10px;
   padding: 20px;
 }
 
@@ -169,4 +165,5 @@ header {
 .second-row-left {
   width: 50%;
   height: 50%;
+  margin: 30px;
 }
