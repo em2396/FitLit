@@ -1,12 +1,12 @@
 import { getRandomUser, getUserData, filterUserData, averageSleepDay, averageSleepQuality, getMilesPerDay, getMinutesPerDay, getStepGoal, getAverageStepGoal, theWaterFunction, stepChart, activityChart, theSleepingFunction, compareStepGoal } from './data-model.js';
 import { getLatestData } from './hydrationFunctions.js';
-import { displayUserInfo } from './domUpdates.js';
+import { displayUserInfo, displayWaterInfo, displaySleepInfo, displayActivityInfo, displayStepInfo } from './domUpdates.js';
 import { fetchPromises } from './apiCalls.js';
 import './styles.css';
 
 //QuerySelectors Here:
-const locationToggleButton = document.querySelector('.toggleButton');
-const addressInfo = document.querySelector('.location');
+const userToggleButton = document.querySelector('.toggleButton');
+const userInformation = document.querySelector('.user-info');
 
 //Variables Here:
 let userDataAll;
@@ -26,25 +26,23 @@ window.addEventListener('load', function () {
     //random currentUser functions:
     let randomUserIndex = getRandomUser(userDataAll);
     let currentUser = getUserData(userDataAll, randomUserIndex);
-
-    //steps function:
-    let averageSteps = getAverageStepGoal(userDataAll);
-
-    //hydration functions:
+ 
+    //Hydration functions:
     let hydrationData = filterUserData(hydrationDataAll, currentUser);  
     let todaysHydrationDate = getLatestData(hydrationData);
     let waterPerDayPerWeek = getLatestData(hydrationData, 'week');
     let waterChartToDom = theWaterFunction(waterPerDayPerWeek);
-
-    //sleep functions:
+    
+    //Sleep functions:
     let sleepData = filterUserData(sleepDataAll, currentUser);
     let averageSleep = averageSleepDay(sleepData);
     let aveSleepQuality = averageSleepQuality(sleepData);
     let sleepPerDayPerWeek = getLatestData(sleepData, 'week');
     let sleepToday = getLatestData(sleepData);
     let sleepChartToDom = theSleepingFunction(sleepPerDayPerWeek);
-
-    //activity functions:
+    
+    //Activity and Step functions:
+    let averageSteps = getAverageStepGoal(userDataAll);
     let activityData = filterUserData(activityDataAll, currentUser);
     let activityPerDayPerWeek = getLatestData(activityData,'week');
     let activityToday = getLatestData(activityData);
@@ -55,12 +53,16 @@ window.addEventListener('load', function () {
     let activityChartToDom = activityChart(activityPerDayPerWeek);
     let compareSteps = compareStepGoal(currentUser, userDataAll);
 
-    //display on DOM function:
-    displayUserInfo(currentUser, averageSteps, waterPerDayPerWeek, averageSleep, aveSleepQuality, sleepPerDayPerWeek, todaysHydrationDate, sleepToday, milesPerDay, minutesPerDay, stepGoal, activityPerDayPerWeek, activityToday, waterChartToDom, stepChartToDom, activityChartToDom, sleepChartToDom, compareSteps);
+    //Dom Updates functions:
+    displayUserInfo(currentUser);
+    displayWaterInfo(todaysHydrationDate, waterChartToDom);
+    displaySleepInfo(averageSleep, aveSleepQuality, sleepToday, sleepChartToDom);
+    displayActivityInfo(milesPerDay, minutesPerDay, activityToday, activityChartToDom);
+    displayStepInfo(currentUser, stepGoal, stepChartToDom, compareSteps, averageSteps);
     }); 
 });
 
-locationToggleButton.addEventListener('click',function() {
-  addressInfo.classList.toggle('hidden')
+userToggleButton.addEventListener('click',function() {
+  userInformation.classList.toggle('hidden')
 });
 
