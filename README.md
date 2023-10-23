@@ -53,13 +53,23 @@ We are a 4 group of front-end developers who worked together remotely via Zoom a
 - Understand the use of Webpack
 - Implement fetch API
 - Use Mocha framework with Chai library for TDD
-- Create a project that is easily readable with separate files that store functions for DOM manipulation, data model, helper, api calls and scripts
-- Collaborate productively and professionaly as a team
+- Create a project that is easily readable with separate files that store functions for DOM manipulation, data model, helper, API calls and scripts
+- Collaborate productively and professionally as a team
 - Utlizie localStorage to save user data outside of page refresh
 
 
 ## 🥇 Wins
+⭐ Successfully integrating charts library into our application.
+  
+⭐ Developed strong code organization and project management skills using GitHub project boards.
 
+⭐ Collaborated effectively with a team of four, fostering a shared knowledge base to ensure cohesive workflow. This allowed us to maintain a consistent skill level while some team members brought additional   
+  expertise, creating a well-balanced team dynamic.
+	
 
 ## 🚧 Challenges
+❗ Getting the hang of understanding code written by others. While also figuring out the flow of async work and checking out pull requests to see what's been done.
 
+❗ Maintaining consistent naming conventions and effectively tracking previously declared names.
+
+❗ Understanding and troubleshooting importing and exporting files with Webpack.
