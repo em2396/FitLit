@@ -37,12 +37,14 @@ describe("ActivityTest", () => {
     const dateToTest = "2022/01/01";
     const expectedMiles = "5";
     const result = getMilesPerDay(currentUser, currentActivityData, dateToTest);
+
     expect(result).to.equal(expectedMiles);
   });
 
   it("should return 0 miles for a date with no activity data", () => {
     const dateToTest = "2022/01/03";
     const result = getMilesPerDay(currentUser, currentActivityData, dateToTest);
+
     expect(result).to.equal("0");
   });
 });
@@ -51,6 +53,7 @@ describe("ActivityTest", () => {
     const dateToTest = "2023/03/24";
     const expectedMinutes = 261;
     const result = getMinutesPerDay(userSample.activity, { date: dateToTest });
+
     expect(result).to.equal(expectedMinutes);
   });
 
@@ -69,6 +72,7 @@ describe("ActivityTest", () => {
     ];
     const dateToTest = "2022/01/03";
     const result = getMinutesPerDay(currentActivityData, { date: dateToTest });
+
     expect(result).to.equal(0);
   });
 
@@ -87,6 +91,7 @@ describe("getStepGoal", () => {
     const dateToTest = "2023/03/24";
     const expectedStepsLeft = 2638;
     const result = getStepGoal(currentUser, userSample.activity, { date: dateToTest });
+    
     expect(result.stepsLeft).to.equal(expectedStepsLeft);
   });
 });
