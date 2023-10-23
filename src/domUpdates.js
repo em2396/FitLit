@@ -26,27 +26,27 @@ export const displayUserInfo = (currentUser, activityToday) => {
   userInfoButton.innerText += `FitLit User ID: ${currentUser.id} `;
   userInfoButton.innerText += `Number of FitLit friends: ${currentUser.friends.length}`
   welcomeBack.innerText = `Welcome Back, ${currentUser.firstName}!`;
-  currentDate.innerText = `${activityToday.date}`;
+  currentDate.innerText = `Today is: ${activityToday.date}`;
 };
 
 // Water info:
 export const displayWaterInfo = (todaysHydrationDate, waterChartToDom) => {
-  waterConsumedToday.innerText = `Water Consumed Today (${todaysHydrationDate.date}): ${todaysHydrationDate.numOunces}oz`
+  waterConsumedToday.innerText = `Water Consumed Today: ${todaysHydrationDate.numOunces}oz`
   waterChart.innerHTML = waterChartToDom;
 };
  
 //Sleep info:
 export const displaySleepInfo = (averageSleep, aveSleepQuality, sleepToday, sleepChartToDom) => {
   averageSleepOverall.innerText = `Average Overall Sleep: ${averageSleep} hours per day and Average Sleep Quality: ${aveSleepQuality}`;
-  sleepSpecificDay.innerHTML += `<p> Today, ${sleepToday.date}, user slept for ${sleepToday.hoursSlept} hours with sleep quality of ${sleepToday.sleepQuality}`;
+  sleepSpecificDay.innerHTML += `<p> Today, user slept for ${sleepToday.hoursSlept} hours with sleep quality of ${sleepToday.sleepQuality}`;
   sleepChart.innerHTML = sleepChartToDom;
 };
   
 //Activity info:
 export const displayActivityInfo = (milesPerDay, minutesPerDay, activityToday, activityChartToDom) => {
-    stepsMadePerDay.innerText = `On ${activityToday.date}, total user's steps is ${activityToday.numSteps} steps.`;
-    minutesActivePerDay.innerText = `On ${activityToday.date}, total active minutes is ${minutesPerDay} minutes.`;
-    milesWalkedPerDay.innerText = `On ${activityToday.date}, user has walked ${milesPerDay} miles.`
+    stepsMadePerDay.innerText = `Total user's steps today: ${activityToday.numSteps} steps.`;
+    minutesActivePerDay.innerText = `Total active minutes today: ${minutesPerDay} minutes today.`;
+    milesWalkedPerDay.innerText = `User has walked ${milesPerDay} miles.`
     activityChart.innerHTML = activityChartToDom;
   };
 
