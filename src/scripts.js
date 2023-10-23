@@ -54,7 +54,7 @@ window.addEventListener('load', function () {
     let compareSteps = compareStepGoal(currentUser, userDataAll);
 
     //Dom Updates functions:
-    displayUserInfo(currentUser);
+    displayUserInfo(currentUser, activityToday);
     displayWaterInfo(todaysHydrationDate, waterChartToDom);
     displaySleepInfo(averageSleep, aveSleepQuality, sleepToday, sleepChartToDom);
     displayActivityInfo(milesPerDay, minutesPerDay, activityToday, activityChartToDom);
