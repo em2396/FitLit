@@ -1,6 +1,5 @@
 import Chart from 'chart.js/auto'
 
-
 /// === HELPER FUNCTIONS === ///
 export const getRandomUser = userDataObj => {
   const currentUserIndex = Math.floor(Math.random() * userDataObj.length);
@@ -66,17 +65,24 @@ export const getUserSleepQuality = (filterSleepData, dateOfSleep) => {
 /// === ACTIVITY === ///
 // Calculate the miles a user has walked based on their number of steps (use their strideLength to help calculate this), based on a specific day
 export const getMilesPerDay = (currentUser, currentActivityData, today) => {
-  const activityUserID = currentActivityData.find(
-    user => user.date === today.date
-    );
-  const milesPerDay = ((currentUser.strideLength * activityUserID.numSteps) / 5280).toFixed(0);
+  const activityData = currentActivityData.find(user => user.date === today);
+
+  if (!activityData) {
+    return "0";
+  }
+
+  const milesPerDay = ((currentUser.strideLength * activityData.steps) / 5280).toFixed(0);
   return milesPerDay;
 };
 
 // Return how many minutes a user was active for a given day
 export const getMinutesPerDay = (currentActivityData, today) => {
   const activityUserID = currentActivityData.find(user => user.date === today.date);
-  return activityUserID.minutesActive;
+  if (activityUserID) {
+    return activityUserID.minutesActive;
+  } else {
+    return 0;
+  }
 };
 
 // Return if a user reached their step goal for a given day
@@ -115,6 +121,8 @@ export const compareStepGoal = (currentUser, allUsers) => {
     return `Your step goal, ${userStepGoal} steps, is equal to the average step goal among all users.`;
   }
 };
+
+/// === CHARTS === ///
 
 export const theWaterFunction = waterPerDayPerWeek => {
   const data = waterPerDayPerWeek;

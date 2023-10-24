@@ -16,7 +16,6 @@ describe("SleepTests", () => {
     users = userSample.sleepData.filter((data) => data.userID === 1);
   });
 
-// === happy path === //
   it("should return a user's average sleep per day", () => {
     const user1 = { hoursSlept: 8 };
     const user2 = { hoursSlept: 6 };
@@ -27,7 +26,6 @@ describe("SleepTests", () => {
     expect(result).to.equal("7");
   });
 
-// === sad path === //
   it("should return 0 if no user data is found", () => {
     const users = [];
     const result = averageSleepDay(users);
@@ -35,13 +33,11 @@ describe("SleepTests", () => {
     expect(result).to.equal("0");
   });
 
-// === happy path === //
   it('should return the average of all time sleep quality', () => {
     const result = averageSleepQuality(users);
     expect(result).to.equal('4');
   });
 
-// === sad path === //
   it("should return a user's sleep quality for a specific day", () => {
     const user = [
       { date: '2023/03/24', hoursSlept: 8 },
@@ -54,7 +50,6 @@ describe("SleepTests", () => {
     expect(result).to.equal('Slept for 7 hours on 2023/03/25');
   });
 
-// === sad path === //
   it('should return an empty object if no user data exists', () => {
     const emptyUserArray = [];
     const result = averageSleepDay(emptyUserArray);
@@ -62,7 +57,6 @@ describe("SleepTests", () => {
     expect(result).to.equal('0');
   });
 
-  // === happy path === //
   it('should return the average sleep when user data is available', () => {
     const userArray = [ 
       { date: '2023-10-01', hoursSlept: 8 },
