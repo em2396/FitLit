@@ -14,9 +14,9 @@
         <section class="left-section">
           <section class="first-row-left" id="stepsBox">
               <h1 class="titles">Steps</h1>
-              <p id="totalSteps"></p>
-              <p id="averageUsersSteps"></p>
-              <p id="stepComparison"></p>
+              <p class="steps-text" id="totalSteps"></p>
+              <p class="steps-text" id="averageUsersSteps"></p>
+              <p class="steps-text" id="stepComparison"></p>
               <canvas id="stepChart"></canvas>
           </section>
           <section class="first-row-left" id="waterBox">
@@ -48,23 +48,12 @@
       </aside>
       <aside class="main-row" id="rightMainRow">
         <h1 id="username"> Username </h1>
-        <article>
-          <header>
-              <button class="toggleButton">
-                <h3 class="arrow">&#x25BA;    User Info:</h3> 
-                <h3 class="user-info hidden"></h3>
-              </button>
-          </header>
-        </article>
-        <section class="right-section">
-          <section class="second-row-right"></section>
-        </section>
-        <section class="right-section">
-          <section class="third-row-right">
-            <p id="averageSleepOverall"></p>
-            <p id="sleepSpecificDay"></p>
-            <p id="sleepPerDayPerWeek"></p>
-          </section>
+        <header id="buttonHolder">
+            <button class="toggleButton">
+              <h3 class="arrow">&#x25BA;    User Info:</h3> 
+              <h3 class="user-info hidden"></h3>
+            </button>
+        </header>
         </section>
       </aside>
     <script src="bundle.js"></script>
