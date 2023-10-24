@@ -43,15 +43,16 @@ header {
   width: 20%;
   height: 100vh;
   background-color: #404348;
+  padding: 10px;
   margin: none;
 }
 
-#username,
-.right-section {
+#username {
   display: flex;
   justify-content: center;
   color: white;
   margin: 20px;
+  max-width: 100%;
 }
 
 .first-row-left {
@@ -59,8 +60,21 @@ header {
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  height: 100%;
-  width: 100%;
+}
+
+.second-row-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.first-row-left,
+.second-row-left {
+  width: 50vw;
+  height: 50vh;
+  margin: 30px;
 }
 
 #stepsBox {
@@ -78,26 +92,12 @@ header {
   display: flex;
   background-color: #054FB9;
   color: white;
-  /* height: 400px;
-  width: 450px; */
   box-shadow: 0px 0px 1.5px 2px white
-}
-
-.second-row-left {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 50vw;
-  height: 35vh;
-  border-radius: 10px;
 }
 
 #activityBox {
   background-color: #0461cf;
   color: white;
-  /* height: 400px;
-  width: 380px; */
   box-shadow: 0px 0px 1.5px 2px white
 }
 
@@ -105,7 +105,6 @@ header {
   background-color: #B3C7F7;
   color: #01285e;
   padding: 10px;
-  /* height: 50%; */
   box-shadow: 0px 0px 1px 1px #01285e;
 }
 
@@ -116,14 +115,22 @@ header {
   font-family: "Gill Sans", sans-serif;
   font-size: 20px;
   border: none;
-  padding: 1vh 2vh;
+  padding: 10px;
   cursor: pointer;
   outline: none;
   border-radius: 10px;
+  max-width: 80%;
+  max-height: 100%;
 }
 
+.user-info,
 .arrow {
-  text-align: start;
+  text-align: center;
+}
+
+.user-info {
+  word-wrap: break-word;
+  max-height: 700px;
 }
 
 .hidden {
@@ -152,18 +159,13 @@ header {
 #waterBox,
 #activityBox,
 #sleepBox {
-  width: 50%;
-  height: 50%;
+  white-space: nowrap;
+  overflow-wrap: break-word;
+  width: 55%;
+  height: 30%;
 }
 
 #waterBox,
 #activityBox {
   padding: 20px;
-}
-
-.first-row-left,
-.second-row-left {
-  width: 50%;
-  height: 50%;
-  margin: 30px;
 }
