@@ -2,7 +2,7 @@
   
 # 💪 FitLit 
 ![Tests](https://badgen.net/badge/tests/passing/green?icon=github)
-![Commits](https://badgen.net/github/last-commit/amysiu1028/FitLit?icon=github)
+
 
 ## 💾 Technologies Used
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
