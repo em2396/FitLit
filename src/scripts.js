@@ -1,5 +1,5 @@
-import { getRandomUser, getUserData, filterUserData, averageSleepDay, averageSleepQuality, getMilesPerDay, getMinutesPerDay, getStepGoal, getAverageStepGoal, theWaterFunction, stepChart, activityChart, theSleepingFunction, compareStepGoal } from './data-model.js';
-import { getLatestData } from './hydrationFunctions.js';
+import { getRandomUser, getUserData, filterUserData, getMilesPerDay, getMinutesPerDay, getStepGoal, theWaterChart, theStepChart, theActivityChart, theSleepingChart, compareStepGoal, universalAverage, getLatestData } from './data-model.js';
+// import {  } from './hydrationFunctions.js';
 import { displayUserInfo, displayWaterInfo, displaySleepInfo, displayActivityInfo, displayStepInfo } from './domUpdates.js';
 import { fetchPromises } from './apiCalls.js';
 import './styles.css';
@@ -31,26 +31,26 @@ window.addEventListener('load', function () {
     let hydrationData = filterUserData(hydrationDataAll, currentUser);  
     let todaysHydrationDate = getLatestData(hydrationData);
     let waterPerDayPerWeek = getLatestData(hydrationData, 'week');
-    let waterChartToDom = theWaterFunction(waterPerDayPerWeek);
+    let waterChartToDom = theWaterChart(waterPerDayPerWeek);
     
     //Sleep functions:
     let sleepData = filterUserData(sleepDataAll, currentUser);
-    let averageSleep = averageSleepDay(sleepData);
-    let aveSleepQuality = averageSleepQuality(sleepData);
+    let averageSleep = universalAverage(sleepData, 'hoursSlept');
+    let aveSleepQuality = universalAverage(sleepData, 'sleepQuality');
     let sleepPerDayPerWeek = getLatestData(sleepData, 'week');
     let sleepToday = getLatestData(sleepData);
-    let sleepChartToDom = theSleepingFunction(sleepPerDayPerWeek);
+    let sleepChartToDom = theSleepingChart(sleepPerDayPerWeek);
     
     //Activity and Step functions:
-    let averageSteps = getAverageStepGoal(userDataAll);
+    let averageSteps = universalAverage(userDataAll, 'dailyStepGoal');
     let activityData = filterUserData(activityDataAll, currentUser);
     let activityPerDayPerWeek = getLatestData(activityData,'week');
     let activityToday = getLatestData(activityData);
     let milesPerDay = getMilesPerDay(currentUser, activityData, activityToday);
     let stepGoal = getStepGoal(currentUser, activityData, activityToday);
     let minutesPerDay = getMinutesPerDay(activityData, activityToday); 
-    let stepChartToDom = stepChart(activityPerDayPerWeek);
-    let activityChartToDom = activityChart(activityPerDayPerWeek);
+    let stepChartToDom = theStepChart(activityPerDayPerWeek);
+    let activityChartToDom = theActivityChart(activityPerDayPerWeek);
     let compareSteps = compareStepGoal(currentUser, userDataAll);
 
     //Dom Updates functions:
