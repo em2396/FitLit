@@ -114,9 +114,9 @@ export const compareStepGoal = (currentUser, allUsers) => {
   const userStepGoal = currentUser.dailyStepGoal;
 
   if (userStepGoal > averageStepGoal) {
-    return `Your step goal, ${userStepGoal} steps, is higher than the average step goal ${averageStepGoal} steps among all users.`;
+    return `Your step goal ${userStepGoal} steps, is higher than the average step goal of ${averageStepGoal} steps among all users.`;
   } else if (userStepGoal < averageStepGoal) {
-    return `Your step goal, ${userStepGoal} steps, is lower than the average step goal ${averageStepGoal} steps among all users.`;
+    return `Your step goal, ${userStepGoal} steps, is lower than the average step goal of ${averageStepGoal} steps among all users.`;
   } else {
     return `Your step goal, ${userStepGoal} steps, is equal to the average step goal among all users.`;
   }
