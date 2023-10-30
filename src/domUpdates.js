@@ -56,7 +56,7 @@ export const displayStepInfo = (currentUser, stepGoal, stepChartToDom, compareSt
   steps.innerHTML = `<strong> Total Steps for Today: </strong> ${stepGoal.numSteps}<br>
   <strong> Step Goal:</strong> ${currentUser.dailyStepGoal} steps <br>
   <strong> Steps Left:</strong> ${stepGoal.stepsLeft} steps`;
-  usersAvgSteps.innerHTML = `<strong class="steps-text">The average users step goal:</strong> ${averageSteps} steps.`;
+  usersAvgSteps.innerHTML = `<strong>The average users step goal:</strong> ${averageSteps} steps.`;
   stepComparison.innerHTML = compareSteps;
 };
 
