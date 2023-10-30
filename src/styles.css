@@ -66,7 +66,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  /* text-align: center; */
   border-radius: 10px;
 }
 
@@ -81,7 +81,7 @@ header {
   background-color: #8babf1;
   color: #01285e;
   box-shadow: 0px 0px 1px 1px #01285e;
-  text-align: center;
+  /* text-align: left; */
 }
 
 #totalSteps {
@@ -168,4 +168,9 @@ header {
 #waterBox,
 #activityBox {
   padding: 20px;
+}
+
+.steps-text, 
+#stepsMadePerDay {
+  text-align: left;
 }
