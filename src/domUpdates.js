@@ -31,30 +31,32 @@ export const displayUserInfo = (currentUser, activityToday) => {
 
 // Water info:
 export const displayWaterInfo = (todaysHydrationDate, waterChartToDom) => {
-  waterConsumedToday.innerText = `Water Consumed Today: ${todaysHydrationDate.numOunces}oz`
+  waterConsumedToday.innerHTML = `<strong> Water Consumed Today:  </strong> ${todaysHydrationDate.numOunces} ounces`
   waterChart.innerHTML = waterChartToDom;
 };
  
 //Sleep info:
 export const displaySleepInfo = (averageSleep, aveSleepQuality, sleepToday, sleepChartToDom) => {
-  averageSleepOverall.innerText = `Average Overall Sleep: ${averageSleep} hours per day and Average Sleep Quality: ${aveSleepQuality}`;
+  averageSleepOverall.innerHTML = `<strong> Average Overall Sleep: </strong> ${averageSleep} hours per day and Average<br> <strong> Sleep Quality: </strong> ${aveSleepQuality}`;
   sleepSpecificDay.innerHTML += `<p> Today, user slept for ${sleepToday.hoursSlept} hours with sleep quality of ${sleepToday.sleepQuality}`;
   sleepChart.innerHTML = sleepChartToDom;
 };
   
 //Activity info:
 export const displayActivityInfo = (milesPerDay, minutesPerDay, activityToday, activityChartToDom) => {
-    stepsMadePerDay.innerText = `Total user's steps today: ${activityToday.numSteps} steps.`;
-    minutesActivePerDay.innerText = `Total active minutes today: ${minutesPerDay} minutes today.`;
-    milesWalkedPerDay.innerText = `User has walked ${milesPerDay} miles.`
+    stepsMadePerDay.innerHTML = `<strong> Total user's steps today: </strong> ${activityToday.numSteps} steps.`;
+    minutesActivePerDay.innerHTML = `<strong> Total active minutes today: </strong> ${minutesPerDay} minutes today.`;
+    milesWalkedPerDay.innerHTML = `<strong> User has walked: </strong> ${milesPerDay} miles.`
     activityChart.innerHTML = activityChartToDom;
   };
 
 //Step Info:
 export const displayStepInfo = (currentUser, stepGoal, stepChartToDom, compareSteps, averageSteps) => {
   stepChart.innerHTML = stepChartToDom;
-  steps.innerText = `Total Steps for Today: ${stepGoal.numSteps}, Step Goal: ${currentUser.dailyStepGoal} steps, Steps Left: ${stepGoal.stepsLeft}`;
-  usersAvgSteps.innerText = `The average users step goal is ${averageSteps} steps.`;
+  steps.innerHTML = `<strong> Total Steps for Today: </strong> ${stepGoal.numSteps}<br>
+  <strong> Step Goal:</strong> ${currentUser.dailyStepGoal} steps <br>
+  <strong> Steps Left:</strong> ${stepGoal.stepsLeft} steps`;
+  usersAvgSteps.innerHTML = `<strong class="steps-text">The average users step goal:</strong> ${averageSteps} steps.`;
   stepComparison.innerHTML = compareSteps;
 };
 
