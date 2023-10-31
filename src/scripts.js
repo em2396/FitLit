@@ -1,5 +1,8 @@
-import { getRandomUser, getUserData, filterUserData, getMilesPerDay, getMinutesPerDay, getStepGoal, theWaterChart, theStepChart, theActivityChart, theSleepingChart, compareStepGoal, universalAverage, getLatestData, getInfoPerDay } from './data-model.js';
+import { getRandomUser, getUserData, filterUserData, getMilesPerDay, getMinutesPerDay, getStepGoal, compareStepGoal, universalAverage, getLatestData, getInfoPerDay } from './data-model.js';
 // import {  } from './hydrationFunctions.js';
+import { theWaterChart, theStepChart, theActivityChart, theSleepingChart } from './charts.js'
+
+
 import { displayUserInfo, displayWaterInfo, displaySleepInfo, displayActivityInfo, displayStepInfo } from './domUpdates.js';
 import { fetchPromises } from './apiCalls.js';
 import './styles.css';
