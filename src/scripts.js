@@ -1,4 +1,4 @@
-import { getRandomUser, getUserData, filterUserData, getMilesPerDay, getMinutesPerDay, getStepGoal, theWaterChart, theStepChart, theActivityChart, theSleepingChart, compareStepGoal, universalAverage, getLatestData } from './data-model.js';
+import { getRandomUser, getUserData, filterUserData, getMilesPerDay, getMinutesPerDay, getStepGoal, theWaterChart, theStepChart, theActivityChart, theSleepingChart, compareStepGoal, universalAverage, getLatestData, getInfoPerDay } from './data-model.js';
 // import {  } from './hydrationFunctions.js';
 import { displayUserInfo, displayWaterInfo, displaySleepInfo, displayActivityInfo, displayStepInfo } from './domUpdates.js';
 import { fetchPromises } from './apiCalls.js';
@@ -46,9 +46,11 @@ window.addEventListener('load', function () {
     let activityData = filterUserData(activityDataAll, currentUser);
     let activityPerDayPerWeek = getLatestData(activityData,'week');
     let activityToday = getLatestData(activityData);
-    let milesPerDay = getMilesPerDay(currentUser, activityData, activityToday);
+    // let milesPerDay = getMilesPerDay(currentUser, activityData, activityToday);
+    let milesPerDay = getInfoPerDay(currentUser, activityData, activityToday, 'numSteps')
     let stepGoal = getStepGoal(currentUser, activityData, activityToday);
-    let minutesPerDay = getMinutesPerDay(activityData, activityToday); 
+    // let minutesPerDay = getMinutesPerDay(activityData, activityToday); 
+    let minutesPerDay = getInfoPerDay(currentUser, activityData, activityToday, 'minutesActive')
     let stepChartToDom = theStepChart(activityPerDayPerWeek);
     let activityChartToDom = theActivityChart(activityPerDayPerWeek);
     let compareSteps = compareStepGoal(currentUser, userDataAll);
