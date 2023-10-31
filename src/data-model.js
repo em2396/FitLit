@@ -102,6 +102,15 @@ export const compareStepGoal = (currentUser, allUsers) => {
   }
 };
 
+export const getOuncesPerDay = (userObj, dataList, date) => {
+  const hydrationUserId = dataList.find(dataObj => dataObj.userID === userObj.id && dataObj.date === date);
+  if (hydrationUserId) {
+    return hydrationUserId.numOunces;
+  } else {
+    return 0;
+  };
+};
+
 
 /// === ACTIVITY === ///
 
