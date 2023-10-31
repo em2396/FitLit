@@ -63,7 +63,6 @@ export const specificSleepDay = (filterUser, dateOfSleep) => {
 //Replace getMilesPerDay, getUserSleepQuality (not being used in the DOM), getMinutesPerDay
 export const getInfoPerDay = (currentUser, currentData, today, specific) => {
   const elementData = currentData.find(user => user.date === today.date);
-  console.log(elementData, specific, 'specific <<<');
   if (!elementData) {
     return '0';
   } else if (specific === 'numSteps') {
@@ -103,14 +102,6 @@ export const compareStepGoal = (currentUser, allUsers) => {
   }
 };
 
-export const getOuncesPerDay = (userObj, dataList, date) => {
-  const hydrationUserId = dataList.find(dataObj => dataObj.userID === userObj.id && dataObj.date === date);
-  if (hydrationUserId) {
-    return hydrationUserId.numOunces;
-  } else {
-    return 0;
-  };
-};
 
 
 /// === ACTIVITY === ///
