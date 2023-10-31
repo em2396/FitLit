@@ -2,25 +2,32 @@ import { expect } from "chai";
 import { universalAverage, specificSleepDay } from "../src/data-model.js";
 import userSample from "../src/data/sampleData";
 
+
 describe("SleepTests", () => {
+  let users;
+
+  beforeEach(() => {
+    users = userSample.sleepData.filter((data) => data.userID === 1);
+  });
+
   it("should return a user's average sleep per day", () => {
     const users = [
       { hoursSlept: 8 },
       { hoursSlept: 6 },
       { hoursSlept: 7 },
     ];
-    const result = universalAverage(users, 'hoursSlept'); 
-  
-    expect(result).to.equal("7");
+    const result = universalAverage(users, 'hoursSlept');
+
+    expect(result).to.equal('7');
   });
 
   it("should return 0 if no user data is found", () => {
     const users = [];
     const result = universalAverage(users, 'hoursSlept');
-  
+
     expect(result).to.equal(0);
   });
-  
+
   it("should return the average of all time sleep quality", () => {
     const users = [
       { sleepQuality: 3 },
@@ -28,9 +35,9 @@ describe("SleepTests", () => {
       { sleepQuality: 5 },
     ];
     const result = universalAverage(users, 'sleepQuality');
-  
-    expect(result).to.equal("4");
-  } );
+
+    expect(result).to.equal('4');
+  });
 
   it("should return a user's sleep quality for a specific day", () => {
     const users = [
@@ -58,11 +65,11 @@ describe("SleepTests", () => {
       { date: '2023-10-03', hoursSlept: 7 },
     ];
     const result = universalAverage(userArray, 'hoursSlept');
-  
+
     expect(result).to.equal('7');
   });
-
 });
+
 
 
 
