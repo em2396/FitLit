@@ -22,8 +22,11 @@ export const getUserData = (userObj, indexPosition) => {
 //Universal average function
 //replace getAverageStepGoal, averageSleepQuality, averageSleepDay, getAvgDailyOunces (in hydrationFunctions.js)
 export const universalAverage = (obj, accessKey) => {
+  if (obj.length === 0) {
+    return 0; 
+  }
   const total = obj.reduce((acc, current) => {
-    return acc += current[accessKey];
+    return acc + current[accessKey];
   }, 0);
   return (total / obj.length).toFixed(0);
 };
@@ -39,7 +42,6 @@ export const getLatestData = (filteredData, wholeWeek) => {
   return total[0];
   }
 };
-
 
 //Filter all the user data to all the data of the current user
 export const filterUserData = (data, currentUserObject) => {
@@ -86,7 +88,6 @@ export const getStepGoal = (currentUser, currentActivityData, today) => {
     return activityUserID
   }
 };
-
 
 //compare averageStep goal:
 export const compareStepGoal = (currentUser, allUsers) => {
