@@ -39,6 +39,8 @@ export const getLatestData = (filteredData, wholeWeek) => {
   }
 };
 
+
+//Filter all the user data to all the data of the current user
 export const filterUserData = (data, currentUserObject) => {
   return data.filter((element) => {
     return element.userID === currentUserObject.id;
@@ -55,78 +57,92 @@ export const specificSleepDay = (filterUser, dateOfSleep) => {
   return string;
 };
 
-// Return a user’s sleep quality for a specific day
-export const getUserSleepQuality = (filterSleepData, dateOfSleep) => {
-  const elementDate = filterSleepData.find(
-    (element) => element.date === dateOfSleep
-    );
-    return elementDate.sleepQuality;
-  };
-  
-  /// === ACTIVITY === ///
-  export const getMilesPerDay = (currentUser, currentActivityData, today) => {
-    const activityData = currentActivityData.find(user => user.date === today.date);
-    if (!activityData) {
-      return "0";
-    }
-    const milesPerDay = ((currentUser.strideLength * activityData.numSteps) / 5280).toFixed(0);
+//Replace getMilesPerDay, getUserSleepQuality (not being used in the DOM), getMinutesPerDay
+export const getInfoPerDay = (currentUser, currentData, today, specific) => {
+  const elementData = currentData.find(user => user.date === today.date);
+  console.log(elementData, specific, 'specific <<<');
+  if (!elementData) {
+    return '0';
+  } else if (specific === 'numSteps') {
+    console.log(elementData)
+    const milesPerDay = ((currentUser.strideLength * elementData.numSteps) / 5280).toFixed(0);
     return milesPerDay;
-  };
-  
-  // Return how many minutes a user was active for a given day
-  export const getMinutesPerDay = (currentActivityData, today) => {
-    const activityUserID = currentActivityData.find(user => user.date === today.date);
-    if (activityUserID) {
-      return activityUserID.minutesActive;
-    } else {
-      return 0;
-    }
-  };
-  
-  // Return if a user reached their step goal for a given day
-  export const getStepGoal = (currentUser, currentActivityData, today) => {
-    const activityUserID = currentActivityData.find(user => user.date === today.date);
-    if (currentUser.dailyStepGoal >= activityUserID.numSteps) {
-      const stepsLeft = currentUser.dailyStepGoal - activityUserID.numSteps;
-      activityUserID.stepsLeft = stepsLeft;
-      return activityUserID;
-    } else {
-      const stepsLeft = 0;
-      activityUserID.stepsLeft = stepsLeft;
-      return activityUserID
-    }
-  };
-  
-  
-  //compare averageStep goal:
-  //   As a user, I should be able to see how my step goal compares to the average step goal amongst all users (this display should not be hard-coded) 
-  export const compareStepGoal = (currentUser, allUsers) => {
-    const averageStepGoal = universalAverage(allUsers, 'dailyStepGoal'); 
-    const userStepGoal = currentUser.dailyStepGoal;
-    
-    if (userStepGoal > averageStepGoal) {
-      return `Your step goal, ${userStepGoal} steps, is higher than the average step goal ${averageStepGoal} steps among all users.`;
-    } else if (userStepGoal < averageStepGoal) {
-      return `Your step goal, ${userStepGoal} steps, is lower than the average step goal ${averageStepGoal} steps among all users.`;
-    } else {
-      return `Your step goal, ${userStepGoal} steps, is equal to the average step goal among all users.`;
-    }
-  };
-  
-  
-  
-  /// === SLEEP === ///
-  //Return the user’s average number of hours slept per day
-  // export const averageSleepDay = filterUser => {
-  //   if (filterUser.length === 0) {
-  //     return "0";
-  //   };
-  //   const total = filterUser.reduce((acc, user) => {
-  //     return (acc += user.hoursSlept);
-  //   }, 0);
-  //   return (total / filterUser.length).toFixed(0);
-  // };
+  } else {
+    return elementData[specific];
+  }
+}
 
+// Return if a user reached their step goal for a given day
+export const getStepGoal = (currentUser, currentActivityData, today) => {
+  const activityUserID = currentActivityData.find(user => user.date === today.date);
+  if (currentUser.dailyStepGoal >= activityUserID.numSteps) {
+    const stepsLeft = currentUser.dailyStepGoal - activityUserID.numSteps;
+    activityUserID.stepsLeft = stepsLeft;
+    return activityUserID;
+  } else {
+    const stepsLeft = 0;
+    activityUserID.stepsLeft = stepsLeft;
+    return activityUserID
+  }
+};
+
+
+//compare averageStep goal:
+export const compareStepGoal = (currentUser, allUsers) => {
+  const averageStepGoal = universalAverage(allUsers, 'dailyStepGoal'); 
+  const userStepGoal = currentUser.dailyStepGoal;
+  
+  if (userStepGoal > averageStepGoal) {
+    return `Your step goal, ${userStepGoal} steps, is higher than the average step goal ${averageStepGoal} steps among all users.`;
+  } else if (userStepGoal < averageStepGoal) {
+    return `Your step goal, ${userStepGoal} steps, is lower than the average step goal ${averageStepGoal} steps among all users.`;
+  } else {
+    return `Your step goal, ${userStepGoal} steps, is equal to the average step goal among all users.`;
+  }
+};
+
+
+/// === ACTIVITY === ///
+
+// Return how many minutes a user was active for a given day
+// export const getMinutesPerDay = (currentActivityData, today) => {
+//   const activityUserID = currentActivityData.find(user => user.date === today.date);
+//   if (activityUserID) {
+//     return activityUserID.minutesActive;
+//   } else {
+//     return 0;
+//   }
+// };
+// export const getMilesPerDay = (currentUser, currentActivityData, today) => {
+//   const activityData = currentActivityData.find(user => user.date === today.date);
+//   if (!activityData) {
+//     return "0";
+//   }
+//   const milesPerDay = ((currentUser.strideLength * activityData.numSteps) / 5280).toFixed(0);
+//   return milesPerDay;
+// };
+
+/// === SLEEP === ///
+//Return the user’s average number of hours slept per day
+// export const averageSleepDay = filterUser => {
+  //   if (filterUser.length === 0) {
+    //     return "0";
+    //   };
+    //   const total = filterUser.reduce((acc, user) => {
+      //     return (acc += user.hoursSlept);
+      //   }, 0);
+      //   return (total / filterUser.length).toFixed(0);
+      // };
+
+
+      // Return a user’s sleep quality for a specific day
+      // export const getUserSleepQuality = (filterSleepData, dateOfSleep) => {
+      //   const elementDate = filterSleepData.find(
+      //     (element) => element.date === dateOfSleep
+      //     );
+      //     return elementDate.sleepQuality;
+      //   };
+      
   //Return the user’s average sleep quality per day over all - Ben started
   // export const averageSleepQuality = filterUser => {
   //   const total = filterUser.reduce((acc, user) => {
