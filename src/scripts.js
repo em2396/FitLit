@@ -18,10 +18,11 @@ let activityDataAll;
 window.addEventListener('load', function () {
   Promise.all(fetchPromises).then((values) => {
     //data from Web APIs:
+    console.log(values);
     userDataAll = values[0].users;
     sleepDataAll = values[1].sleepData;
-    hydrationDataAll = values[2].hydrationData;
-    activityDataAll = values[3].activityData;
+    activityDataAll = values[2].activityData;
+    hydrationDataAll = values[3].hydrationData;
 
     //random currentUser functions:
     let randomUserIndex = getRandomUser(userDataAll);
@@ -29,6 +30,7 @@ window.addEventListener('load', function () {
  
     //Hydration functions:
     let hydrationData = filterUserData(hydrationDataAll, currentUser);  
+    console.log(hydrationData)
     let todaysHydrationDate = getLatestData(hydrationData);
     let waterPerDayPerWeek = getLatestData(hydrationData, 'week');
     let waterChartToDom = theWaterChart(waterPerDayPerWeek);
