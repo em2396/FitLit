@@ -2,7 +2,6 @@ import { expect } from "chai";
 import { universalAverage, specificSleepDay } from "../src/data-model.js";
 import userSample from "../src/data/sampleData";
 
-
 describe("SleepTests", () => {
   let users;
 
