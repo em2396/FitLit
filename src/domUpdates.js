@@ -50,7 +50,7 @@ export const displayActivityInfo = (milesPerDay, minutesPerDay, activityToday, a
     activityChart.innerHTML = activityChartToDom;
   };
 
-//Step Info:
+//Step:
 export const displayStepInfo = (currentUser, stepGoal, stepChartToDom, compareSteps, averageSteps) => {
   stepChart.innerHTML = stepChartToDom;
   steps.innerHTML = `<strong> Total Steps for Today: </strong> ${stepGoal.numSteps}<br>
@@ -59,4 +59,5 @@ export const displayStepInfo = (currentUser, stepGoal, stepChartToDom, compareSt
   usersAvgSteps.innerHTML = `<strong>The average users step goal:</strong> ${averageSteps} steps.`;
   stepComparison.innerHTML = compareSteps;
 };
+
 
