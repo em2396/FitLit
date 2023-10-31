@@ -1,37 +1,44 @@
-import { getRandomUser, getUserData, filterUserData, getMilesPerDay, getMinutesPerDay, getStepGoal, theWaterChart, theStepChart, theActivityChart, theSleepingChart, compareStepGoal, universalAverage, getLatestData, getInfoPerDay } from './data-model.js';
+import { getRandomUser, getUserData, filterUserData, getMilesPerDay, getMinutesPerDay, getStepGoal, theWaterChart, theStepChart, theActivityChart, theSleepingChart, compareStepGoal, universalAverage, getLatestData, getInfoPerDay, sendDataToAPI } from './data-model.js';
 // import {  } from './hydrationFunctions.js';
 import { displayUserInfo, displayWaterInfo, displaySleepInfo, displayActivityInfo, displayStepInfo } from './domUpdates.js';
-import { fetchPromises } from './apiCalls.js';
+import { fetchPromises, fetchPosts } from './apiCalls.js';
 import './styles.css';
 
 //QuerySelectors Here:
 const userToggleButton = document.querySelector('.toggleButton');
 const userInformation = document.querySelector('.user-info');
+const addButton = document.querySelector('#addButton');
+const dateInput = document.querySelector('#dateInput');
+const ouncesInput = document.querySelector('#ouncesInput');
 
 //Variables Here:
 let userDataAll;
 let sleepDataAll;
 let hydrationDataAll;
 let activityDataAll;
+// let hydrationData;
+let currentUser
+
 
 //Event Listeners Here:
 window.addEventListener('load', function () {
   Promise.all(fetchPromises).then((values) => {
     //data from Web APIs:
-    console.log(values);
+    // console.log(values, 'API values')
     userDataAll = values[0].users;
     sleepDataAll = values[1].sleepData;
     activityDataAll = values[2].activityData;
     hydrationDataAll = values[3].hydrationData;
-
+    
     //random currentUser functions:
     let randomUserIndex = getRandomUser(userDataAll);
-    let currentUser = getUserData(userDataAll, randomUserIndex);
- 
+    currentUser = getUserData(userDataAll, randomUserIndex);
+    console.log(currentUser, 'current')
+    
     //Hydration functions:
     let hydrationData = filterUserData(hydrationDataAll, currentUser);  
-    console.log(hydrationData)
     let todaysHydrationDate = getLatestData(hydrationData);
+    // console.log(todaysHydrationDate, 'today')
     let waterPerDayPerWeek = getLatestData(hydrationData, 'week');
     let waterChartToDom = theWaterChart(waterPerDayPerWeek);
     
@@ -69,4 +76,11 @@ window.addEventListener('load', function () {
 userToggleButton.addEventListener('click',function() {
   userInformation.classList.toggle('hidden')
 });
+
+//Create an event Listener for when the button is added. This will invoke the function fetchPost which will send a post request to update data info
+addButton.addEventListener('click', function(event) {
+  event.preventDefault()
+  sendDataToAPI(currentUser)
+  setTimeout(console.log(userDataAll), 2000)
+})
 
