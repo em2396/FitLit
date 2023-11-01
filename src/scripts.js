@@ -4,6 +4,7 @@ import { displayUserInfo, displayWaterInfo, displaySleepInfo, displayActivityInf
 import { fetchPromises } from './apiCalls.js';
 import './styles.css';
 
+
 //QuerySelectors Here:
 const userToggleButton = document.querySelector('.toggleButton');
 const userInformation = document.querySelector('.user-info');
@@ -13,19 +14,34 @@ let userDataAll;
 let sleepDataAll;
 let hydrationDataAll;
 let activityDataAll;
+let currentUser
 
 //Event Listeners Here:
-window.addEventListener('load', function () {
+window.addEventListener('DOMContentLoaded', function () {
   Promise.all(fetchPromises).then((values) => {
     //data from Web APIs:
     userDataAll = values[0].users;
     sleepDataAll = values[1].sleepData;
-    hydrationDataAll = values[3].hydrationData;
     activityDataAll = values[2].activityData;
+    hydrationDataAll = values[3].hydrationData;
+
+    const picker = datepicker(dateInput, {
+      onShow: instance => {
+        console.log(instance.dateSelected)
+      },
+      onSelect: (instance, date) => {
+        const formattedDate = `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`
+        dateInput.value = formattedDate
+      },
+      minDate: new Date (2023, 6, 2),
+      startDate: new Date (2023, 6, 2),
+      // disabledDates: [new Date(2023, 2, 24 - 2023, 6, 1)] DOESN'T WORK ?
+    })
+    console.log(picker, 'hello')
 
     //random currentUser functions:
     let randomUserIndex = getRandomUser(userDataAll);
-    let currentUser = getUserData(userDataAll, randomUserIndex);
+     currentUser = getUserData(userDataAll, randomUserIndex);
  
     //Hydration functions:
     let hydrationData = filterUserData(hydrationDataAll, currentUser);  
@@ -65,4 +81,11 @@ window.addEventListener('load', function () {
 userToggleButton.addEventListener('click',function() {
   userInformation.classList.toggle('hidden')
 });
+
+//Create an event Listener for when the button is added. This will invoke the function fetchPost which will send a post request to update data info
+addButton.addEventListener('click', function(event) {
+  event.preventDefault()
+  sendDataToAPI(currentUser)
+  // setTimeout(console.log(userDataAll), 2000)
+})
 
