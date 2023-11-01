@@ -1,5 +1,5 @@
 import Chart from 'chart.js/auto'
-import { fetchPosts } from './apiCalls';
+import { theWaterChart, theStepChart, theActivityChart, theSleepingChart } from './charts.js'
 
 /// === HELPER FUNCTIONS === ///
 export const getRandomUser = userDataObj => {
@@ -22,8 +22,11 @@ export const getUserData = (userObj, indexPosition) => {
 //Universal average function
 //replace getAverageStepGoal, averageSleepQuality, averageSleepDay, getAvgDailyOunces (in hydrationFunctions.js)
 export const universalAverage = (obj, accessKey) => {
+  if (obj.length === 0) {
+    return 0; 
+  }
   const total = obj.reduce((acc, current) => {
-    return acc += current[accessKey];
+    return acc + current[accessKey];
   }, 0);
   return (total / obj.length).toFixed(0);
 };
@@ -40,14 +43,16 @@ export const getLatestData = (filteredData, wholeWeek) => {
   }
 };
 
-
 //Filter all the user data to all the data of the current user
 export const filterUserData = (data, currentUserObject) => {
+  // console.log(data, 'data in filterUser')
+  const filteredElement = data.filter((element) => {
   // console.log(data, 'data in filterUser')
   const filteredElement = data.filter((element) => {
     return element.userID === currentUserObject.id;
   });
   return filteredElement;
+});
 };
 
 //Return how many hours a user slept for a specific day
@@ -87,7 +92,6 @@ export const getStepGoal = (currentUser, currentActivityData, today) => {
   }
 };
 
-
 //compare averageStep goal:
 export const compareStepGoal = (currentUser, allUsers) => {
   const averageStepGoal = universalAverage(allUsers, 'dailyStepGoal'); 
@@ -102,13 +106,33 @@ export const compareStepGoal = (currentUser, allUsers) => {
   }
 };
 
+export const getOuncesPerDay = (userObj, dataList, date) => {
+  const hydrationUserId = dataList.find(dataObj => dataObj.userID === userObj.id && dataObj.date === date);
+  if (hydrationUserId) {
+    return hydrationUserId.numOunces;
+  } else {
+    return 0;
+  };
+};
 
+
+export const sendDataToAPI = current => {
+  //if statement for wrongly inputted data
+  const api = {
+    userID: current.id,
+    date: dateInput.value,
+    numOunces: ouncesInput.value
+  }
+  // console.log(api, 'api object')
+  fetchPosts(api);
+  return api;
+}
 /// === ACTIVITY === ///
 
 // Return how many minutes a user was active for a given day
 // export const getMinutesPerDay = (currentActivityData, today) => {
-//   const activityUserID = currentActivityData.find(user => user.date === today.date);
-//   if (activityUserID) {
+  //   const activityUserID = currentActivityData.find(user => user.date === today.date);
+  //   if (activityUserID) {
 //     return activityUserID.minutesActive;
 //   } else {
 //     return 0;
@@ -160,124 +184,3 @@ export const compareStepGoal = (currentUser, allUsers) => {
   //   return (total / userSample.length).toFixed(0);
   // };
 
-/// === CHARTS === ///
-export const theWaterChart = waterPerDayPerWeek => {
-  const data = waterPerDayPerWeek;
-  new Chart(
-    document.getElementById('waterChart'),
-    {
-      type: 'bar',
-      data: {
-        labels: data.map(row => row.date),
-        datasets: [
-          {
-            label: 'Recent Week of Water',
-            data: data.map(row => row.numOunces)
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          y: {
-            title: {
-              display: true,
-              text: 'in fluid Oz.'
-            }
-          }
-        }
-      }
-    })
-};
-
-export const theStepChart = activityData => {
-  const data = activityData;
-  new Chart(
-    document.getElementById('stepChart'),
-    {
-      type: 'doughnut',
-      data: {
-        labels: data.map(row => row.date),
-        datasets: [
-          {
-            label: 'Num of Steps',
-            data: data.map(row => row.numSteps)
-          }
-        ]
-      },
-      options: {
-        responsive: true
-      }
-    }
-  )
-};
-
-export const theActivityChart = activityData => {
-  const data = activityData;
-  new Chart(
-    document.getElementById('activityChart'),
-    {
-      type: 'line',
-      data: {
-        labels: data.map(row => row.date),
-        datasets: [
-          {
-            label: 'Minutes Active',
-            data: data.map(row => row.minutesActive)
-          }
-        ]
-      },
-      options: {
-        responsive: true
-      }
-    })
-};
-
-export const theSleepingChart = sleepInfo => {
-  const data = sleepInfo;
-  new Chart(
-    document.getElementById('sleepChart'),
-    {
-      type: 'bar',
-      data: {
-        labels: data.map(row => row.date),
-        datasets: [
-          {
-            label: 'Hours Slept',
-            data: data.map(row => row.hoursSlept),
-            backgroundColor: '#0461cf'
-          },
-          {
-            label: 'Sleep Quality',
-            data: data.map(row => row.sleepQuality),
-            backgroundColor: '#404348'
-          }
-        ]
-      },
-      options: {
-        responsive: true
-      }
-    })
-}
-
-
-//We need to create an object based off of input fields
-//this will be an argument in fetchPosts
-// function (currentUser, inputDate, inputOunces)
-// {
-//  userID: currentUser.id,
- //   date: input date 
- //   numOunces: inputOunces
-// }
-
-export const sendDataToAPI = current => {
-  //if statement for wrongly inputted data
-  const api = {
-    userID: current.id,
-    date: dateInput.value,
-    numOunces: ouncesInput.value
-  }
-  // console.log(api, 'api object')
-  fetchPosts(api);
-  return api;
-}

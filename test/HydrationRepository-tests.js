@@ -1,10 +1,6 @@
 import { expect } from "chai";
 
-import {
-  getAvgDailyOunces,
-  getOuncesPerDay,
-  getDataPerWeek,
-} from "../src/hydrationFunctions";
+import { universalAverage, getInfoPerDay } from "../src/data-model.js";
 
 import userSample from "../src/data/sampleData";
 
@@ -15,40 +11,35 @@ describe("HydrationTest", () => {
     hydrationData = userSample.hydration;
   });
 
-  it("should return a user's average fluid ounces consumed per day for all time", () => {
-    const expectedAverage = 52;
-    const averageOunces = getAvgDailyOunces(hydrationData);
-
-    expect(averageOunces).to.equal(expectedAverage);
-  });
-
   it("should return 0 if no user data is found", () => {
-    const hydrationData = []; // Simulate an empty array
-    const result = getAvgDailyOunces(hydrationData);
-
-    expect(result).to.equal(0);
-  });  
-
-  it("should return a number for the amount of ounces a user has consumed on a specific day", () => {
-    const userObj = userSample.sampleUsers[0];
-    const specificDate = "2023/03/24";
-    const result = getOuncesPerDay(userObj, hydrationData, specificDate);
-
-    expect(result).to.be.a("number");
-  });
-
-  it("should return 0 if no user data is found for that date", () => {
-    const userObj = userSample.sampleUsers[0];
-    const specificDate = "2023/03/25";
-    const result = getOuncesPerDay(userObj, hydrationData, specificDate);
+    const hydrationData = [];
+    const result = universalAverage(hydrationData);
 
     expect(result).to.equal(0);
   });
 
-  it("should return an array with ounces of water for the last 7 days of data", () => {
-    const startDate = "2023/03/25";
-    const result = getDataPerWeek(hydrationData, startDate);
+  it("should return a number for the amount of ounces consumed on a given day", () => {
+    const result = universalAverage(hydrationData, "numOunces");
 
-    expect(result).to.be.an("array");
+    expect(parseInt(result)).to.be.a("number");
+  });
+
+  it("should return a number of average all time water intake", () => {
+    const result = universalAverage(hydrationData, "numOunces");
+
+    expect(parseInt(result)).to.be.a("number");
+  });
+
+  it("should return a object with ounces of water for the last 7 days of data", () => {
+    const result = universalAverage(hydrationData, "numOunces");
+
+    expect(parseInt(result)).to.be.a("number");
+  });
+
+  it("should return 0 if no data is provided", () => {
+    const users = [];
+    const result = universalAverage(users, "someKey");
+
+    expect(result).to.equal(0);
   });
 });

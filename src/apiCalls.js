@@ -1,10 +1,10 @@
-// export const urls = [
-//   "https://fitlit-api.herokuapp.com/api/v1/users",
-//   "https://fitlit-api.herokuapp.com/api/v1/sleep",
-//   "https://fitlit-api.herokuapp.com/api/v1/hydration",
-//   "https://fitlit-api.herokuapp.com/api/v1/activity",
-// ];
-//^^^^This is the old data set from Part 1^^^^^
+// // export const urls = [
+// //   "https://fitlit-api.herokuapp.com/api/v1/users",
+// //   "https://fitlit-api.herokuapp.com/api/v1/sleep",
+// //   "https://fitlit-api.herokuapp.com/api/v1/hydration",
+// //   "https://fitlit-api.herokuapp.com/api/v1/activity",
+// // ];
+// // ^^^^This is the old data set from Part 1^^^^^
 
 export const urls = [
   "http://localhost:3001/api/v1/users",
@@ -20,12 +20,14 @@ export const fetchPromises = urls.map(url =>
       return data;
     }).catch(error => {
       console.log(error)
+    }).catch(error => {
+      console.log(error)
     })
 );
 
 
 //if input boxes are both filled, then invoke fetch 
-export function fetchPosts(data) {
+export const fetchPosts = (data) => {
   fetch ('http://localhost:3001/api/v1/hydration', {
     method: 'POST',
     body: JSON.stringify(data),
@@ -37,3 +39,4 @@ export function fetchPosts(data) {
   .then (json => console.log(json, 'json'))
   .catch (error => console.log(error))
 }
+
