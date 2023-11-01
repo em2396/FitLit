@@ -47,9 +47,12 @@ export const getLatestData = (filteredData, wholeWeek) => {
 export const filterUserData = (data, currentUserObject) => {
   // console.log(data, 'data in filterUser')
   const filteredElement = data.filter((element) => {
+  // console.log(data, 'data in filterUser')
+  const filteredElement = data.filter((element) => {
     return element.userID === currentUserObject.id;
   });
   return filteredElement;
+});
 };
 
 //Return how many hours a user slept for a specific day
@@ -65,7 +68,6 @@ export const specificSleepDay = (filterUser, dateOfSleep) => {
 //Replace getMilesPerDay, getUserSleepQuality (not being used in the DOM), getMinutesPerDay
 export const getInfoPerDay = (currentUser, currentData, today, specific) => {
   const elementData = currentData.find(user => user.date === today.date);
-  // console.log(elementData, specific, 'specific <<<');
   if (!elementData) {
     return '0';
   } else if (specific === 'numSteps') {
@@ -181,16 +183,4 @@ export const sendDataToAPI = current => {
   //   }, 0)
   //   return (total / userSample.length).toFixed(0);
   // };
-
-
-
-
-//We need to create an object based off of input fields
-//this will be an argument in fetchPosts
-// function (currentUser, inputDate, inputOunces)
-// {
-//  userID: currentUser.id,
- //   date: input date 
- //   numOunces: inputOunces
-// }
 

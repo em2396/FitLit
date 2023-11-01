@@ -20,6 +20,8 @@ export const fetchPromises = urls.map(url =>
       return data;
     }).catch(error => {
       console.log(error)
+    }).catch(error => {
+      console.log(error)
     })
 );
 
