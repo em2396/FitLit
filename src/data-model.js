@@ -47,12 +47,9 @@ export const getLatestData = (filteredData, wholeWeek) => {
 export const filterUserData = (data, currentUserObject) => {
   // console.log(data, 'data in filterUser')
   const filteredElement = data.filter((element) => {
-  // console.log(data, 'data in filterUser')
-  const filteredElement = data.filter((element) => {
     return element.userID === currentUserObject.id;
   });
   return filteredElement;
-});
 };
 
 //Return how many hours a user slept for a specific day
