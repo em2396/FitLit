@@ -1,5 +1,4 @@
-import { getRandomUser, getUserData, filterUserData, getMilesPerDay, getMinutesPerDay, getStepGoal, theWaterChart, theStepChart, theActivityChart, theSleepingChart, compareStepGoal, universalAverage, getLatestData, getInfoPerDay, sendDataToAPI } from './data-model.js';
-// import {  } from './hydrationFunctions.js';
+import { getRandomUser, getUserData, filterUserData, getStepGoal, compareStepGoal, universalAverage, getLatestData, getInfoPerDay, sendDataToAPI } from './data-model.js';
 import { theWaterChart, theStepChart, theActivityChart, theSleepingChart } from './charts.js'
 
 

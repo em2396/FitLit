@@ -1,6 +1,5 @@
 import Chart from 'chart.js/auto';
 
-
 /// === CHARTS === ///
 export const theWaterChart = (waterPerDayPerWeek) => {
   const data = waterPerDayPerWeek;

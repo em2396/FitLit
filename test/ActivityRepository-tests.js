@@ -1,9 +1,6 @@
 import { expect } from "chai";
 
-import {
-  getInfoPerDay,
-  getStepGoal,
-} from "../src/data-model.js";
+import { getInfoPerDay, getStepGoal } from "../src/data-model.js";
 
 import userSample from "../src/data/sampleData";
 
@@ -33,17 +30,22 @@ describe("ActivityTest", () => {
 
   it("should return miles per day for a given date", () => {
     const dateToTest = "2022/01/01";
-    const expectedMiles = "0"; 
+    const expectedMiles = "0";
     const result = getInfoPerDay(currentUser, currentActivityData, dateToTest);
-    
+
     expect(result).to.equal(expectedMiles);
   });
-  
+
   it("should users active minutes for a given date", () => {
     const dateToTest = "2022/01/01";
-    const expectedMinutes = "0"; 
-    const result = getInfoPerDay(currentUser, currentActivityData, dateToTest, "minutesActive");
-    
+    const expectedMinutes = "0";
+    const result = getInfoPerDay(
+      currentUser,
+      currentActivityData,
+      dateToTest,
+      "minutesActive"
+    );
+
     expect(result).to.equal(expectedMinutes);
   });
 
@@ -54,16 +56,21 @@ describe("ActivityTest", () => {
     expect(result).to.equal("0");
   });
 
-  it("should handle missing date in getMinutesPerDay", () => {    
+  it("should handle missing date in getMinutesPerDay", () => {
     const dateToTest = "2022/01/03";
-    const result = getInfoPerDay(currentUser, currentActivityData, dateToTest, "minutesActive");
+    const result = getInfoPerDay(
+      currentUser,
+      currentActivityData,
+      dateToTest,
+      "minutesActive"
+    );
 
     expect(result).to.equal("0");
   });
 
   describe("getStepGoal", () => {
     let currentUser;
-  
+
     beforeEach(() => {
       currentUser = {
         id: 1,
@@ -71,20 +78,24 @@ describe("ActivityTest", () => {
         dailyStepGoal: 10000,
       };
     });
-  
+
     it("should return steps left to reach the goal for a given day", () => {
       const dateToTest = "2023/03/24";
       const expectedStepsLeft = 2638;
-      const result = getStepGoal(currentUser, userSample.activity, { date: dateToTest });
-      
+      const result = getStepGoal(currentUser, userSample.activity, {
+        date: dateToTest,
+      });
+
       expect(result.stepsLeft).to.equal(expectedStepsLeft);
     });
 
-    it("should return number of steps for the specified user and date", () => {  
+    it("should return number of steps for the specified user and date", () => {
       const dateToTest = "2023/03/24";
       const expectedSteps = 7362;
-      const result = getStepGoal(currentUser, userSample.activity, { date: dateToTest });
-      
+      const result = getStepGoal(currentUser, userSample.activity, {
+        date: dateToTest,
+      });
+
       expect(result.numSteps).to.equal(expectedSteps);
     });
   });

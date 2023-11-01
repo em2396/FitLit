@@ -1,5 +1,5 @@
 import Chart from 'chart.js/auto'
-import { fetchPosts } from './apiCalls';
+import { theWaterChart, theStepChart, theActivityChart, theSleepingChart } from './charts.js'
 
 /// === HELPER FUNCTIONS === ///
 export const getRandomUser = userDataObj => {
@@ -65,7 +65,7 @@ export const specificSleepDay = (filterUser, dateOfSleep) => {
 //Replace getMilesPerDay, getUserSleepQuality (not being used in the DOM), getMinutesPerDay
 export const getInfoPerDay = (currentUser, currentData, today, specific) => {
   const elementData = currentData.find(user => user.date === today.date);
-  console.log(elementData, specific, 'specific <<<');
+  // console.log(elementData, specific, 'specific <<<');
   if (!elementData) {
     return '0';
   } else if (specific === 'numSteps') {
@@ -114,12 +114,23 @@ export const getOuncesPerDay = (userObj, dataList, date) => {
 };
 
 
+export const sendDataToAPI = current => {
+  //if statement for wrongly inputted data
+  const api = {
+    userID: current.id,
+    date: dateInput.value,
+    numOunces: ouncesInput.value
+  }
+  // console.log(api, 'api object')
+  fetchPosts(api);
+  return api;
+}
 /// === ACTIVITY === ///
 
 // Return how many minutes a user was active for a given day
 // export const getMinutesPerDay = (currentActivityData, today) => {
-//   const activityUserID = currentActivityData.find(user => user.date === today.date);
-//   if (activityUserID) {
+  //   const activityUserID = currentActivityData.find(user => user.date === today.date);
+  //   if (activityUserID) {
 //     return activityUserID.minutesActive;
 //   } else {
 //     return 0;
@@ -183,14 +194,3 @@ export const getOuncesPerDay = (userObj, dataList, date) => {
  //   numOunces: inputOunces
 // }
 
-export const sendDataToAPI = current => {
-  //if statement for wrongly inputted data
-  const api = {
-    userID: current.id,
-    date: dateInput.value,
-    numOunces: ouncesInput.value
-  }
-  // console.log(api, 'api object')
-  fetchPosts(api);
-  return api;
-}
