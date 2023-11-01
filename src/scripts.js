@@ -1,4 +1,4 @@
-import { getRandomUser, getUserData, filterUserData, getInfoPerDay, getMinutesPerDay, getStepGoal, compareStepGoal, universalAverage, getLatestData } from './data-model.js';
+import { getRandomUser, getUserData, filterUserData, getInfoPerDay, getMinutesPerDay, getStepGoal, compareStepGoal, universalAverage, getLatestData, sendDataToAPI } from './data-model.js';
 import { theWaterChart, theStepChart, theActivityChart, theSleepingChart } from './charts.js'
 import { displayUserInfo, displayWaterInfo, displaySleepInfo, displayActivityInfo, displayStepInfo } from './domUpdates.js';
 import { fetchPromises } from './apiCalls.js';
@@ -26,10 +26,10 @@ window.addEventListener('DOMContentLoaded', function () {
     hydrationDataAll = values[3].hydrationData;
 
     const picker = datepicker(dateInput, {
-      onShow: instance => {
-        console.log(instance.dateSelected)
-      },
-      onSelect: (instance, date) => {
+      // onShow: instance => {
+      //   console.log(instance.dateSelected)
+      // },
+      onSelect: (date) => {
         const formattedDate = `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`
         dateInput.value = formattedDate
       },
