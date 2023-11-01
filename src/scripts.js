@@ -4,6 +4,7 @@ import { displayUserInfo, displayWaterInfo, displaySleepInfo, displayActivityInf
 import { fetchPromises, fetchPosts } from './apiCalls.js';
 import './styles.css';
 
+
 //QuerySelectors Here:
 const userToggleButton = document.querySelector('.toggleButton');
 const userInformation = document.querySelector('.user-info');
@@ -16,12 +17,11 @@ let userDataAll;
 let sleepDataAll;
 let hydrationDataAll;
 let activityDataAll;
-// let hydrationData;
 let currentUser
 
 
 //Event Listeners Here:
-window.addEventListener('load', function () {
+window.addEventListener('DOMContentLoaded', function () {
   Promise.all(fetchPromises).then((values) => {
     //data from Web APIs:
     // console.log(values, 'API values')
@@ -29,6 +29,20 @@ window.addEventListener('load', function () {
     sleepDataAll = values[1].sleepData;
     activityDataAll = values[2].activityData;
     hydrationDataAll = values[3].hydrationData;
+
+    const picker = datepicker(dateInput, {
+      onShow: instance => {
+        console.log(instance.dateSelected)
+      },
+      onSelect: (instance, date) => {
+        const formattedDate = `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`
+        dateInput.value = formattedDate
+      },
+      minDate: new Date (2023, 6, 2),
+      startDate: new Date (2023, 6, 2),
+      // disabledDates: [new Date(2023, 2, 24 - 2023, 6, 1)] DOESN'T WORK ?
+    })
+    console.log(picker, 'hello')
     
     //random currentUser functions:
     let randomUserIndex = getRandomUser(userDataAll);
@@ -81,6 +95,5 @@ userToggleButton.addEventListener('click',function() {
 addButton.addEventListener('click', function(event) {
   event.preventDefault()
   sendDataToAPI(currentUser)
-  setTimeout(console.log(userDataAll), 2000)
+  // setTimeout(console.log(userDataAll), 2000)
 })
-
