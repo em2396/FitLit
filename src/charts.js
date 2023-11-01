@@ -3,7 +3,7 @@ import Chart from 'chart.js/auto';
 /// === CHARTS === ///
 export const theWaterChart = (waterPerDayPerWeek) => {
   const data = waterPerDayPerWeek;
-  new Chart(document.getElementById("waterChart"), {
+  var waterC = new Chart(document.getElementById("waterChart"), {
     type: "bar",
     data: {
       labels: data.map((row) => row.date),
@@ -26,6 +26,7 @@ export const theWaterChart = (waterPerDayPerWeek) => {
       },
     },
   });
+  return waterC;
 };
 
 export const theStepChart = (activityData) => {
