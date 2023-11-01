@@ -102,64 +102,6 @@ export const compareStepGoal = (currentUser, allUsers) => {
   }
 };
 
-
-/// === ACTIVITY === ///
-
-// Return how many minutes a user was active for a given day
-// export const getMinutesPerDay = (currentActivityData, today) => {
-//   const activityUserID = currentActivityData.find(user => user.date === today.date);
-//   if (activityUserID) {
-//     return activityUserID.minutesActive;
-//   } else {
-//     return 0;
-//   }
-// };
-// export const getMilesPerDay = (currentUser, currentActivityData, today) => {
-//   const activityData = currentActivityData.find(user => user.date === today.date);
-//   if (!activityData) {
-//     return "0";
-//   }
-//   const milesPerDay = ((currentUser.strideLength * activityData.numSteps) / 5280).toFixed(0);
-//   return milesPerDay;
-// };
-
-/// === SLEEP === ///
-//Return the user’s average number of hours slept per day
-// export const averageSleepDay = filterUser => {
-  //   if (filterUser.length === 0) {
-    //     return "0";
-    //   };
-    //   const total = filterUser.reduce((acc, user) => {
-      //     return (acc += user.hoursSlept);
-      //   }, 0);
-      //   return (total / filterUser.length).toFixed(0);
-      // };
-
-
-      // Return a user’s sleep quality for a specific day
-      // export const getUserSleepQuality = (filterSleepData, dateOfSleep) => {
-      //   const elementDate = filterSleepData.find(
-      //     (element) => element.date === dateOfSleep
-      //     );
-      //     return elementDate.sleepQuality;
-      //   };
-      
-  //Return the user’s average sleep quality per day over all - Ben started
-  // export const averageSleepQuality = filterUser => {
-  //   const total = filterUser.reduce((acc, user) => {
-  //     return (acc += user.sleepQuality);
-  //   }, 0);
-  //   return (total / filterUser.length).toFixed(0);
-  // };
-  
-  //average stepGoal
-  // export const getAverageStepGoal = userSample => {
-  //   const total = userSample.reduce((accum, user) => {
-  //     return accum += user.dailyStepGoal;
-  //   }, 0)
-  //   return (total / userSample.length).toFixed(0);
-  // };
-
 /// === CHARTS === ///
 export const theWaterChart = waterPerDayPerWeek => {
   const data = waterPerDayPerWeek;
@@ -260,24 +202,16 @@ export const theSleepingChart = sleepInfo => {
     })
 }
 
-
-//We need to create an object based off of input fields
-//this will be an argument in fetchPosts
-// function (currentUser, inputDate, inputOunces)
-// {
-//  userID: currentUser.id,
- //   date: input date 
- //   numOunces: inputOunces
-// }
-
 export const sendDataToAPI = current => {
-  //if statement for wrongly inputted data
-  const api = {
-    userID: current.id,
-    date: dateInput.value,
-    numOunces: ouncesInput.value
+  if (!isNaN(new Date(dateInput.value)) && typeof ouncesInput.value === 'number' && ouncesInput.value <= 675) {
+    const api = {
+      userID: current.id,
+      date: dateInput.value,
+      numOunces: ouncesInput.value
+    }
+    fetchPosts(api);
+    return api;
+  } else {
+    alert('One or more was inputted correctly: Incorrect date and/or unreasonable number');
   }
-  // console.log(api, 'api object')
-  fetchPosts(api);
-  return api;
 }
