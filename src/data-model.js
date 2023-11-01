@@ -1,5 +1,7 @@
-import Chart from 'chart.js/auto'
-import { theWaterChart, theStepChart, theActivityChart, theSleepingChart } from './charts.js'
+// import Chart from 'chart.js/auto'
+// import { theWaterChart, theStepChart, theActivityChart, theSleepingChart } from './charts.js'
+import { fetchPosts } from "./apiCalls.js";
+
 
 /// === HELPER FUNCTIONS === ///
 export const getRandomUser = userDataObj => {
@@ -113,8 +115,11 @@ export const getOuncesPerDay = (userObj, dataList, date) => {
 };
 
 
+//need to add another if statement for if the date after 07 01 has already been inputted...
 export const sendDataToAPI = current => {
-  if (!isNaN(new Date(dateInput.value)) && typeof ouncesInput.value === 'number' && ouncesInput.value <= 675) {
+  let ouncesStr = ouncesInput.value;
+  let num = parseInt(ouncesStr);
+  if (!isNaN(new Date(dateInput.value)) && typeof num === 'number' && ouncesInput.value <= 675 && ouncesInput.value) {
     const api = {
       userID: current.id,
       date: dateInput.value,
