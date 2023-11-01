@@ -54,7 +54,7 @@ describe("getUserData", () => {
   it("should return null for an empty user data array", () => {
     const indexPosition = 0;
     const userData = getUserData([], indexPosition);
-    
+
     expect(userData).to.equal(null);
   });
 });

@@ -1,16 +1,13 @@
-import { getRandomUser, getUserData, filterUserData, getMilesPerDay, getMinutesPerDay, getStepGoal, theWaterChart, theStepChart, theActivityChart, theSleepingChart, compareStepGoal, universalAverage, getLatestData, getInfoPerDay, sendDataToAPI } from './data-model.js';
-// import {  } from './hydrationFunctions.js';
+import { getRandomUser, getUserData, filterUserData, getInfoPerDay, getMinutesPerDay, getStepGoal, compareStepGoal, universalAverage, getLatestData } from './data-model.js';
+import { theWaterChart, theStepChart, theActivityChart, theSleepingChart } from './charts.js'
 import { displayUserInfo, displayWaterInfo, displaySleepInfo, displayActivityInfo, displayStepInfo } from './domUpdates.js';
-import { fetchPromises, fetchPosts } from './apiCalls.js';
+import { fetchPromises } from './apiCalls.js';
 import './styles.css';
 
 
 //QuerySelectors Here:
 const userToggleButton = document.querySelector('.toggleButton');
 const userInformation = document.querySelector('.user-info');
-const addButton = document.querySelector('#addButton');
-const dateInput = document.querySelector('#dateInput');
-const ouncesInput = document.querySelector('#ouncesInput');
 
 //Variables Here:
 let userDataAll;
@@ -19,12 +16,10 @@ let hydrationDataAll;
 let activityDataAll;
 let currentUser
 
-
 //Event Listeners Here:
 window.addEventListener('DOMContentLoaded', function () {
   Promise.all(fetchPromises).then((values) => {
     //data from Web APIs:
-    // console.log(values, 'API values')
     userDataAll = values[0].users;
     sleepDataAll = values[1].sleepData;
     activityDataAll = values[2].activityData;
@@ -43,16 +38,14 @@ window.addEventListener('DOMContentLoaded', function () {
       // disabledDates: [new Date(2023, 2, 24 - 2023, 6, 1)] DOESN'T WORK ?
     })
     console.log(picker, 'hello')
-    
+
     //random currentUser functions:
     let randomUserIndex = getRandomUser(userDataAll);
-    currentUser = getUserData(userDataAll, randomUserIndex);
-    console.log(currentUser, 'current')
-    
+     currentUser = getUserData(userDataAll, randomUserIndex);
+ 
     //Hydration functions:
     let hydrationData = filterUserData(hydrationDataAll, currentUser);  
     let todaysHydrationDate = getLatestData(hydrationData);
-    // console.log(todaysHydrationDate, 'today')
     let waterPerDayPerWeek = getLatestData(hydrationData, 'week');
     let waterChartToDom = theWaterChart(waterPerDayPerWeek);
     
@@ -69,11 +62,9 @@ window.addEventListener('DOMContentLoaded', function () {
     let activityData = filterUserData(activityDataAll, currentUser);
     let activityPerDayPerWeek = getLatestData(activityData,'week');
     let activityToday = getLatestData(activityData);
-    // let milesPerDay = getMilesPerDay(currentUser, activityData, activityToday);
-    let milesPerDay = getInfoPerDay(currentUser, activityData, activityToday, 'numSteps')
+    let milesPerDay = getInfoPerDay(currentUser, activityData, activityToday, "numSteps");
     let stepGoal = getStepGoal(currentUser, activityData, activityToday);
-    // let minutesPerDay = getMinutesPerDay(activityData, activityToday); 
-    let minutesPerDay = getInfoPerDay(currentUser, activityData, activityToday, 'minutesActive')
+    let minutesPerDay = getInfoPerDay(currentUser, activityData, activityToday, "minutesActive"); 
     let stepChartToDom = theStepChart(activityPerDayPerWeek);
     let activityChartToDom = theActivityChart(activityPerDayPerWeek);
     let compareSteps = compareStepGoal(currentUser, userDataAll);
@@ -97,3 +88,4 @@ addButton.addEventListener('click', function(event) {
   sendDataToAPI(currentUser)
   // setTimeout(console.log(userDataAll), 2000)
 })
+
