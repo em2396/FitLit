@@ -8,13 +8,17 @@ import './styles.css';
 //QuerySelectors Here:
 const userToggleButton = document.querySelector('.toggleButton');
 const userInformation = document.querySelector('.user-info');
+const waterChart = document.querySelector('#waterChart');
 
+//global
 //Variables Here:
 let userDataAll;
 let sleepDataAll;
-let hydrationDataAll;
 let activityDataAll;
-let currentUser
+export let hydrationDataAll;
+export let hydrationData
+export let waterChartToDom
+export let currentUser
 
 //Event Listeners Here:
 window.addEventListener('DOMContentLoaded', function () {
@@ -29,7 +33,7 @@ window.addEventListener('DOMContentLoaded', function () {
       // onShow: instance => {
       //   console.log(instance.dateSelected)
       // },
-      onSelect: (date) => {
+      onSelect: (instance, date) => {
         const formattedDate = `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`
         dateInput.value = formattedDate
       },
@@ -44,10 +48,10 @@ window.addEventListener('DOMContentLoaded', function () {
      currentUser = getUserData(userDataAll, randomUserIndex);
  
     //Hydration functions:
-    let hydrationData = filterUserData(hydrationDataAll, currentUser);  
+    hydrationData = filterUserData(hydrationDataAll, currentUser);  
     let todaysHydrationDate = getLatestData(hydrationData);
     let waterPerDayPerWeek = getLatestData(hydrationData, 'week');
-    let waterChartToDom = theWaterChart(waterPerDayPerWeek);
+    waterChartToDom = theWaterChart(waterPerDayPerWeek);
     
     //Sleep functions:
     let sleepData = filterUserData(sleepDataAll, currentUser);
@@ -86,6 +90,6 @@ userToggleButton.addEventListener('click',function() {
 addButton.addEventListener('click', function(event) {
   event.preventDefault()
   sendDataToAPI(currentUser)
-  // setTimeout(console.log(userDataAll), 2000)
 })
 
+    

@@ -6,6 +6,12 @@
 // // ];
 // // ^^^^This is the old data set from Part 1^^^^^
 
+import { hydrationDataAll, hydrationData, currentUser, waterChartToDom } from './scripts.js'
+import { theWaterChart } from './charts.js'
+import { displayWaterInfo } from './domUpdates.js'
+import { filterUserData, getLatestData} from './data-model.js';
+
+
 export const urls = [
   "http://localhost:3001/api/v1/users",
   "http://localhost:3001/api/v1/sleep",
@@ -36,7 +42,21 @@ export const fetchPosts = (data) => {
     }
   })
   .then (response => response.json())
-  .then (json => console.log(json, 'json'))
+  .then (json => {
+    hydrationDataAll.push(json);
+    console.log(hydrationDataAll, 'inside POST func')
+    let newHydrationData = filterUserData(hydrationDataAll, currentUser); 
+    let todaysHydrationDate = getLatestData(newHydrationData);
+    console.log(todaysHydrationDate, 'should be newly added')
+    let waterPerDayPerWeek = getLatestData(newHydrationData, 'week');
+    console.log(waterPerDayPerWeek, 'should included 7 days');
+    waterChartToDom.destroy();
+    waterChartToDom = theWaterChart(waterPerDayPerWeek);
+    displayWaterInfo(todaysHydrationDate, waterChartToDom);
+  })
   .catch (error => console.log(error))
 }
+
+
+//api
 
