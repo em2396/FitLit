@@ -10,7 +10,7 @@ const userToggleButton = document.querySelector('.toggleButton');
 const userInformation = document.querySelector('.user-info');
 const waterChart = document.querySelector('#waterChart');
 
-
+//global
 //Variables Here:
 let userDataAll;
 let sleepDataAll;
