@@ -133,7 +133,7 @@ export const sendDataToAPI = current => {
 }
 
 
-//data
+//drag function
 export function setupDraggable(targetElement) {
 interact(targetElement) 
   .draggable({
@@ -170,7 +170,7 @@ interact(targetElement)
   
     // translate the element
     target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
-    
+
     target.style.cursor = 'grabbing';
   
     // update the posiion attributes
