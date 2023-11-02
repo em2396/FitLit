@@ -1,5 +1,3 @@
-// import Chart from 'chart.js/auto'
-// import { theWaterChart, theStepChart, theActivityChart, theSleepingChart } from './charts.js'
 import { fetchPosts } from "./apiCalls.js";
 import interact from 'interactjs'
 
@@ -177,6 +175,3 @@ interact(targetElement)
     target.setAttribute('data-x', x)
     target.setAttribute('data-y', y)
   }
-  
-  // // this function is used later in the resizing and gesture demos
-  // window.dragMoveListener = dragMoveListener
