@@ -1,4 +1,4 @@
-import { getRandomUser, getUserData, filterUserData, getInfoPerDay, getMinutesPerDay, getStepGoal, compareStepGoal, universalAverage, getLatestData, sendDataToAPI } from './data-model.js';
+import { getRandomUser, getUserData, filterUserData, getInfoPerDay, getStepGoal, compareStepGoal, universalAverage, getLatestData, sendDataToAPI } from './data-model.js';
 import { theWaterChart, theStepChart, theActivityChart, theSleepingChart } from './charts.js'
 import { displayUserInfo, displayWaterInfo, displaySleepInfo, displayActivityInfo, displayStepInfo } from './domUpdates.js';
 import { fetchPromises } from './apiCalls.js';
@@ -9,7 +9,6 @@ import './styles.css';
 //QuerySelectors Here:
 const userToggleButton = document.querySelector('.toggleButton');
 const userInformation = document.querySelector('.user-info');
-const waterChart = document.querySelector('#waterChart');
 const stepBox = document.querySelector('#stepsBox');
 const waterBox = document.querySelector('#waterBox');
 const activityBox = document.querySelector('#activityBox');
@@ -35,12 +34,10 @@ window.addEventListener('DOMContentLoaded', function () {
     hydrationDataAll = values[3].hydrationData;
 
     const picker = datepicker(dateInput, {
-      // onShow: instance => {
-      //   console.log(instance.dateSelected)
-      // },
       onSelect: (instance, date) => {
         const formattedDate = `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`
         dateInput.value = formattedDate
+        picker.calendarContainer.style.setProperty('font-size', '1.5rem')
       },
       minDate: new Date (2023, 6, 2),
       startDate: new Date (2023, 6, 2),

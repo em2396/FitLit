@@ -1,12 +1,4 @@
-// // export const urls = [
-// //   "https://fitlit-api.herokuapp.com/api/v1/users",
-// //   "https://fitlit-api.herokuapp.com/api/v1/sleep",
-// //   "https://fitlit-api.herokuapp.com/api/v1/hydration",
-// //   "https://fitlit-api.herokuapp.com/api/v1/activity",
-// // ];
-// // ^^^^This is the old data set from Part 1^^^^^
-
-import { hydrationDataAll, hydrationData, currentUser, waterChartToDom } from './scripts.js'
+import { hydrationDataAll, currentUser, waterChartToDom } from './scripts.js'
 import { theWaterChart } from './charts.js'
 import { displayWaterInfo } from './domUpdates.js'
 import { filterUserData, getLatestData} from './data-model.js';
@@ -56,7 +48,3 @@ export const fetchPosts = (data) => {
   })
   .catch (error => console.log(error))
 }
-
-
-//api
-
