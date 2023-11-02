@@ -15,6 +15,7 @@
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+![Interact.js](https://img.shields.io/badge/Interact%20Js-2599ED?style=for-the-badge&logo=interactjs&logoColor=white)
 
 ## 👩‍💻 👩‍💻 👨‍💻 👩‍💻 Collaborators
 [Emalee Poellot](https://github.com/em2396)  | 
