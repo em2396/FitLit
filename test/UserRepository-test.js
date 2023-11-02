@@ -36,6 +36,7 @@ describe("getUserData", () => {
       name: "Tyreek VonRueden",
       address: "623 Koelpin Skyway, Lake Luigichester MN 77576-1678",
       email: "Nicolette_Halvorson43@yahoo.com",
+      strideLength: 4.5,
       dailyStepGoal: 9000,
       friends: [13, 19, 3],
       firstName: "Tyreek",
@@ -57,3 +58,18 @@ describe("getUserData", () => {
     expect(userData).to.equal(null);
   });
 });
+
+  it("should return null for an invalid index position", () => {
+    const indexPosition = -1;
+    const userData = getUserData(userSample.sampleUsers, indexPosition);
+
+    expect(userData).to.equal(null);
+  });
+
+  it("should return null for an empty user data array", () => {
+    const indexPosition = 0;
+    const userData = getUserData([], indexPosition);
+
+    expect(userData).to.equal(null);
+  });
+
