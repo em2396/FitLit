@@ -17,10 +17,16 @@ export const theWaterChart = (waterPerDayPerWeek) => {
     options: {
       responsive: true,
       scales: {
+        x: { // Use 'x' instead of 'y' to configure the x-axis
+          title: {
+            display: true,
+            text: "Date", // Your x-axis label
+          },
+        },
         y: {
           title: {
             display: true,
-            text: "in fluid Oz.",
+            text: "Water Amount (in fluid Oz)",
           },
         },
       },
