@@ -1,7 +1,7 @@
-import { getRandomUser, getUserData, filterUserData, getInfoPerDay, getStepGoal, compareStepGoal, universalAverage, getLatestData, sendDataToAPI } from './data-model.js';
+import { getRandomUser, getUserData, filterUserData, getInfoPerDay, getStepGoal, compareStepGoal, universalAverage, getLatestData } from './data-model.js';
 import { theWaterChart, theStepChart, theActivityChart, theSleepingChart } from './charts.js'
 import { displayUserInfo, displayWaterInfo, displaySleepInfo, displayActivityInfo, displayStepInfo } from './domUpdates.js';
-import { fetchPromises } from './apiCalls.js';
+import { fetchPromises, sendDataToAPI } from './apiCalls.js';
 import { setupDraggable } from './data-model.js';
 import './styles.css';
 
@@ -47,8 +47,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //random currentUser functions:
     let randomUserIndex = getRandomUser(userDataAll);
-     currentUser = getUserData(userDataAll, randomUserIndex);
- 
+    currentUser = getUserData(userDataAll, randomUserIndex);
+
     //Hydration functions:
     hydrationData = filterUserData(hydrationDataAll, currentUser);  
     let todaysHydrationDate = getLatestData(hydrationData);

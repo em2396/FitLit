@@ -58,3 +58,18 @@ describe("getUserData", () => {
     expect(userData).to.equal(null);
   });
 });
+
+  it("should return null for an invalid index position", () => {
+    const indexPosition = -1;
+    const userData = getUserData(userSample.sampleUsers, indexPosition);
+
+    expect(userData).to.equal(null);
+  });
+
+  it("should return null for an empty user data array", () => {
+    const indexPosition = 0;
+    const userData = getUserData([], indexPosition);
+
+    expect(userData).to.equal(null);
+  });
+
