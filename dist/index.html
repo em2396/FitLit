@@ -18,13 +18,13 @@
               <p class="steps-text" id="totalSteps"></p>
               <p class="steps-text" id="averageUsersSteps"></p>
               <p class="steps-text" id="stepComparison"></p>
-              <canvas id="stepChart"></canvas>
+              <canvas id="stepChart" aria-label="Total Steps Per Week Graph" role="img"></canvas>
           </section>
           <section class="first-row-left" id="waterBox" tabindex="0" class="draggable">
             <h1 class="titles" tabindex="0">Water</h2>
             <p id="waterConsumedToday"></p>
             <p id="waterEachDayOfWeek"></p>
-            <canvas id="waterChart"></canvas>
+            <canvas id="waterChart" aria-label="Total Water In Ounces Per Week Consumed Graph" role="img"></canvas>
           </section>
         </section>
         <section class="left-section">
@@ -34,7 +34,7 @@
             <p id="minutesActivePerDay"></p>
             <p id="milesWalkedPerDay"></p>
             <p id="weekStepCount"></p>
-            <canvas id="activityChart"></canvas>
+            <canvas id="activityChart" aria-label="Total Activity Per Week Graph" role="img"></canvas>
           </section>
           <section class="second-row-left" id="sleepBox" class="draggable">
             <h1 class="titles" tabindex="0">Sleeping</h1>
@@ -42,7 +42,7 @@
             <p id="averageSleepOverall"></p>
             <p id="sleepSpecificDay"></p>
             <p id="sleepPerDayPerWeek"></p>
-            <canvas id="sleepChart"></canvas>
+            <canvas id="sleepChart" aria-label="Total Sleep Accumulated Graph" role="img"></canvas>
             </aside>
           </section> 
         </section>
@@ -56,11 +56,10 @@
             </button>
         </header>
         <form class="form">
-          <label for="date" class="labels">Enter Date:
-          </label>
-          <input type="text" placeholder="YYYY/MM/DD" id="dateInput" required>
+          <label for="date" class="labels">Enter Date:</label>
+          <input type="text" placeholder="YYYY/MM/DD" id="dateInput" required/>
           <label for="ounces" class="labels">Number of Ounces:</label>
-          <input type="text" placeholder="Enter a whole number" id="ouncesInput" required>
+          <input type="text" placeholder="Enter a whole number" id="ouncesInput" required/>
           <button id="addButton">ADD</button>
         </form>
         </section>
