@@ -9,7 +9,7 @@
 import { hydrationDataAll, hydrationData, currentUser, waterChartToDom } from './scripts.js'
 import { theWaterChart } from './charts.js'
 import { displayWaterInfo } from './domUpdates.js'
-import { filterUserData, getLatestData} from './data-model.js';
+import { filterUserData, getLatestData, getOuncesPerDay, universalAverage} from './data-model.js';
 
 
 export const urls = [
@@ -55,6 +55,23 @@ export const fetchPosts = (data) => {
     displayWaterInfo(todaysHydrationDate, waterChartToDom);
   })
   .catch (error => console.log(error))
+}
+
+
+export const sendDataToAPI = current => {
+  let ouncesStr = ouncesInput.value;
+  let num = parseInt(ouncesStr);
+  if (!isNaN(new Date(dateInput.value)) && typeof num === 'number' && ouncesInput.value <= 675 && ouncesInput.value) {
+    const api = {
+      userID: current.id,
+      date: dateInput.value,
+      numOunces: ouncesInput.value
+    }
+    fetchPosts(api);
+    return api;
+  } else {
+    alert('One or more was inputted correctly: Incorrect date and/or unreasonable number');
+  }
 }
 
 
