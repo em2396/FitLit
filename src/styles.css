@@ -110,7 +110,7 @@ header {
   box-shadow: 0px 0px 1px 1px #01285e;
 }
 
-.toggleButton {
+.toggleButton, #addButton {
   margin: 20px;
   background-color: #4d7ef2;
   color: white;
@@ -144,8 +144,8 @@ header {
 #sleepChart,
 #stepChart {
   margin: 20px 10px;
-  max-width: 350px;
-  max-height: 200px;
+  max-width: 80%;
+  max-height: 60%;
   background-color: white;
   color: #FFFFFF;
 }
@@ -171,6 +171,19 @@ header {
   padding: 20px;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;  
+}
+
 .labels {
   color: #FFFFFF;
+}
+
+input {
+  border-radius: 10px;
+  width: 180px;
+  height: 50px;
 }

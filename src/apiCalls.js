@@ -1,12 +1,4 @@
-// // export const urls = [
-// //   "https://fitlit-api.herokuapp.com/api/v1/users",
-// //   "https://fitlit-api.herokuapp.com/api/v1/sleep",
-// //   "https://fitlit-api.herokuapp.com/api/v1/hydration",
-// //   "https://fitlit-api.herokuapp.com/api/v1/activity",
-// // ];
-// // ^^^^This is the old data set from Part 1^^^^^
-
-import { hydrationDataAll, hydrationData, currentUser, waterChartToDom } from './scripts.js'
+import { hydrationDataAll, currentUser, waterChartToDom } from './scripts.js'
 import { theWaterChart } from './charts.js'
 import { displayWaterInfo } from './domUpdates.js'
 import { filterUserData, getLatestData, getOuncesPerDay, universalAverage} from './data-model.js';
@@ -57,7 +49,7 @@ export const fetchPosts = (data) => {
   .catch (error => console.log(error))
 }
 
-
+//need to add another if statement for if the date after 07 01 has already been inputted...
 export const sendDataToAPI = current => {
   let ouncesStr = ouncesInput.value;
   let num = parseInt(ouncesStr);
@@ -73,7 +65,4 @@ export const sendDataToAPI = current => {
     alert('One or more was inputted correctly: Incorrect date and/or unreasonable number');
   }
 }
-
-
-//api
 
