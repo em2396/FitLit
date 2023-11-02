@@ -35,9 +35,6 @@ window.addEventListener('DOMContentLoaded', function () {
     hydrationDataAll = values[3].hydrationData;
 
     const picker = datepicker(dateInput, {
-      // onShow: instance => {
-      //   console.log(instance.dateSelected)
-      // },
       onSelect: (instance, date) => {
         const formattedDate = `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`
         dateInput.value = formattedDate
