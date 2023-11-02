@@ -74,8 +74,8 @@ header {
 
 .first-row-left,
 .second-row-left {
-  width: 50vw;
-  height: 50vh;
+  width: 50%;
+  height: 50%;
   margin: 30px;
 }
 
@@ -143,10 +143,9 @@ header {
 #activityChart,
 #sleepChart,
 #stepChart {
-  margin: 20px;
-  padding: 40px;
-  max-width: 25vw;
-  max-height: 30vh;
+  margin: 20px 10px;
+  max-width: 350px;
+  max-height: 200px;
   background-color: white;
   color: #FFFFFF;
 }
@@ -163,16 +162,11 @@ header {
 #sleepBox {
   white-space: nowrap;
   overflow-wrap: break-word;
-  width: 55%;
-  height: 30%;
+  width: 650px;
+  height: 400px;
 }
 
 #waterBox,
 #activityBox {
   padding: 20px;
 }
-
-/* .steps-text, 
-#stepsMadePerDay {
-  text-align: left;
-} */

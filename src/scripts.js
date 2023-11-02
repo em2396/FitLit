@@ -2,6 +2,7 @@ import { getRandomUser, getUserData, filterUserData, getInfoPerDay, getMinutesPe
 import { theWaterChart, theStepChart, theActivityChart, theSleepingChart } from './charts.js'
 import { displayUserInfo, displayWaterInfo, displaySleepInfo, displayActivityInfo, displayStepInfo } from './domUpdates.js';
 import { fetchPromises } from './apiCalls.js';
+import { setupDraggable } from './data-model.js';
 import './styles.css';
 
 
@@ -9,6 +10,10 @@ import './styles.css';
 const userToggleButton = document.querySelector('.toggleButton');
 const userInformation = document.querySelector('.user-info');
 const waterChart = document.querySelector('#waterChart');
+const stepBox = document.querySelector('#stepsBox');
+const waterBox = document.querySelector('#waterBox');
+const activityBox = document.querySelector('#activityBox');
+const sleepBox = document.querySelector('#sleepBox');
 
 //global
 //Variables Here:
@@ -80,6 +85,12 @@ window.addEventListener('DOMContentLoaded', function () {
     displayActivityInfo(milesPerDay, minutesPerDay, activityToday, activityChartToDom);
     displayStepInfo(currentUser, stepGoal, stepChartToDom, compareSteps, averageSteps);
     }); 
+
+    //dragging elements:
+    setupDraggable(stepBox);
+    setupDraggable(activityBox);
+    setupDraggable(waterBox);
+    setupDraggable(sleepBox);
 });
 
 userToggleButton.addEventListener('click',function() {
@@ -92,4 +103,3 @@ addButton.addEventListener('click', function(event) {
   sendDataToAPI(currentUser)
 })
 
-    

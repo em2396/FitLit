@@ -1,7 +1,7 @@
 // import Chart from 'chart.js/auto'
 // import { theWaterChart, theStepChart, theActivityChart, theSleepingChart } from './charts.js'
 import { fetchPosts } from "./apiCalls.js";
-
+import interact from 'interactjs'
 
 /// === HELPER FUNCTIONS === ///
 export const getRandomUser = userDataObj => {
@@ -133,5 +133,50 @@ export const sendDataToAPI = current => {
 }
 
 
-//data
+//drag function
+export function setupDraggable(targetElement) {
+interact(targetElement) 
+  .draggable({
+    inertia: true,
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: 'parent',
+        endOnly: true
+      })
+    ],
+    autoScroll: true,
+    listeners: {
+    // call this function on every dragmove event
+      move: dragMoveListener,
+    // call this function on every dragend event
+      end (event) {
+        var textEl = event.target.targetElement
 
+        textEl && (textEl.textContent =
+        'moved a distance of ' +
+        (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
+                   Math.pow(event.pageY - event.y0, 2) | 0))
+          .toFixed(2) + 'px')
+      }
+    }
+  });
+}
+
+  export function dragMoveListener (event) {
+    var target = event.target
+    // keep the dragged position in the data-x/data-y attributes
+    var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+    var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+  
+    // translate the element
+    target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+
+    target.style.cursor = 'grabbing';
+  
+    // update the posiion attributes
+    target.setAttribute('data-x', x)
+    target.setAttribute('data-y', y)
+  }
+  
+  // // this function is used later in the resizing and gesture demos
+  // window.dragMoveListener = dragMoveListener

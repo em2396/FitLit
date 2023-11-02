@@ -24,6 +24,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "chart.js": "^4.4.0"
+    "chart.js": "^4.4.0",
+    "interact.js": "^1.2.8",
+    "interactjs": "^1.10.19"
   }
 }
