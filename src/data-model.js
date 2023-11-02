@@ -1,6 +1,3 @@
-// import Chart from 'chart.js/auto'
-// import { theWaterChart, theStepChart, theActivityChart, theSleepingChart } from './charts.js'
-import { fetchPosts } from "./apiCalls.js";
 import interact from 'interactjs'
 
 /// === HELPER FUNCTIONS === ///
@@ -114,25 +111,6 @@ export const getOuncesPerDay = (userObj, dataList, date) => {
   };
 };
 
-
-//need to add another if statement for if the date after 07 01 has already been inputted...
-export const sendDataToAPI = current => {
-  let ouncesStr = ouncesInput.value;
-  let num = parseInt(ouncesStr);
-  if (!isNaN(new Date(dateInput.value)) && typeof num === 'number' && ouncesInput.value <= 675 && ouncesInput.value) {
-    const api = {
-      userID: current.id,
-      date: dateInput.value,
-      numOunces: ouncesInput.value
-    }
-    fetchPosts(api);
-    return api;
-  } else {
-    alert('One or more was inputted correctly: Incorrect date and/or unreasonable number');
-  }
-}
-
-
 //drag function
 export function setupDraggable(targetElement) {
 interact(targetElement) 
@@ -155,7 +133,7 @@ interact(targetElement)
         textEl && (textEl.textContent =
         'moved a distance of ' +
         (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
-                   Math.pow(event.pageY - event.y0, 2) | 0))
+          Math.pow(event.pageY - event.y0, 2) | 0))
           .toFixed(2) + 'px')
       }
     }
