@@ -1,4 +1,4 @@
-import { getRandomUser, getUserData, filterUserData, getInfoPerDay, getStepGoal, compareStepGoal, universalAverage, getLatestData, sendDataToAPI } from './data-model.js';
+import { getRandomUser, getUserData, filterUserData, getInfoPerDay, getStepGoal, compareStepGoal, universalAverage, getLatestData } from './data-model.js';
 import { theWaterChart, theStepChart, theActivityChart, theSleepingChart } from './charts.js'
 import { displayUserInfo, displayWaterInfo, displaySleepInfo, displayActivityInfo, displayStepInfo } from './domUpdates.js';
 import { fetchPromises, sendDataToAPI } from './apiCalls.js';
