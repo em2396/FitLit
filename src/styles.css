@@ -200,3 +200,12 @@ input {
 #sleepPerDayPerWeek {
   white-space: normal;
 }
+
+.error{
+  display: flex;
+  background-color: #054FB9;
+  border-radius: 10px;
+  color: #FFFFFF;
+  text-align: center;
+  box-shadow: 4px 4px 4px 4px #01285e; 
+}
