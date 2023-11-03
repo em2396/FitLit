@@ -116,7 +116,6 @@ header {
   display: none;
 }
 
-
 /* Add Hydration input boxes */
 .form {
   display: flex;
@@ -207,6 +206,17 @@ input {
   color: #FFFFFF;
   text-align: center;
   box-shadow: 4px 4px 4px 4px #01285e; 
+}
+
+.errorMessage {
+  display: flex;
+  flex-direction: row;
+  font-size: xxx-large;
+  font-weight: lighter;
+  color: red;
+  font-style: italic;
+  margin: 20% 20%;
+
 }
 
 .hidden {
