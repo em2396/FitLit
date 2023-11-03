@@ -29,14 +29,13 @@ export const fetchPromises = urls.map(url =>
       if (error instanceof TypeError) {
         asideOne.classList.add('hidden');
         asideTwo.classList.add('hidden');
-        errorMessage.innerText = "‼️ Unable to connect to the server.    Please try again later ‼️ "
+        errorMessage.innerText = "‼️ Unable to connect to the server.    Please try again later. "
         errorMessage.classList.remove('hidden')
       } else {
         alert(error.message)
       }
     })
 );
-
 
 //if input boxes are both filled, then invoke fetch 
 export const fetchPosts = (data) => {
