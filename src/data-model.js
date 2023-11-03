@@ -116,7 +116,7 @@ interact(targetElement)
     inertia: true,
     modifiers: [
       interact.modifiers.restrictRect({
-        restriction: 'parent',
+        restriction: 'relative',
         endOnly: true
       })
     ],
@@ -141,7 +141,7 @@ interact(targetElement)
         outer: 'parent'
       }),
       interact.modifiers.restrictSize({
-        min: { width: 624, height: 404 }
+        min: { width: 50, height: 50 }
       })
     ],
     listeners: {

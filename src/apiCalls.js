@@ -1,7 +1,7 @@
 import { hydrationDataAll, currentUser, waterChartToDom } from './scripts.js'
 import { theWaterChart } from './charts.js'
 import { displayWaterInfo } from './domUpdates.js'
-import { filterUserData, getLatestData, getOuncesPerDay, universalAverage} from './data-model.js';
+import { filterUserData, getLatestData } from './data-model.js';
 
 const errorEl = document.querySelector(".error");
 const asideOne = document.querySelector('.asideOne');
@@ -72,13 +72,12 @@ export const fetchPosts = (data) => {
 
 //need to add another if statement for if the date after 07 01 has already been inputted...
 export const sendDataToAPI = current => {
-  let ouncesStr = ouncesInput.value;
-  let num = parseInt(ouncesStr);
-  if (!isNaN(new Date(dateInput.value)) && typeof num === 'number' && ouncesInput.value <= 675 && ouncesInput.value) {
+  let ounces = parseInt(ouncesInput.value);
+  if (!isNaN(new Date(dateInput.value)) && typeof ounces === 'number' && ounces <= 675 && ouncesInput.value) {
     const api = {
       userID: current.id,
       date: dateInput.value,
-      numOunces: ouncesInput.value
+      numOunces: ounces
     }
     fetchPosts(api);
     return api;
