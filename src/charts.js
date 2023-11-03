@@ -17,10 +17,10 @@ export const waterChart = (waterPerDayPerWeek) => {
     options: {
       responsive: true,
       scales: {
-        x: { // Use 'x' instead of 'y' to configure the x-axis
+        x: { 
           title: {
             display: true,
-            text: "Date", // Your x-axis label
+            text: "Date", 
           },
         },
         y: {
@@ -70,7 +70,7 @@ export const activityChart = (activityData) => {
     options: {
       responsive: true,
       scales: {
-        x: { // Use 'x' instead of 'y' to configure the x-axis
+        x: { 
           title: {
             display: true,
             text: "Date", 
@@ -109,7 +109,7 @@ export const sleepingChart = (sleepInfo) => {
     options: {
       responsive: true,
       scales: {
-        x: { // Use 'x' instead of 'y' to configure the x-axis
+        x: { 
           title: {
             display: true,
             text: "Date", 
