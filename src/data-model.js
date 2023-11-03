@@ -174,13 +174,6 @@ interact(targetElement)
     target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
     target.style.cursor = 'grabbing';
 
-  //   target.addEventListener('mouseenter', function() {
-  //     target.style.cursor = 'grabbing';
-  // })
-  //   target.addEventListener('mouseleave', function() {
-  //     target.style.cursor = 'grab';
-  // })
-    // update the posiion attributes
     target.setAttribute('data-x', x)
     target.setAttribute('data-y', y)
   }
