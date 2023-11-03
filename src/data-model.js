@@ -91,7 +91,6 @@ export const getStepGoal = (currentUser, currentActivityData, today) => {
 export const compareStepGoal = (currentUser, allUsers) => {
   const averageStepGoal = universalAverage(allUsers, 'dailyStepGoal'); 
   const userStepGoal = currentUser.dailyStepGoal;
-  
   if (userStepGoal > averageStepGoal) {
     return `Your step goal, ${userStepGoal} steps, is higher than the average step goal ${averageStepGoal} steps among all users.`;
   } else if (userStepGoal < averageStepGoal) {
@@ -123,9 +122,7 @@ interact(targetElement)
     ],
     autoScroll: true,
     listeners: {
-    // call this function on every dragmove event
       move: dragMoveListener,
-    // call this function on every dragend event
       end (event) {
         var textEl = event.target.targetElement
 
@@ -164,15 +161,13 @@ interact(targetElement)
   })
 }
 
-  export function dragMoveListener (event) {
+export function dragMoveListener (event) {
     var target = event.target
     var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
     var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
-  
     target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
     target.style.cursor = 'grabbing';
-
     target.setAttribute('data-x', x)
     target.setAttribute('data-y', y)
-  }
+}
 
