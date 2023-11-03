@@ -118,15 +118,13 @@ interact(targetElement)
     inertia: true,
     modifiers: [
       interact.modifiers.restrictRect({
-        restriction: 'parent',
+        restriction: 'relative',
         endOnly: true
       })
     ],
     autoScroll: true,
     listeners: {
-    // call this function on every dragmove event
       move: dragMoveListener,
-    // call this function on every dragend event
       end (event) {
         var textEl = event.target.targetElement
 
@@ -145,7 +143,7 @@ interact(targetElement)
         outer: 'parent'
       }),
       interact.modifiers.restrictSize({
-        min: { width: 624, height: 404 }
+        min: { width: 50, height: 50 }
       })
     ],
     listeners: {
@@ -167,22 +165,20 @@ interact(targetElement)
 
   export function dragMoveListener (event) {
     var target = event.target
-    // keep the dragged position in the data-x/data-y attributes
     var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
     var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
-  
-    // translate the element
     target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
     target.style.cursor = 'grabbing';
-
-  //   target.addEventListener('mouseenter', function() {
-  //     target.style.cursor = 'grabbing';
-  // })
-  //   target.addEventListener('mouseleave', function() {
-  //     target.style.cursor = 'grab';
-  // })
-    // update the posiion attributes
     target.setAttribute('data-x', x)
     target.setAttribute('data-y', y)
   }
-
+  
+  
+  
+    //   target.addEventListener('mouseenter', function() {
+    //     target.style.cursor = 'grabbing';
+    // })
+    //   target.addEventListener('mouseleave', function() {
+    //     target.style.cursor = 'grab';
+    // })
+      // update the posiion attributes

@@ -1,5 +1,5 @@
 import { getRandomUser, getUserData, filterUserData, getInfoPerDay, getStepGoal, compareStepGoal, universalAverage, getLatestData } from './data-model.js';
-import { theWaterChart, theStepChart, theActivityChart, theSleepingChart } from './charts.js'
+import { waterChart, stepChart, activityChart, sleepingChart } from './charts.js'
 import { displayUserInfo, displayWaterInfo, displaySleepInfo, displayActivityInfo, displayStepInfo } from './domUpdates.js';
 import { fetchPromises, sendDataToAPI } from './apiCalls.js';
 import { setupDraggable } from './data-model.js';
@@ -41,39 +41,37 @@ window.addEventListener('DOMContentLoaded', function () {
       },
       minDate: new Date (2023, 6, 2),
       startDate: new Date (2023, 6, 2),
-      // disabledDates: [new Date(2023, 2, 24 - 2023, 6, 1)] DOESN'T WORK ?
     })
-    console.log(picker, 'hello')
 
     //random currentUser functions:
-    let randomUserIndex = getRandomUser(userDataAll);
+    const randomUserIndex = getRandomUser(userDataAll);
     currentUser = getUserData(userDataAll, randomUserIndex);
 
     //Hydration functions:
     hydrationData = filterUserData(hydrationDataAll, currentUser);  
-    let todaysHydrationDate = getLatestData(hydrationData);
-    let waterPerDayPerWeek = getLatestData(hydrationData, 'week');
-    waterChartToDom = theWaterChart(waterPerDayPerWeek);
+    const todaysHydrationDate = getLatestData(hydrationData);
+    const waterPerDayPerWeek = getLatestData(hydrationData, 'week');
+    waterChartToDom = waterChart(waterPerDayPerWeek);
     
     //Sleep functions:
-    let sleepData = filterUserData(sleepDataAll, currentUser);
-    let averageSleep = universalAverage(sleepData, 'hoursSlept');
-    let aveSleepQuality = universalAverage(sleepData, 'sleepQuality');
-    let sleepPerDayPerWeek = getLatestData(sleepData, 'week');
-    let sleepToday = getLatestData(sleepData);
-    let sleepChartToDom = theSleepingChart(sleepPerDayPerWeek);
+    const sleepData = filterUserData(sleepDataAll, currentUser);
+    const averageSleep = universalAverage(sleepData, 'hoursSlept');
+    const aveSleepQuality = universalAverage(sleepData, 'sleepQuality');
+    const sleepPerDayPerWeek = getLatestData(sleepData, 'week');
+    const sleepToday = getLatestData(sleepData);
+    const sleepChartToDom = sleepingChart(sleepPerDayPerWeek);
     
     //Activity and Step functions:
-    let averageSteps = universalAverage(userDataAll, 'dailyStepGoal');
-    let activityData = filterUserData(activityDataAll, currentUser);
-    let activityPerDayPerWeek = getLatestData(activityData,'week');
-    let activityToday = getLatestData(activityData);
-    let milesPerDay = getInfoPerDay(currentUser, activityData, activityToday, "numSteps");
-    let stepGoal = getStepGoal(currentUser, activityData, activityToday);
-    let minutesPerDay = getInfoPerDay(currentUser, activityData, activityToday, "minutesActive"); 
-    let stepChartToDom = theStepChart(activityPerDayPerWeek);
-    let activityChartToDom = theActivityChart(activityPerDayPerWeek);
-    let compareSteps = compareStepGoal(currentUser, userDataAll);
+    const averageSteps = universalAverage(userDataAll, 'dailyStepGoal');
+    const activityData = filterUserData(activityDataAll, currentUser);
+    const activityPerDayPerWeek = getLatestData(activityData,'week');
+    const activityToday = getLatestData(activityData);
+    const milesPerDay = getInfoPerDay(currentUser, activityData, activityToday, "numSteps");
+    const stepGoal = getStepGoal(currentUser, activityData, activityToday);
+    const minutesPerDay = getInfoPerDay(currentUser, activityData, activityToday, "minutesActive"); 
+    const stepChartToDom = stepChart(activityPerDayPerWeek);
+    const activityChartToDom = activityChart(activityPerDayPerWeek);
+    const compareSteps = compareStepGoal(currentUser, userDataAll);
 
     //Dom Updates functions:
     displayUserInfo(currentUser, activityToday);
@@ -83,7 +81,7 @@ window.addEventListener('DOMContentLoaded', function () {
     displayStepInfo(currentUser, stepGoal, stepChartToDom, compareSteps, averageSteps);
     }); 
 
-    //dragging elements:
+    //Dragging elements:
     setupDraggable(stepBox);
     setupDraggable(activityBox);
     setupDraggable(waterBox);

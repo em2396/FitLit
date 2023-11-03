@@ -1,7 +1,7 @@
 import Chart from 'chart.js/auto';
 
 /// === CHARTS === ///
-export const theWaterChart = (waterPerDayPerWeek) => {
+export const waterChart = (waterPerDayPerWeek) => {
   const data = waterPerDayPerWeek;
   var waterC = new Chart(document.getElementById("waterChart"), {
     type: "bar",
@@ -35,7 +35,7 @@ export const theWaterChart = (waterPerDayPerWeek) => {
   return waterC;
 };
 
-export const theStepChart = (activityData) => {
+export const stepChart = (activityData) => {
   const data = activityData;
   new Chart(document.getElementById("stepChart"), {
     type: "doughnut",
@@ -54,7 +54,7 @@ export const theStepChart = (activityData) => {
   });
 };
 
-export const theActivityChart = (activityData) => {
+export const activityChart = (activityData) => {
   const data = activityData;
   new Chart(document.getElementById("activityChart"), {
     type: "line",
@@ -73,7 +73,7 @@ export const theActivityChart = (activityData) => {
   });
 };
 
-export const theSleepingChart = (sleepInfo) => {
+export const sleepingChart = (sleepInfo) => {
   const data = sleepInfo;
   new Chart(document.getElementById("sleepChart"), {
     type: "bar",
