@@ -4,9 +4,8 @@ import { displayWaterInfo } from './domUpdates.js'
 import { filterUserData, getLatestData, getOuncesPerDay, universalAverage} from './data-model.js';
 
 const errorEl = document.querySelector(".error");
-// const hiddenBody = document.querySelector('.hiddenBody')
 const asideOne = document.querySelector('.asideOne');
-const asideTwo = document.querySelector('.asideTwo')
+const asideTwo = document.querySelector('.asideTwo');
 const errorMessage = document.querySelector('.errorMessage');
 
 export const urls = [
