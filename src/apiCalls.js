@@ -3,7 +3,11 @@ import { theWaterChart } from './charts.js'
 import { displayWaterInfo } from './domUpdates.js'
 import { filterUserData, getLatestData, getOuncesPerDay, universalAverage} from './data-model.js';
 
-const errorEl = document.querySelector(".error")
+const errorEl = document.querySelector(".error");
+// const hiddenBody = document.querySelector('.hiddenBody')
+const asideOne = document.querySelector('.asideOne');
+const asideTwo = document.querySelector('.asideTwo')
+const errorMessage = document.querySelector('.errorMessage');
 
 export const urls = [
   "http://localhost:3001/api/v1/users",
@@ -14,13 +18,23 @@ export const urls = [
 
 export const fetchPromises = urls.map(url =>
   fetch(url)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error (`${response.status}: Failed to fetch data`)
+      }
+    return response.json()
+    })
     .then((data) => {
       return data;
     }).catch(error => {
-      console.log(error)
-    }).catch(error => {
-      console.log(error)
+      if (error instanceof TypeError) {
+        asideOne.classList.add('hidden');
+        asideTwo.classList.add('hidden');
+        errorMessage.innerText = "‼️ Unable to connect to the server.    Please try again later ‼️ "
+        errorMessage.classList.remove('hidden')
+      } else {
+        alert(error.message)
+      }
     })
 );
 
@@ -34,7 +48,12 @@ export const fetchPosts = (data) => {
       'Content-Type': 'application/json'
     }
   })
-  .then (response => response.json())
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error (`${response.status}: Failed to fetch data`)
+    }
+  return response.json()
+  })
   .then (json => {
     hydrationDataAll.push(json);
     console.log(hydrationDataAll, 'inside POST func')
@@ -47,7 +66,9 @@ export const fetchPosts = (data) => {
     waterChartToDom = theWaterChart(waterPerDayPerWeek);
     displayWaterInfo(todaysHydrationDate, waterChartToDom);
   })
-  .catch (error => console.error(error))
+  .catch (error => {
+    alert(error.message)
+  })
 }
 
 //need to add another if statement for if the date after 07 01 has already been inputted...
