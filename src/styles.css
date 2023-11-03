@@ -189,7 +189,6 @@ input {
   height: 50px;
 }
 
-
 .error{
   display: flex;
   background-color: #054FB9;
@@ -197,6 +196,15 @@ input {
   color: #FFFFFF;
   text-align: center;
   box-shadow: 4px 4px 4px 4px #01285e; 
+}
+
+.errorMessage {
+  font-size: xxx-large;
+  font-weight: lighter;
+  color: red;
+  font-style: italic;
+  margin: 15% 15%;
+  display: flex;
 }
 
 .hidden {
