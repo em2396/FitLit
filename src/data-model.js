@@ -44,7 +44,6 @@ export const getLatestData = (filteredData, wholeWeek) => {
 
 //Filter all the user data to all the data of the current user
 export const filterUserData = (data, currentUserObject) => {
-  // console.log(data, 'data in filterUser')
   const filteredElement = data.filter((element) => {
     return element.userID === currentUserObject.id;
   });
