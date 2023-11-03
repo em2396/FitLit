@@ -18,13 +18,17 @@
           <p class="steps-text" id="totalSteps"></p>
           <p class "steps-text" id="averageUsersSteps"></p>
           <p class "steps-text" id="stepComparison"></p>
-          <canvas id="stepChart" aria-label="Total Steps Per Week Graph" role="img"></canvas>
+          <canvas id="stepChart" aria-label="Total Steps Per Week Graph" aria-describedby="stepsChartDescription" role="img"></canvas>
+          <p id="stepsChartDescription" class="sr-only">This chart displays the total number of steps taken per week, with data points for each day.</p>
+          <span class="sr-only">Total Steps: 10,000</span>
         </section>
         <section class="first-row-left" id="waterBox" tabindex="0">
           <h1 class="titles" tabindex="0">Water</h1>
           <p id="waterConsumedToday"></p>
           <p id="waterEachDayOfWeek"></p>
-          <canvas id="waterChart" aria-label="Total Water In Ounces Per Week Consumed Graph" role="img"></canvas>
+          <canvas id="waterChart" aria-label="Total Water In Ounces Per Week Consumed Graph" aria-describedby="waterChartDescription" role="img"></canvas>
+          <p id="waterChartDescription" class="sr-only">This chart displays the total water consumption in ounces per week, with data points for each day of the week.</p>
+          <span class="sr-only">Water Consumed Today: 64 ounces</span>
         </section>
       </section>
       <section class="left-section">
@@ -34,7 +38,9 @@
           <p id="minutesActivePerDay"></p>
           <p id="milesWalkedPerDay"></p>
           <p id="weekStepCount"></p>
-          <canvas id="activityChart" aria-label="Total Activity Per Week Graph" role="img"></canvas>
+          <canvas id="activityChart" aria-label="Total Activity Per Week Graph" aria-describedby="activityChartDescription" role="img"></canvas>
+          <p id="activityChartDescription" class="sr-only">This chart displays the total activity per week, including steps made, minutes active, and miles walked per day.</p>
+          <span class="sr-only">Total Activity</span>
         </section>
         <section class="second-row-left" id="sleepBox">
           <h1 class="titles" tabindex="0">Sleeping</h1>
@@ -42,7 +48,9 @@
           <p id="averageSleepOverall"></p>
           <p id="sleepSpecificDay"></p>
           <p id="sleepPerDayPerWeek"></p>
-          <canvas id="sleepChart" aria-label="Total Sleep Accumulated Graph" role="img"></canvas>
+          <canvas id="sleepChart" aria-label="Total Sleep Accumulated Graph" aria-describedby="sleepChartDescription" role="img"></canvas>
+          <p id="sleepChartDescription" class="sr-only">This chart displays the total hours of sleep accumulated, with data points for specific days and weekly totals.</p>
+          <span class="sr-only">Total Hours of Sleep</span>
         </section>
       </section>
     </aside>
