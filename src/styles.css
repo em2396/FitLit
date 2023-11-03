@@ -179,6 +179,7 @@ header {
 }
 
 .labels {
+  margin-top: 20px;
   color: #FFFFFF;
 }
 
@@ -187,3 +188,18 @@ input {
   width: 180px;
   height: 50px;
 }
+
+
+.error{
+  display: flex;
+  background-color: #054FB9;
+  border-radius: 10px;
+  color: #FFFFFF;
+  text-align: center;
+  box-shadow: 4px 4px 4px 4px #01285e; 
+}
+
+.hidden {
+  display: none;
+}
+
