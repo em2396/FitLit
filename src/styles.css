@@ -8,7 +8,7 @@ body {
   display: flex;
   flex-direction: row;
   color: #2A2B2C;
-  font-family: "Gill Sans", sansx-serif;
+  font-family: "Gill Sans", sans-serif;
 }
 
 header {
@@ -186,4 +186,15 @@ input {
   border-radius: 10px;
   width: 180px;
   height: 50px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
