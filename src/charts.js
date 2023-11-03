@@ -69,6 +69,20 @@ export const activityChart = (activityData) => {
     },
     options: {
       responsive: true,
+      scales: {
+        x: { // Use 'x' instead of 'y' to configure the x-axis
+          title: {
+            display: true,
+            text: "Date", 
+          },
+        },
+        y: {
+          title: {
+            display: true,
+            text: "Minutes Active",
+          },
+        },
+      },
     },
   });
 };
@@ -94,6 +108,20 @@ export const sleepingChart = (sleepInfo) => {
     },
     options: {
       responsive: true,
+      scales: {
+        x: { // Use 'x' instead of 'y' to configure the x-axis
+          title: {
+            display: true,
+            text: "Date", 
+          },
+        },
+        y: {
+          title: {
+            display: true,
+            text: "Hours slept and Sleep Quality",
+          },
+        },
+      },
     },
   });
 };
