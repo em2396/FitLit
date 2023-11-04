@@ -112,10 +112,6 @@ header {
   max-height: 700px;
 }
 
-.hidden {
-  display: none;
-}
-
 /* Not sure if this is supposed to be kept */
 /* Add Hydration input boxes */
 .form {
@@ -135,7 +131,6 @@ input {
   width: 180px;
   height: 50px;
 }
-
 /* Containers and the data and charts they hold */
 #stepsBox {
   background-color: #8babf1;
@@ -188,7 +183,6 @@ input {
   color: #FFFFFF;
 }
 
-
 /* Keeps text in box when growing or shrinking */
 .steps-text,
 #waterConsumedToday,
@@ -209,6 +203,16 @@ input {
   color: #FFFFFF;
   text-align: center;
   box-shadow: 4px 4px 4px 4px #01285e; 
+}
+
+.errorMessage {
+  display: flex;
+  flex-direction: row;
+  font-size: xxx-large;
+  font-weight: lighter;
+  color: red;
+  font-style: italic;
+  margin: 20% 20%;
 }
 
 .sr-only {

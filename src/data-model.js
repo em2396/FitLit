@@ -44,7 +44,6 @@ export const getLatestData = (filteredData, wholeWeek) => {
 
 //Filter all the user data to all the data of the current user
 export const filterUserData = (data, currentUserObject) => {
-  // console.log(data, 'data in filterUser')
   const filteredElement = data.filter((element) => {
     return element.userID === currentUserObject.id;
   });
@@ -92,7 +91,6 @@ export const getStepGoal = (currentUser, currentActivityData, today) => {
 export const compareStepGoal = (currentUser, allUsers) => {
   const averageStepGoal = universalAverage(allUsers, 'dailyStepGoal'); 
   const userStepGoal = currentUser.dailyStepGoal;
-  
   if (userStepGoal > averageStepGoal) {
     return `Your step goal, ${userStepGoal} steps, is higher than the average step goal ${averageStepGoal} steps among all users.`;
   } else if (userStepGoal < averageStepGoal) {
@@ -163,7 +161,7 @@ interact(targetElement)
   })
 }
 
-  export function dragMoveListener (event) {
+export function dragMoveListener (event) {
     var target = event.target
     var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
     var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
@@ -171,14 +169,5 @@ interact(targetElement)
     target.style.cursor = 'grabbing';
     target.setAttribute('data-x', x)
     target.setAttribute('data-y', y)
-  }
-  
-  
-  
-    //   target.addEventListener('mouseenter', function() {
-    //     target.style.cursor = 'grabbing';
-    // })
-    //   target.addEventListener('mouseleave', function() {
-    //     target.style.cursor = 'grab';
-    // })
-      // update the posiion attributes
+}
+
