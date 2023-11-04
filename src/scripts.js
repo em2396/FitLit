@@ -20,9 +20,9 @@ let userDataAll;
 let sleepDataAll;
 let activityDataAll;
 export let hydrationDataAll;
-export let hydrationData
-export let waterChartToDom
-export let currentUser
+export let hydrationData;
+export let waterChartToDom;
+export let currentUser;
 
 //Event Listeners Here:
 window.addEventListener('DOMContentLoaded', function () {
@@ -96,5 +96,5 @@ userToggleButton.addEventListener('click',function() {
 addButton.addEventListener('click', function(event) {
   event.preventDefault()
   sendDataToAPI(currentUser)
-})
+});
 

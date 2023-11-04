@@ -1,5 +1,5 @@
 import { hydrationDataAll, currentUser, waterChartToDom } from './scripts.js'
-import { theWaterChart } from './charts.js'
+import { waterChart } from './charts.js'
 import { displayWaterInfo } from './domUpdates.js'
 import { filterUserData, getLatestData } from './data-model.js';
 
@@ -43,9 +43,9 @@ export const fetchPosts = (data) => {
     console.log(todaysHydrationDate, 'should be newly added')
     let waterPerDayPerWeek = getLatestData(newHydrationData, 'week');
     console.log(waterPerDayPerWeek, 'should included 7 days');
-    waterChartToDom.destroy();
-    waterChartToDom = theWaterChart(waterPerDayPerWeek);
-    displayWaterInfo(todaysHydrationDate, waterChartToDom);
+    waterChartToDom.destroy(); //bc we imported from another file, we can't set that...
+    let newWaterChartToDom = waterChart(waterPerDayPerWeek);
+    displayWaterInfo(todaysHydrationDate, newWaterChartToDom);
   })
   .catch (error => console.error(error))
 }
