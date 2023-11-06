@@ -6,7 +6,7 @@ import { filterUserData, getLatestData } from './data-model.js';
 const errorEl = document.querySelector(".error");
 const asideOne = document.querySelector('.asideOne');
 const asideTwo = document.querySelector('.asideTwo');
-const errorMessage = document.querySelector('.errorMessage');
+const errorMessage = document.querySelector('.error-message');
 
 export const urls = [
   "http://localhost:3001/api/v1/users",
