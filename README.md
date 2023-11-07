@@ -33,7 +33,7 @@ FitLit is a wellness companion that transforms the way you track your health jou
 We are a 4 group of front-end developers who worked together remotely via Zoom and asynchronously through the GitHub project board to complete this application. This project was completed from week 2 to week 4 in Mod 2 of the Front End development program at Turing School of Software & Design. 
 
 ## 🎥 Preview 
-![Fitlit Screenshot](fitlit_screenshot.png)
+![Fitlit Example](Fitlit_Example.gif)
 
 
 ## 🔌 Server Setup
