@@ -27,7 +27,7 @@
 
 ## 💭 Abstract
 
-FitLit is a wellness companion that transforms the way you track your health journey, merging style and data tracking seamlessly. Its captivating interface and user-friendly design empower you to attain unmatched health and vitality. This innovative app provides a motivating overview of your activities, hydration, and sleep data, igniting your desire for a healthier, happier life.
+FitLit revolutionizes the health tracking experience by seamlessly blending style and data tracking. With its captivating interface and user-friendly design, users can effortlessly rearrange their dashboard's UI to prioritize what matters most, whether it's activity, hydration, or sleep data. This innovative app ignites motivation for a healthier and happier life, offering a personalized approach to wellness.
 
 ## 📝  Context
 We are a 4 group of front-end developers who worked together remotely via Zoom and asynchronously through the GitHub project board to complete this application. This project was completed from week 2 to week 4 in Mod 2 of the Front End development program at Turing School of Software & Design. 
