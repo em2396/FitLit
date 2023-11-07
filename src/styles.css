@@ -205,7 +205,7 @@ input {
   box-shadow: 4px 4px 4px 4px #01285e; 
 }
 
-.errorMessage {
+.error-message {
   display: flex;
   flex-direction: row;
   font-size: xxx-large;
