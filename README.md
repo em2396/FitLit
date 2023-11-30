@@ -44,7 +44,7 @@ We are a 4 group of front-end developers who worked together remotely via Zoom a
 - Run the command: `npm start`
 
 ## Client App Setup
-- Clone it to your local machine using the command: `git@github.com:amysiu1028/FitLit.git`
+- Clone it to your local machine using the command: `git@github.com:em2396/FitLit.git`
 - Run the command: `cd fitlit`
 - Run the command: `npm install`
 - Run the command: `npm start`
